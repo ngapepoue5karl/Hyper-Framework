@@ -1,0 +1,10 @@
+{"timestamp": "2025-09-22T11:18:35.022120", "username": "superadmin", "user_role": "SUPER_ADMIN", "ip_address": "10.110.198.230", "action": "USER_LOGIN", "status": "SUCCESS", "details": {"message": "Login successful"}}
+{"timestamp": "2025-09-22T11:18:35.246792", "username": "superadmin", "user_role": "SUPER_ADMIN", "ip_address": "10.110.198.230", "action": "VIEW_CONTROLS_LIST", "status": "SUCCESS", "details": {"count": 3}}
+{"timestamp": "2025-09-22T11:25:32.917692", "username": "superadmin", "user_role": "SUPER_ADMIN", "ip_address": "10.110.198.230", "action": "USER_LOGIN", "status": "SUCCESS", "details": {"message": "Login successful"}}
+{"timestamp": "2025-09-22T11:25:33.130031", "username": "superadmin", "user_role": "SUPER_ADMIN", "ip_address": "10.110.198.230", "action": "VIEW_CONTROLS_LIST", "status": "SUCCESS", "details": {"count": 3}}
+{"timestamp": "2025-09-22T11:25:58.590715", "username": "superadmin", "user_role": "SUPER_ADMIN", "ip_address": "10.110.198.230", "action": "VIEW_CONTROLS_LIST", "status": "SUCCESS", "details": {"count": 3}}
+{"timestamp": "2025-09-22T11:26:08.009709", "username": "superadmin", "user_role": "SUPER_ADMIN", "ip_address": "10.110.198.230", "action": "VIEW_CONTROLS_LIST", "status": "SUCCESS", "details": {"count": 3}}
+{"timestamp": "2025-09-22T11:26:09.834313", "username": "superadmin", "user_role": "SUPER_ADMIN", "ip_address": "10.110.198.230", "action": "VIEW_USERS_LIST", "status": "SUCCESS", "details": {"user_count": 5}}
+{"timestamp": "2025-09-22T11:26:11.266956", "username": "superadmin", "user_role": "SUPER_ADMIN", "ip_address": "10.110.198.230", "action": "AUDIT_VIEW_LOGS", "status": "SUCCESS", "details": {}}
+{"timestamp": "2025-09-22T11:26:12.791314", "username": "superadmin", "user_role": "SUPER_ADMIN", "ip_address": "10.110.198.230", "action": "VIEW_CONTROLS_LIST", "status": "SUCCESS", "details": {"count": 3}}
+{"timestamp": "2025-09-22T11:26:18.663545", "username": "superadmin", "user_role": "SUPER_ADMIN", "ip_address": "10.110.198.230", "action": "VIEW_CONTROL_DETAILS", "status": "SUCCESS", "details": {"control_id": 5, "control_name": "Analyse de Conformit\u00e9 des Serveurs"}}

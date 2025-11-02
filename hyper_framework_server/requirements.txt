@@ -1,0 +1,8 @@
+#---> CONTENU MODIFIÉ pour hyper_framework_server/requirements.txt
+Flask
+bcrypt
+pandas
+python-docx
+waitress
+chardet
+openpyxl

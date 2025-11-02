@@ -1,0 +1,6 @@
+requests
+pandas
+openpyxl
+Jinja2
+matplotlib
+customtkinter

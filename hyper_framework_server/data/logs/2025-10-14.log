@@ -1,0 +1,3 @@
+{"timestamp": "2025-10-14T07:33:58.582592", "username": "admin", "user_role": "ADMIN", "ip_address": "10.89.247.245", "action": "USER_LOGIN", "status": "FAILURE", "details": {"error": "Nom ou mot de passe incorrect."}}
+{"timestamp": "2025-10-14T07:39:41.565628", "username": "superadmin", "user_role": "SUPER_ADMIN", "ip_address": "10.89.247.245", "action": "USER_LOGIN", "status": "FAILURE", "details": {"error": "Nom ou mot de passe incorrect."}}
+{"timestamp": "2025-10-14T07:41:24.023783", "username": "superadmin", "user_role": "SUPER_ADMIN", "ip_address": "10.89.247.245", "action": "USER_LOGIN", "status": "FAILURE", "details": {"error": "Nom ou mot de passe incorrect."}}
