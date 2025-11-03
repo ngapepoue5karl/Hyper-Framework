@@ -33,7 +33,6 @@ def clean_adws_data(file_path):
     lignes = lignes[1:]
     donnees = [ligne.replace('"', '').split(';') for ligne in lignes]
     df = pd.DataFrame(donnees[1:], columns=donnees[0])
-
     if 'OperatingSystem' in df.columns:
         valeurs_a_supprimer = ['linux', 'cisco', 'LTSB', 'LTSC', 'unknown']
         pattern = '|'.join(valeurs_a_supprimer)
@@ -116,12 +115,7 @@ def run(input_file_paths, output_dir_path):
         ext_laps_df = load_external_file(input_file_paths.get('externe_laps'))
         
         # --- B. Préparation de la base de données commune ---
-        glpi_df.rename(columns={'Nom': 'Name'}, inplace=True)
-
-        if 'Name' not in glpi_df.columns:
-            print(f"Colonnes GLPI trouvées : {glpi_df.columns.tolist()}")
-            raise KeyError("La colonne 'Name' (ou 'Nom') est absente du fichier GLPI. Vérifiez le nom exact des colonnes.")
-
+        glpi_df.rename(columns={"Nom": "Name"}, inplace=True)
         glpi_subset = glpi_df[['Name', 'Lieu', 'Statut', 'Utilisateur']].drop_duplicates(subset=['Name'])
 
         lieu_dict = glpi_subset.set_index('Name')['Lieu'].to_dict()

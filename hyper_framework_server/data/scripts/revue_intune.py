@@ -3,7 +3,7 @@
 # === 1. Définition des entrées ===
 __hyper_inputs__ = [
     {"key": "intune_file", "label": "Fichier Intune - Devices (.csv)"},
-    {"key": "ad_users", "label": "Export des utilisateurs AD (.txt)"},
+    {"key": "ad_users", "label": "Export des utilisateurs AD (.txt)"},  # Mise à jour pour indiquer .txt
     {"key": "glpi_data", "label": "Données GLPI (.csv)"}
 ]
 
@@ -27,7 +27,7 @@ def nettoyer_fichier_ad(input_file):
     """Charge et nettoie le fichier AD Users (séparateur point-virgule, sans en-tête)."""
     with open(input_file, 'rb') as f:
         encoding = chardet.detect(f.read())['encoding']
-    
+               
     headers = [
         "CN", "Created", "Description", "EmployeeNumber", "Enabled", "Modified", "Title", 
         "LastLogonDate", "Name", "DisplayName", "ObjectClass", "ObjectGUID", "PasswordExpired", 
