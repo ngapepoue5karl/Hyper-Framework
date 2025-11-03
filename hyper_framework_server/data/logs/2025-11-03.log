@@ -77,3 +77,5 @@
 {"timestamp": "2025-11-03T10:56:10.319773", "username": "superadmin", "user_role": "SUPER_ADMIN", "ip_address": "10.100.0.102", "action": "VIEW_CONTROLS_LIST", "status": "SUCCESS", "details": {"count": 4}}
 {"timestamp": "2025-11-03T10:56:11.751567", "username": "superadmin", "user_role": "SUPER_ADMIN", "ip_address": "10.100.0.102", "action": "VIEW_CONTROLS_LIST", "status": "SUCCESS", "details": {"count": 4}}
 {"timestamp": "2025-11-03T11:17:57.366842", "username": "superadmin", "user_role": "SUPER_ADMIN", "ip_address": "10.100.0.102", "action": "VIEW_CONTROLS_LIST", "status": "SUCCESS", "details": {"count": 4}}
+{"timestamp": "2025-11-03T13:46:04.960254", "username": "superadmin", "user_role": "SUPER_ADMIN", "ip_address": "10.100.0.102", "action": "VIEW_CONTROL_DETAILS", "status": "SUCCESS", "details": {"control_id": 16, "control_name": "Sauvegarde PCs"}}
+{"timestamp": "2025-11-03T13:46:43.774510", "username": "superadmin", "user_role": "SUPER_ADMIN", "ip_address": "10.100.0.102", "action": "ANALYSIS_EXECUTE", "status": "SUCCESS", "details": {"control_id": 16, "control_name": "Sauvegarde PCs"}}
