@@ -1,18 +1,4 @@
 # sauvegarde_onedrive_hyper.py
-# ---------------------------------------------------------------
-# - Construit "Evidence OneDrive s40 - COPIE.xlsx"
-# - Feuilles:
-#     * Liste des licences OneDrive  (Users.csv)
-#     * Extraction OneDrive          (OneDriveUsageAccountDetail.csv, F -> M dupliqué)
-#     * Utilisateur AD               (Utilisateur AD.txt)
-#     * NOK OneDrive                 (copie AD + 7 formules Excel + Tableau)
-#     * Stats                        (B2 = date d'exécution Excel)
-# - APPLICATION: affiche "Description" + 7 colonnes critères, triées et filtrées:
-#   Enabled=True, PasswordExpired=False, Service/générique?=FAUX, Compte Expiré?=NON,
-#   Comptes ayant une licence OneDrive=OUI, Comptes Sauvegardés=NON, >= 30 Jrs=NOK.
-#   + Summary: nb actifs, nb assujettis, nb avec licence
-# ---------------------------------------------------------------
-
 __hyper_inputs__ = [
     {"key": "onedrive_file", "label": "OneDriveUsageAccountDetail (.csv)"},
     {"key": "users_file",  "label": "Users (.csv)"},
@@ -95,7 +81,7 @@ def dataframe_for_ui(df: pd.DataFrame) -> pd.DataFrame:
     df2 = df.replace({pd.NaT: None})
     df2 = df2.where(pd.notnull(df2), None)
 
-    # Conversion optimisée des types numpy
+    # Conversion optimisée des types 
     for col in df2.columns:
         if df2[col].dtype.kind in ('i', 'u'):  # entiers
             df2[col] = df2[col].astype(object).where(df2[col].notna(), None)
@@ -172,7 +158,7 @@ def inject_formulas_nok(writer):
             f'"OK",IFERROR(IF((Stats!$B$2-{col_sync}{r})>30,"NOK","OK"),""))'
         )
 
-    # Mettre TOUTE la feuille en Tableau
+    # Mettre la feuille en Tableau
     last_col = get_column_letter(ws.max_column)
     ref = f"A1:{last_col}{ws.max_row}"
     tbl = Table(displayName="Table_NOK", ref=ref)
@@ -288,7 +274,7 @@ def traiter(onedrive_path, users_path, ad_path, output_dir):
     ad_df       = read_ad_utf16_mixed(ad_path)     # Utilisateur AD
     nok         = ad_df.copy()                     # base pour NOK OneDrive
 
-    out_xlsx = os.path.join(output_dir, "Evidence OneDrive s40 - COPIE.xlsx")
+    out_xlsx = os.path.join(output_dir, "Rapport de conformité sauvegarde_Pcs.xlsx")
 
     with pd.ExcelWriter(out_xlsx, engine="openpyxl", datetime_format="yyyy-mm-dd") as writer:
         sanitize_df_for_excel(users_df).to_excel(writer, index=False, sheet_name="Liste des licences OneDrive")
@@ -353,10 +339,8 @@ def traiter(onedrive_path, users_path, ad_path, output_dir):
 
     view = app_df.loc[mask, display_cols].copy().sort_values(by=[cn_col if cn_col in app_df.columns else desc_col], kind="stable", na_position="last")
 
-    # ------ Stats demandés pour l'interface ------
+    # ------ Stats ------
     # 1) Nombre d'utilisateurs actifs:
-    # C'est le nombre de cellule de la colonne "CN" qui ont la valeur "True" sur la colonne "Enabled"
-    # ('NOK OneDrive'!E:E="True" et CN non vide)
     cn_col = find_col(app_df, ["CN", "Name", "DisplayName"]) or "CN"
     if cn_col not in app_df.columns:
         app_df[cn_col] = ""
@@ -369,7 +353,6 @@ def traiter(onedrive_path, users_path, ad_path, output_dir):
     nb_utilisateurs_actifs = int(actifs_mask.sum())
 
     # 2) Nombre d'utilisateurs Assujettis:
-    # ('NOK OneDrive'!E:E="True", M:M="False", AA:AA="FAUX", AB:AB="NON")
     assujettis_mask = (
         (app_df[enabled_col].astype(str).str.strip().str.lower() == "true") &
         (app_df[pwd_col].astype(str).str.strip().str.lower() == "false") &
@@ -379,34 +362,30 @@ def traiter(onedrive_path, users_path, ad_path, output_dir):
     nb_utilisateurs_assujettis = int(assujettis_mask.sum())
 
     # 3) Nombre Avec licence:
-    # (même critères + 'Comptes ayant une licence OneDrive'="OUI")
     avec_licence_mask = assujettis_mask & (
         app_df["Comptes ayant une licence OneDrive"].astype(str).str.upper().str.strip() == "OUI"
     )
     nb_avec_licence = int(avec_licence_mask.sum())
 
     # 4) Nombre d'utilisateurs NOK (utilisateurs qui n'ont pas synchronisé):
-    # Ce sont les utilisateurs qui correspondent au masque de filtrage complet (affichés dans la vue)
     nb_utilisateurs_nok = int(mask.sum())
 
     # 5) Taux : 1 - (nombre NOK / nombre avec licence)
-    # Exprimé en pourcentage
     if nb_avec_licence > 0:
         taux = (1 - (nb_utilisateurs_nok / nb_avec_licence)) * 100
     else:
         taux = 0.0
-    # ---------------------------------------------
 
     return [{
-        "title": "Les utilisateurs qui n'ont pas synchronisés",
+        "title": "Sauvegardes des données PCs",
         "excel_output": out_xlsx,
         "dataframe": dataframe_for_ui(view),
         "display_columns": [{"key": c, "label": c} for c in view.columns],
         "summary_stats": {
-            "Le nombre d'utilisateurs actifs": nb_utilisateurs_actifs,
-            "Le nombre d'utilisateurs Assujettis": nb_utilisateurs_assujettis,
-            "Le nombre Avec licence": nb_avec_licence,
-            "Le nombre d'utilisateurs NOK": nb_utilisateurs_nok,
+            "Les utilisateurs actifs": nb_utilisateurs_actifs,
+            "Les utilisateurs Assujettis": nb_utilisateurs_assujettis,
+            "Les utilisateurs avec licence": nb_avec_licence,
+            "Les utilisateurs NOK": nb_utilisateurs_nok,
             "Taux": f"{round(taux, 2)}%"
         }
     }]
