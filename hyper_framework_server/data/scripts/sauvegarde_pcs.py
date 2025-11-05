@@ -386,7 +386,7 @@ def traiter(onedrive_path, users_path, ad_path, output_dir):
             "Les utilisateurs Assujettis": nb_utilisateurs_assujettis,
             "Les utilisateurs avec licence": nb_avec_licence,
             "Les utilisateurs NOK": nb_utilisateurs_nok,
-            "Taux": f"{round(taux, 2)}%"
+            "Taux de conformité Sauvegarde_PCs": f"{round(taux, 2)}%"
         }
     }]
 
