@@ -236,6 +236,14 @@ def compute_app_flags(ad_df: pd.DataFrame, users_df: pd.DataFrame, onedrive_df: 
     df["Comptes Sauvegardés"] = df[col_upn].astype(str).str.lower().isin(saved_set)
     df["Comptes Sauvegardés"] = df["Comptes Sauvegardés"].map(lambda v: "OUI" if v else "NON")
 
+    # Date d'obtention de la licence (colonne G de Users = 5e colonne depuis C)
+    if users_df.shape[1] >= 7:  # C:G = colonnes 2 à 6 (index 0-based)
+        date_lic_col = users_df.columns[6]  # colonne G (index 6 car 0-based)
+        date_lic_map = users_df.set_index(u_upn)[date_lic_col] if u_upn in users_df.columns else pd.Series(dtype=object)
+        df["Date d'obtention de la licence"] = df[col_upn].map(lambda u: date_lic_map.get(u, ""))
+    else:
+        df["Date d'obtention de la licence"] = ""
+
     # Date dernière synchronisation (si utile)
     if users_df.shape[1] >= 17:
         last_sync_col = users_df.columns[16]  # approx C:Q -> 17e col absolue
@@ -331,6 +339,7 @@ def traiter(onedrive_path, users_path, ad_path, output_dir):
         "Compte Expiré?",
         "Comptes ayant une licence OneDrive",
         "Comptes Sauvegardés",
+        "Date d'obtention de la licence",
         "Date dernière synchronisation",
         ">= 30 Jrs"
     ]
@@ -386,7 +395,7 @@ def traiter(onedrive_path, users_path, ad_path, output_dir):
             "Les utilisateurs Assujettis": nb_utilisateurs_assujettis,
             "Les utilisateurs avec licence": nb_avec_licence,
             "Les utilisateurs NOK": nb_utilisateurs_nok,
-            "Taux de conformité Sauvegarde_PCs": f"{round(taux, 2)}%"
+            "Taux": f"{round(taux, 2)}%"
         }
     }]
 
