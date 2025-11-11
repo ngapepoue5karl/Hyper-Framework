@@ -9,10 +9,11 @@ from ..api.api_client import api_client
 from .themed_treeview import style_treeview
 
 class GenericAnalysisFrame(ctk.CTkFrame):
-    def __init__(self, master, app_parent, control_id):
+    def __init__(self, master, app_parent, control_id, week_label):
         super().__init__(master)
         self.app_parent = app_parent
         self.control_id = control_id
+        self.week_label = week_label
         
         self.file_paths = {}
         self.input_widgets = {}
@@ -73,7 +74,10 @@ class GenericAnalysisFrame(ctk.CTkFrame):
         for key, path in self.file_paths.items():
             files_to_send[key] = (os.path.basename(path), open(path, 'rb'))
 
-        data_payload = {'user_data': json.dumps(self.user_data)}
+        data_payload = {
+            'user_data': json.dumps(self.user_data),
+            'week_label': self.week_label
+        }
 
         # Fonction qui sera exécutée dans le thread
         def execute_analysis_thread():
@@ -130,8 +134,19 @@ class GenericAnalysisFrame(ctk.CTkFrame):
         top_frame = ctk.CTkFrame(self)
         top_frame.pack(side="top", fill="x", padx=10, pady=10)
         top_frame.grid_columnconfigure(1, weight=1)
+        
+        # Affichage de la semaine en haut
+        week_info_frame = ctk.CTkFrame(top_frame, fg_color="transparent")
+        week_info_frame.grid(row=0, column=0, columnspan=3, sticky='ew', pady=(0, 10))
+        
+        ctk.CTkLabel(
+            week_info_frame, 
+            text=f"Semaine : {self.week_label}",
+            font=ctk.CTkFont(size=14, weight="bold")
+        ).pack(side='left', padx=10)
+        
         load_frame = ctk.CTkFrame(top_frame)
-        load_frame.grid(row=0, column=0, sticky='ns', padx=(0, 10))
+        load_frame.grid(row=1, column=0, sticky='ns', padx=(0, 10))
         ctk.CTkLabel(load_frame, text="1. Charger les fichiers", font=ctk.CTkFont(weight='bold')).grid(row=0, columnspan=2, pady=10)
         for i, input_def in enumerate(self.control_data['input_definitions']):
             key, label_text = input_def['key'], input_def['label']
@@ -143,7 +158,7 @@ class GenericAnalysisFrame(ctk.CTkFrame):
             status_label.grid(row=i+1, column=1, padx=10)
             self.input_widgets[key] = {'button': button, 'label': status_label}
         action_frame = ctk.CTkFrame(top_frame)
-        action_frame.grid(row=0, column=2, sticky='ns', padx=10)
+        action_frame.grid(row=1, column=2, sticky='ns', padx=10)
         ctk.CTkButton(action_frame, text="Lancer l'Analyse", command=self.run_analysis, height=40).pack(pady=10, fill='x', padx=10)
         self.export_btn = ctk.CTkButton(action_frame, text="Exporter (Excel)", command=self.export_results, state='disabled')
         self.export_btn.pack(pady=5, fill='x', padx=10)
@@ -225,7 +240,10 @@ class GenericAnalysisFrame(ctk.CTkFrame):
         try:
             for key, path in self.file_paths.items():
                 files_to_send[key] = (os.path.basename(path), open(path, 'rb'))
-            data_payload = {'user_data': json.dumps(self.user_data)}
+            data_payload = {
+                'user_data': json.dumps(self.user_data),
+                'week_label': self.week_label
+            }
             response = api_client.execute_and_generate_report(self.control_id, files_to_send, data_payload)
             generated_filename = response.get('report_filename')
             if not generated_filename:

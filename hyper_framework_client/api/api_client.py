@@ -100,4 +100,12 @@ class ApiClient:
         url = f"{API_BASE_URL}/reports/download/{filename}?username={username}"
         return requests.get(url, stream=True, timeout=120)
 
+    def get_analysis_runs(self, username):
+        """Récupère la liste de toutes les analyses exécutées"""
+        return self._make_request('get', f"{API_BASE_URL}/analysis-runs?username={username}")
+
+    def get_analysis_run_details(self, run_id, username):
+        """Récupère les détails d'une analyse exécutée"""
+        return self._make_request('get', f"{API_BASE_URL}/analysis-runs/{run_id}?username={username}")
+
 api_client = ApiClient()

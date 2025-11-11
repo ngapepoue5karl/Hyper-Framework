@@ -24,3 +24,16 @@ CREATE TABLE controls (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     last_updated_by TEXT 
 );
+
+-- Table pour stocker l'historique des analyses exécutées
+CREATE TABLE analysis_runs (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    control_id INTEGER NOT NULL,
+    control_name TEXT NOT NULL,
+    week_label TEXT NOT NULL,           -- Ex: "S22" pour semaine 22
+    username TEXT NOT NULL,
+    executed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    results_json TEXT NOT NULL,         -- Résultats de l'analyse au format JSON
+    files_info TEXT,                    -- Information sur les fichiers utilisés (noms, etc.)
+    FOREIGN KEY (control_id) REFERENCES controls(id) ON DELETE CASCADE
+);

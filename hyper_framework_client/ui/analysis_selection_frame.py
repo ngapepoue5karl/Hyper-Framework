@@ -5,6 +5,7 @@ from tkinter import ttk, messagebox
 from ..api.api_client import api_client
 from .themed_treeview import style_treeview
 from ..auth_roles import Role
+from .dialogs import WeekInputDialog
 
 class AnalysisSelectionFrame(ctk.CTkFrame):
     def __init__(self, master, app_parent):
@@ -101,5 +102,27 @@ class AnalysisSelectionFrame(ctk.CTkFrame):
             
         if not self.tree.selection():
             return
+        
         control_id = self.tree.selection()[0]
-        self.app_parent.open_selected_analysis(control_id)
+        
+        # Récupérer le nom du contrôle pour l'afficher dans le dialogue
+        control_name = None
+        for ctrl in self.controls_data:
+            if str(ctrl['id']) == str(control_id):
+                control_name = ctrl['name']
+                break
+        
+        if not control_name:
+            control_name = "Contrôle sélectionné"
+        
+        # Afficher le dialogue pour saisir la semaine
+        dialog = WeekInputDialog(self, control_name)
+        self.wait_window(dialog)
+        week_label = dialog.result
+        
+        # Si l'utilisateur a annulé, on ne lance pas l'analyse
+        if not week_label:
+            return
+        
+        # Ouvrir la fenêtre d'analyse avec la semaine
+        self.app_parent.open_selected_analysis(control_id, week_label)

@@ -76,6 +76,7 @@ def permission_required(permission: Permission):
 def execute_control(control_id):
     user_data = json.loads(request.form.get('user_data', '{}'))
     username = user_data.get('username', 'unknown')
+    week_label = request.form.get('week_label', 'N/A')
 
     db = get_db()
     control = db.execute("SELECT name, script_filename, input_definitions FROM controls WHERE id = ?", (control_id,)).fetchone()
@@ -92,6 +93,10 @@ def execute_control(control_id):
         outputs_dir = current_app.config['OUTPUTS_DIR']
         input_file_paths = {}
         input_definitions = json.loads(control['input_definitions'])
+        
+        # Collecter les informations sur les fichiers chargés
+        files_info = []
+        
         for input_def in input_definitions:
             key = input_def['key']
             if key not in request.files: return jsonify({'error': f"Fichier manquant: {key}"}), 400
@@ -102,6 +107,13 @@ def execute_control(control_id):
             file.save(saved_path)
             input_file_paths[key] = saved_path
             
+            # Enregistrer les infos du fichier
+            files_info.append({
+                'key': key,
+                'original_name': file.filename,
+                'saved_name': unique_filename
+            })
+            
         results_with_dfs = execute_script_from_file(script_path, input_file_paths, outputs_dir)
         
         serialized_results = []
@@ -111,7 +123,21 @@ def execute_control(control_id):
                 del result['dataframe']
             serialized_results.append(result)
 
-        logging_service.log_action(username, 'ANALYSIS_EXECUTE', 'SUCCESS', {'control_id': control_id, 'control_name': control_name})
+        # Sauvegarder l'historique de l'analyse dans la base de données
+        try:
+            db.execute(
+                """INSERT INTO analysis_runs 
+                   (control_id, control_name, week_label, username, results_json, files_info) 
+                   VALUES (?, ?, ?, ?, ?, ?)""",
+                (control_id, control_name, week_label, username, 
+                 json.dumps(serialized_results), json.dumps(files_info))
+            )
+            db.commit()
+        except Exception as e:
+            print(f"Erreur lors de la sauvegarde de l'historique: {e}")
+            # On continue même si la sauvegarde échoue
+
+        logging_service.log_action(username, 'ANALYSIS_EXECUTE', 'SUCCESS', {'control_id': control_id, 'control_name': control_name, 'week_label': week_label})
         return jsonify(serialized_results)
         
     except Exception as e:
@@ -257,3 +283,51 @@ def delete_control(control_id):
         db.rollback()
         logging_service.log_action(username, 'CONTROL_DELETE', 'FAILURE', {'control_id': control_id, 'error': str(e)})
         return jsonify({'error': str(e)}), 400
+
+
+@bp.route('/analysis-runs', methods=['GET'])
+def get_analysis_runs():
+    """Récupère la liste de toutes les analyses exécutées"""
+    username = request.args.get('username', 'unknown')
+    try:
+        db = get_db()
+        rows = db.execute(
+            """SELECT id, control_id, control_name, week_label, username, executed_at 
+               FROM analysis_runs 
+               ORDER BY executed_at DESC"""
+        ).fetchall()
+        
+        logging_service.log_action(username, 'VIEW_ANALYSIS_RUNS', 'SUCCESS', {'count': len(rows)})
+        return jsonify([dict(row) for row in rows])
+    except Exception as e:
+        logging_service.log_action(username, 'VIEW_ANALYSIS_RUNS', 'FAILURE', {'error': str(e)})
+        return jsonify({'error': f"Erreur lors de la récupération de l'historique: {e}"}), 500
+
+
+@bp.route('/analysis-runs/<int:run_id>', methods=['GET'])
+def get_analysis_run_details(run_id):
+    """Récupère les détails d'une analyse exécutée"""
+    username = request.args.get('username', 'unknown')
+    try:
+        db = get_db()
+        row = db.execute(
+            """SELECT * FROM analysis_runs WHERE id = ?""",
+            (run_id,)
+        ).fetchone()
+        
+        if not row:
+            logging_service.log_action(username, 'VIEW_ANALYSIS_RUN_DETAILS', 'FAILURE', {'run_id': run_id, 'error': 'Not found'})
+            return jsonify({'error': 'Analyse non trouvée.'}), 404
+        
+        run_data = dict(row)
+        
+        # Désérialiser les JSON
+        run_data['results_json'] = json.loads(run_data['results_json'])
+        if run_data['files_info']:
+            run_data['files_info'] = json.loads(run_data['files_info'])
+        
+        logging_service.log_action(username, 'VIEW_ANALYSIS_RUN_DETAILS', 'SUCCESS', {'run_id': run_id})
+        return jsonify(run_data)
+    except Exception as e:
+        logging_service.log_action(username, 'VIEW_ANALYSIS_RUN_DETAILS', 'FAILURE', {'run_id': run_id, 'error': str(e)})
+        return jsonify({'error': f"Erreur lors de la récupération des détails: {e}"}), 500

@@ -237,8 +237,8 @@ def compute_app_flags(ad_df: pd.DataFrame, users_df: pd.DataFrame, onedrive_df: 
     df["Comptes Sauvegardés"] = df["Comptes Sauvegardés"].map(lambda v: "OUI" if v else "NON")
 
     # Date d'obtention de la licence (colonne G de Users = 5e colonne depuis C)
-    if users_df.shape[1] >= 7:  # C:G = colonnes 2 à 6 (index 0-based)
-        date_lic_col = users_df.columns[6]  # colonne G (index 6 car 0-based)
+    if users_df.shape[1] >= 7:  
+        date_lic_col = users_df.columns[6]  
         date_lic_map = users_df.set_index(u_upn)[date_lic_col] if u_upn in users_df.columns else pd.Series(dtype=object)
         df["Date d'obtention de la licence"] = df[col_upn].map(lambda u: date_lic_map.get(u, ""))
     else:

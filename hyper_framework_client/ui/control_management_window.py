@@ -33,6 +33,9 @@ class ControlManagementFrame(ctk.CTkFrame):
         self.view_btn = ctk.CTkButton(action_frame, text="Voir", command=lambda: self.edit_selected_control(read_only=True))
         self.view_btn.pack(side='left', padx=10, pady=10)
 
+        self.versioning_btn = ctk.CTkButton(action_frame, text="Versioning", command=self.show_versioning_for_control, state='disabled')
+        self.versioning_btn.pack(side='left', padx=10, pady=10)
+
         self.delete_btn = ctk.CTkButton(action_frame, text="Supprimer", command=self.delete_selected_control, state='normal' if can_delete else 'disabled', fg_color="#D32F2F", hover_color="#B71C1C")
         self.delete_btn.pack(side='right', padx=10, pady=10)
         
@@ -57,6 +60,9 @@ class ControlManagementFrame(ctk.CTkFrame):
         scrollbar = ctk.CTkScrollbar(list_frame, command=self.tree.yview)
         self.tree.configure(yscrollcommand=scrollbar.set)
         scrollbar.grid(row=0, column=1, sticky='ns')
+        
+        # Bind pour activer/désactiver le bouton Versioning lors de la sélection
+        self.tree.bind('<<TreeviewSelect>>', self.on_tree_selection_change)
         
         self.refresh_control_list()
 
@@ -113,3 +119,22 @@ class ControlManagementFrame(ctk.CTkFrame):
                 self.refresh_control_list()
             except Exception as e:
                 messagebox.showerror("Erreur", f"Impossible de supprimer le contrôle: {e}", parent=self)
+
+    def on_tree_selection_change(self, event=None):
+        """Active/désactive le bouton Versioning selon la sélection"""
+        if self.tree.selection():
+            self.versioning_btn.configure(state='normal')
+        else:
+            self.versioning_btn.configure(state='disabled')
+
+    def show_versioning_for_control(self):
+        """Ouvre le frame Versioning filtré pour le contrôle sélectionné"""
+        if not self.tree.selection():
+            return messagebox.showwarning("Sélection requise", "Veuillez sélectionner un contrôle.", parent=self)
+        
+        control_id = self.tree.selection()[0]
+        item = self.tree.item(control_id)
+        control_name = item['values'][0]
+        
+        # Appeler la méthode de l'app_parent pour ouvrir le versioning
+        self.app_parent.open_versioning(control_id, control_name)
