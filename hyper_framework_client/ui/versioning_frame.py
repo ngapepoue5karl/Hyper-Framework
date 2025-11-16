@@ -218,14 +218,14 @@ class VersioningFrame(ctk.CTkFrame):
             
             ctk.CTkLabel(
                 info_frame,
-                text=f"📊 {self.current_run_details['control_name']}",
+                text=f" {self.current_run_details['control_name']}",
                 font=ctk.CTkFont(size=16, weight="bold")
             ).pack(anchor='w', padx=10, pady=5)
             
             details_text = (
-                f"📅 Semaine : {self.current_run_details['week_label']}\n"
-                f"👤 Utilisateur : {self.current_run_details['username']}\n"
-                f"🕐 Exécuté le : {self._format_datetime(self.current_run_details['executed_at'])}"
+                f" Semaine : {self.current_run_details['week_label']}\n"
+                f" Utilisateur : {self.current_run_details['username']}\n"
+                f" Exécuté le : {self._format_datetime(self.current_run_details['executed_at'])}"
             )
             
             ctk.CTkLabel(
@@ -242,7 +242,7 @@ class VersioningFrame(ctk.CTkFrame):
                 
                 ctk.CTkLabel(
                     files_frame,
-                    text="📁 Fichiers utilisés :",
+                    text=" Fichiers utilisés :",
                     font=ctk.CTkFont(size=14, weight="bold")
                 ).pack(anchor='w', padx=10, pady=5)
                 
@@ -253,6 +253,16 @@ class VersioningFrame(ctk.CTkFrame):
                         text=file_text,
                         font=ctk.CTkFont(size=11)
                     ).pack(anchor='w', padx=20, pady=2)
+                
+                # Bouton pour télécharger tous les fichiers
+                download_btn = ctk.CTkButton(
+                    files_frame,
+                    text=" Télécharger tous les fichiers",
+                    command=self.download_all_files,
+                    fg_color="#2196F3",
+                    hover_color="#1976D2"
+                )
+                download_btn.pack(anchor='w', padx=20, pady=10)
             
             # Afficher les résultats
             results_data = self.current_run_details.get('results_json', [])
@@ -344,6 +354,61 @@ class VersioningFrame(ctk.CTkFrame):
                 text="Aucun élément à afficher.", 
                 font=ctk.CTkFont(slant='italic')
             ).pack(padx=10, pady=10)
+
+    def download_all_files(self):
+        """Télécharge tous les fichiers d'entrée de l'analyse sélectionnée"""
+        if not self.current_run_details:
+            messagebox.showwarning("Aucune sélection", "Veuillez d'abord voir les résultats.", parent=self)
+            return
+        
+        # Vérifier que l'utilisateur est l'auteur de l'analyse
+        if self.current_run_details.get('username') != self.app_parent.user_data['username']:
+            messagebox.showerror(
+                "Permission refusée",
+                "Vous ne pouvez télécharger que vos propres fichiers d'analyse.",
+                parent=self
+            )
+            return
+        
+        # Demander à l'utilisateur de choisir un dossier de destination
+        folder_path = filedialog.askdirectory(
+            title="Choisissez un dossier pour enregistrer les fichiers",
+            parent=self
+        )
+        
+        if not folder_path:
+            return
+        
+        try:
+            # Télécharger le ZIP depuis le serveur
+            username = self.app_parent.user_data['username']
+            run_id = self.current_run_details['id']
+            
+            response = api_client.download_analysis_input_files(run_id, username)
+            
+            # Sauvegarder et extraire le ZIP
+            import zipfile
+            import io
+            
+            zip_content = io.BytesIO(response.content)
+            
+            with zipfile.ZipFile(zip_content, 'r') as zip_file:
+                # Extraire tous les fichiers
+                zip_file.extractall(folder_path)
+                files_extracted = zip_file.namelist()
+            
+            messagebox.showinfo(
+                "Téléchargement réussi",
+                f"{len(files_extracted)} fichier(s) téléchargé(s) dans :\n{folder_path}",
+                parent=self
+            )
+            
+        except Exception as e:
+            messagebox.showerror(
+                "Erreur de téléchargement",
+                f"Impossible de télécharger les fichiers :\n{e}",
+                parent=self
+            )
 
     def export_results(self):
         """Exporte les résultats de l'analyse sélectionnée en Excel"""

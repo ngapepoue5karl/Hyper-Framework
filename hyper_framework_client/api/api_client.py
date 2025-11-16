@@ -108,4 +108,20 @@ class ApiClient:
         """Récupère les détails d'une analyse exécutée"""
         return self._make_request('get', f"{API_BASE_URL}/analysis-runs/{run_id}?username={username}")
 
+    def download_analysis_input_files(self, run_id, username):
+        """Télécharge tous les fichiers d'entrée d'une analyse (retourne un ZIP)"""
+        url = f"{API_BASE_URL}/analysis-runs/{run_id}/download-files?username={username}"
+        try:
+            response = requests.get(url, stream=True, timeout=120)
+            if response.ok:
+                return response
+            else:
+                try:
+                    error_data = response.json()
+                    raise Exception(error_data.get('error', f"Erreur API : {response.status_code}"))
+                except (ValueError, json.JSONDecodeError):
+                    raise Exception(f"Erreur API : {response.status_code} - {response.text}")
+        except requests.exceptions.RequestException as e:
+            raise Exception(f"Erreur réseau : {e}")
+
 api_client = ApiClient()
