@@ -47,27 +47,27 @@ class VersioningFrame(ctk.CTkFrame):
         self.search_entry.grid(row=1, column=0, columnspan=2, sticky="ew", pady=(10, 5))
         self.search_entry.bind("<KeyRelease>", self.filter_runs)
 
-        # Frame principal avec split gauche/droite
+        # Frame principal avec split haut/bas
         main_frame = ctk.CTkFrame(self)
         main_frame.grid(row=1, column=0, sticky="nsew", padx=10, pady=10)
-        main_frame.grid_rowconfigure(0, weight=1)
+        main_frame.grid_rowconfigure(0, weight=2)  # Liste des analyses en haut
+        main_frame.grid_rowconfigure(1, weight=3)  # Résultats en bas (plus d'espace)
         main_frame.grid_columnconfigure(0, weight=1)
-        main_frame.grid_columnconfigure(1, weight=2)
 
-        # Partie gauche : Liste des analyses
-        left_frame = ctk.CTkFrame(main_frame)
-        left_frame.grid(row=0, column=0, sticky="nsew", padx=(0, 5))
-        left_frame.grid_rowconfigure(1, weight=1)
-        left_frame.grid_columnconfigure(0, weight=1)
+        # Partie haute : Liste des analyses
+        top_frame = ctk.CTkFrame(main_frame)
+        top_frame.grid(row=0, column=0, sticky="nsew", pady=(0, 5))
+        top_frame.grid_rowconfigure(1, weight=1)
+        top_frame.grid_columnconfigure(0, weight=1)
 
         ctk.CTkLabel(
-            left_frame, 
+            top_frame, 
             text="Analyses Exécutées", 
             font=ctk.CTkFont(size=14, weight="bold")
         ).grid(row=0, column=0, sticky="w", padx=10, pady=10)
 
         # TreeView pour la liste des analyses
-        tree_container = ctk.CTkFrame(left_frame)
+        tree_container = ctk.CTkFrame(top_frame)
         tree_container.grid(row=1, column=0, sticky="nsew", padx=5, pady=(0, 5))
         tree_container.grid_rowconfigure(0, weight=1)
         tree_container.grid_columnconfigure(0, weight=1)
@@ -97,7 +97,7 @@ class VersioningFrame(ctk.CTkFrame):
         self.tree.bind('<<TreeviewSelect>>', self.on_selection_change)
 
         # Boutons d'actions
-        action_frame = ctk.CTkFrame(left_frame, fg_color="transparent")
+        action_frame = ctk.CTkFrame(top_frame, fg_color="transparent")
         action_frame.grid(row=2, column=0, sticky="ew", padx=5, pady=5)
 
         self.view_btn = ctk.CTkButton(
@@ -116,17 +116,17 @@ class VersioningFrame(ctk.CTkFrame):
         )
         self.export_btn.pack(side='left', padx=5, pady=5, expand=True, fill='x')
 
-        # Partie droite : Détails de l'analyse sélectionnée
-        self.right_frame = ctk.CTkScrollableFrame(
+        # Partie basse : Détails de l'analyse sélectionnée (sur toute la largeur)
+        self.results_frame = ctk.CTkScrollableFrame(
             main_frame, 
             label_text="Détails de l'Analyse"
         )
-        self.right_frame.grid(row=0, column=1, sticky="nsew", padx=(5, 0))
+        self.results_frame.grid(row=1, column=0, sticky="nsew", pady=(5, 0))
 
         # Message initial
         self.placeholder_label = ctk.CTkLabel(
-            self.right_frame,
-            text="Sélectionnez une analyse pour voir les détails",
+            self.results_frame,
+            text="Sélectionnez une analyse et cliquez sur 'Voir les Résultats' pour afficher les détails",
             font=ctk.CTkFont(size=14, slant='italic'),
             text_color="gray"
         )
@@ -208,24 +208,24 @@ class VersioningFrame(ctk.CTkFrame):
             username = self.app_parent.user_data['username']
             self.current_run_details = api_client.get_analysis_run_details(run_id, username)
             
-            # Vider le frame de droite
-            for widget in self.right_frame.winfo_children():
+            # Vider le frame des résultats
+            for widget in self.results_frame.winfo_children():
                 widget.destroy()
             
             # Afficher les informations générales
-            info_frame = ctk.CTkFrame(self.right_frame)
+            info_frame = ctk.CTkFrame(self.results_frame)
             info_frame.pack(fill='x', pady=10, padx=5)
             
             ctk.CTkLabel(
                 info_frame,
-                text=f" {self.current_run_details['control_name']}",
+                text=f"📊 {self.current_run_details['control_name']}",
                 font=ctk.CTkFont(size=16, weight="bold")
             ).pack(anchor='w', padx=10, pady=5)
             
             details_text = (
-                f" Semaine : {self.current_run_details['week_label']}\n"
-                f" Utilisateur : {self.current_run_details['username']}\n"
-                f" Exécuté le : {self._format_datetime(self.current_run_details['executed_at'])}"
+                f"📅 Semaine : {self.current_run_details['week_label']}\n"
+                f"👤 Utilisateur : {self.current_run_details['username']}\n"
+                f"🕐 Exécuté le : {self._format_datetime(self.current_run_details['executed_at'])}"
             )
             
             ctk.CTkLabel(
@@ -237,12 +237,12 @@ class VersioningFrame(ctk.CTkFrame):
             
             # Afficher les fichiers utilisés
             if self.current_run_details.get('files_info'):
-                files_frame = ctk.CTkFrame(self.right_frame)
+                files_frame = ctk.CTkFrame(self.results_frame)
                 files_frame.pack(fill='x', pady=10, padx=5)
                 
                 ctk.CTkLabel(
                     files_frame,
-                    text=" Fichiers utilisés :",
+                    text="📁 Fichiers utilisés :",
                     font=ctk.CTkFont(size=14, weight="bold")
                 ).pack(anchor='w', padx=10, pady=5)
                 
@@ -258,10 +258,10 @@ class VersioningFrame(ctk.CTkFrame):
             results_data = self.current_run_details.get('results_json', [])
             if results_data:
                 for section in results_data:
-                    self.create_result_section(self.right_frame, section)
+                    self.create_result_section(self.results_frame, section)
             else:
                 ctk.CTkLabel(
-                    self.right_frame,
+                    self.results_frame,
                     text="Aucun résultat disponible",
                     font=ctk.CTkFont(slant='italic'),
                     text_color="gray"
