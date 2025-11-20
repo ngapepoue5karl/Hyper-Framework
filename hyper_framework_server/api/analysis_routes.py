@@ -36,10 +36,35 @@ def _parse_inputs_from_code_string(code_string):
     except (SyntaxError, ValueError): return []
     return []
 
+def _parse_periodicity_from_code_string(code_string):
+    """Extrait la périodicité définie dans __hyper_periodicity__.
+    Par défaut retourne 'WEEK' si non défini.
+    """
+    try:
+        tree = ast.parse(code_string)
+        for node in ast.walk(tree):
+            if isinstance(node, ast.Assign):
+                for target in node.targets:
+                    if isinstance(target, ast.Name) and target.id == '__hyper_periodicity__':
+                        value = ast.literal_eval(node.value)
+                        if isinstance(value, str) and value in ['WEEK', 'MONTH', 'QUARTER', 'SEMESTER']:
+                            return value
+    except (SyntaxError, ValueError): 
+        pass
+    return 'WEEK'  # Valeur par défaut
+
 def _parse_inputs_from_script(script_path):
     try:
         with open(script_path, 'r', encoding='utf-8') as f: return _parse_inputs_from_code_string(f.read())
     except FileNotFoundError: return []
+
+def _parse_periodicity_from_script(script_path):
+    """Extrait la périodicité depuis un fichier de script."""
+    try:
+        with open(script_path, 'r', encoding='utf-8') as f: 
+            return _parse_periodicity_from_code_string(f.read())
+    except FileNotFoundError: 
+        return 'WEEK'
 
 def _sync_controls_with_filesystem():
     db = get_db(); scripts_dir = current_app.config['SCRIPTS_DIR']
@@ -77,7 +102,8 @@ def permission_required(permission: Permission):
 def execute_control(control_id):
     user_data = json.loads(request.form.get('user_data', '{}'))
     username = user_data.get('username', 'unknown')
-    week_label = request.form.get('week_label', 'N/A')
+    period_label = request.form.get('period_label', 'N/A')
+    periodicity = request.form.get('periodicity', 'WEEK')
 
     db = get_db()
     control = db.execute("SELECT name, script_filename, input_definitions FROM controls WHERE id = ?", (control_id,)).fetchone()
@@ -117,10 +143,25 @@ def execute_control(control_id):
             
         results_with_dfs = execute_script_from_file(script_path, input_file_paths, outputs_dir)
         
+        def convert_timestamps_to_strings(obj):
+            """Convertit récursivement tous les Timestamps en strings pour la sérialisation JSON"""
+            if isinstance(obj, pd.Timestamp):
+                return obj.strftime('%Y-%m-%d %H:%M:%S') if not pd.isna(obj) else None
+            elif isinstance(obj, dict):
+                return {k: convert_timestamps_to_strings(v) for k, v in obj.items()}
+            elif isinstance(obj, list):
+                return [convert_timestamps_to_strings(item) for item in obj]
+            elif pd.isna(obj):  # Gère les NaN, NaT, etc.
+                return None
+            return obj
+        
         serialized_results = []
         for result in results_with_dfs:
             if 'dataframe' in result and isinstance(result['dataframe'], pd.DataFrame):
-                result['items'] = result['dataframe'].to_dict('records')
+                # Convertir le DataFrame en dictionnaires
+                records = result['dataframe'].to_dict('records')
+                # Convertir tous les Timestamps en strings
+                result['items'] = convert_timestamps_to_strings(records)
                 del result['dataframe']
             serialized_results.append(result)
 
@@ -128,9 +169,9 @@ def execute_control(control_id):
         try:
             db.execute(
                 """INSERT INTO analysis_runs 
-                   (control_id, control_name, week_label, username, results_json, files_info) 
-                   VALUES (?, ?, ?, ?, ?, ?)""",
-                (control_id, control_name, week_label, username, 
+                   (control_id, control_name, periodicity, period_label, username, results_json, files_info) 
+                   VALUES (?, ?, ?, ?, ?, ?, ?)""",
+                (control_id, control_name, periodicity, period_label, username, 
                  json.dumps(serialized_results), json.dumps(files_info))
             )
             db.commit()
@@ -138,12 +179,12 @@ def execute_control(control_id):
             print(f"Erreur lors de la sauvegarde de l'historique: {e}")
             # On continue même si la sauvegarde échoue
 
-        logging_service.log_action(username, 'ANALYSIS_EXECUTE', 'SUCCESS', {'control_id': control_id, 'control_name': control_name, 'week_label': week_label})
+        logging_service.log_action(username, 'ANALYSIS_EXECUTE', 'SUCCESS', {'control_id': control_id, 'control_name': control_name, 'periodicity': periodicity, 'period_label': period_label})
         return jsonify(serialized_results)
         
     except Exception as e:
         import traceback; traceback.print_exc()
-        logging_service.log_action(username, 'ANALYSIS_EXECUTE', 'FAILURE', {'control_id': control_id, 'control_name': control_name, 'error': str(e)})
+        logging_service.log_action(username, 'ANALYSIS_EXECUTE', 'FAILURE', {'control_id': control_id, 'control_name': control_name, 'periodicity': periodicity, 'period_label': period_label, 'error': str(e)})
         return jsonify({'error': f"Erreur serveur: {e}"}), 500
 
 @bp.route('/results/<filename>', methods=['GET'])
@@ -181,9 +222,14 @@ def get_control_details(control_id):
         script_path = os.path.join(current_app.config['SCRIPTS_DIR'], control_data['script_filename'])
         
         try:
-            with open(script_path, 'r', encoding='utf-8') as f: control_data['script_code'] = f.read()
+            with open(script_path, 'r', encoding='utf-8') as f: 
+                script_code = f.read()
+                control_data['script_code'] = script_code
+                # Extraire la périodicité du script
+                control_data['periodicity'] = _parse_periodicity_from_code_string(script_code)
         except FileNotFoundError:
             control_data['script_code'] = f"# ERREUR: Fichier '{control_data['script_filename']}' non trouvé."
+            control_data['periodicity'] = 'WEEK'
         
         logging_service.log_action(username, 'VIEW_CONTROL_DETAILS', 'SUCCESS', {'control_id': control_id, 'control_name': control_data['name']})
         return jsonify(control_data)
@@ -293,7 +339,7 @@ def get_analysis_runs():
     try:
         db = get_db()
         rows = db.execute(
-            """SELECT id, control_id, control_name, week_label, username, executed_at 
+            """SELECT id, control_id, control_name, periodicity, period_label, username, executed_at 
                FROM analysis_runs 
                ORDER BY executed_at DESC"""
         ).fetchall()
@@ -384,7 +430,7 @@ def download_analysis_input_files(run_id):
         zip_buffer.seek(0)
         
         # Nom du fichier ZIP à télécharger
-        zip_filename = f"{row['control_name']}_{row['week_label']}_fichiers.zip"
+        zip_filename = f"{row['control_name']}_{row['period_label']}_fichiers.zip"
         zip_filename = re.sub(r'[^\w\.-]', '_', zip_filename)  # Nettoyer le nom
         
         logging_service.log_action(username, 'DOWNLOAD_ANALYSIS_FILES', 'SUCCESS', {'run_id': run_id, 'files_count': len(files_info)})

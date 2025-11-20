@@ -11,6 +11,9 @@ __hyper_inputs__ = [
     {"key": "externe_laps", "label": "Fichier externe LAPS ", "format": "xlsx"},
 ]
 
+# Périodicité du contrôle (analyse hebdomadaire)
+__hyper_periodicity__ = 'WEEK'
+
 # --- Import des bibliothèques nécessaires ---
 import pandas as pd
 import numpy as np
@@ -155,7 +158,7 @@ def run(input_file_paths, output_dir_path):
 
         # 2. Conformité service Intune
         df2 = base_df.copy()
-        intune_unique_df = intune_df.drop_duplicates(subset=['Device name'])
+        intune_unique_df = intune_df.drop_duplicates(subset=['Device name']).copy()
         
         # MISE À JOUR : Fusion insensible à la casse
         df2['Name_upper'] = df2['Name'].str.upper()
@@ -196,8 +199,8 @@ def run(input_file_paths, output_dir_path):
         
         # 3. Conformité agent Tanium
         df3 = base_df.copy()
-        tanium_unique_df = tanium_df.drop_duplicates(subset=['Name'])
-        ext_tanium_unique_df = ext_tanium_df.drop_duplicates(subset=['Name'])
+        tanium_unique_df = tanium_df.drop_duplicates(subset=['Name']).copy()
+        ext_tanium_unique_df = ext_tanium_df.drop_duplicates(subset=['Name']).copy()
 
         df3['Name_upper'] = df3['Name'].str.upper()
         tanium_unique_df['Name_upper'] = tanium_unique_df['Name'].str.upper()
@@ -236,8 +239,8 @@ def run(input_file_paths, output_dir_path):
         # 4. Conformité agent CrowdStrike
         df4 = base_df.copy()
         crowdstrike_df.rename(columns={'Hostname': 'Name'}, inplace=True)
-        crowdstrike_unique_df = crowdstrike_df.drop_duplicates(subset=['Name'])
-        ext_crowdstrike_unique_df = ext_crowdstrike_df.drop_duplicates(subset=['Name'])
+        crowdstrike_unique_df = crowdstrike_df.drop_duplicates(subset=['Name']).copy()
+        ext_crowdstrike_unique_df = ext_crowdstrike_df.drop_duplicates(subset=['Name']).copy()
 
         df4['Name_upper'] = df4['Name'].str.upper()
         crowdstrike_unique_df['Name_upper'] = crowdstrike_unique_df['Name'].str.upper()
@@ -275,8 +278,8 @@ def run(input_file_paths, output_dir_path):
         
         # 5. Conformité agent LAPS
         df5 = base_df.copy()
-        laps_unique_df = laps_df.drop_duplicates(subset=['Name'])
-        ext_laps_unique_df = ext_laps_df.drop_duplicates(subset=['Name'])
+        laps_unique_df = laps_df.drop_duplicates(subset=['Name']).copy()
+        ext_laps_unique_df = ext_laps_df.drop_duplicates(subset=['Name']).copy()
         
         df5['Name_upper'] = df5['Name'].str.upper()
         laps_unique_df['Name_upper'] = laps_unique_df['Name'].str.upper()

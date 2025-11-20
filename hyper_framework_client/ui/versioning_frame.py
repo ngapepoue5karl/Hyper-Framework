@@ -42,7 +42,7 @@ class VersioningFrame(ctk.CTkFrame):
         # Zone de recherche
         self.search_entry = ctk.CTkEntry(
             header_frame, 
-            placeholder_text="Rechercher par nom de contrôle, semaine ou utilisateur..."
+            placeholder_text="Rechercher par nom de contrôle, période ou utilisateur..."
         )
         self.search_entry.grid(row=1, column=0, columnspan=2, sticky="ew", pady=(10, 5))
         self.search_entry.bind("<KeyRelease>", self.filter_runs)
@@ -72,20 +72,23 @@ class VersioningFrame(ctk.CTkFrame):
         tree_container.grid_rowconfigure(0, weight=1)
         tree_container.grid_columnconfigure(0, weight=1)
 
-        cols = ('control_name', 'week_label', 'username', 'executed_at')
+        cols = ('control_name', 'periodicity', 'period_label', 'username', 'executed_at')
         self.tree = ttk.Treeview(tree_container, columns=cols, show='headings')
         
         self.tree.heading('control_name', text='Contrôle')
-        self.tree.column('control_name', width=200)
+        self.tree.column('control_name', width=180)
         
-        self.tree.heading('week_label', text='Semaine')
-        self.tree.column('week_label', width=80, anchor='center')
+        self.tree.heading('periodicity', text='Type')
+        self.tree.column('periodicity', width=80, anchor='center')
+        
+        self.tree.heading('period_label', text='Période')
+        self.tree.column('period_label', width=100, anchor='center')
         
         self.tree.heading('username', text='Utilisateur')
-        self.tree.column('username', width=120)
+        self.tree.column('username', width=110)
         
         self.tree.heading('executed_at', text='Date d\'exécution')
-        self.tree.column('executed_at', width=150, anchor='center')
+        self.tree.column('executed_at', width=140, anchor='center')
         
         self.tree.grid(row=0, column=0, sticky='nsew')
         style_treeview(self.tree)
@@ -159,20 +162,31 @@ class VersioningFrame(ctk.CTkFrame):
                 continue
             
             control_name = run.get('control_name', '').lower()
-            week_label = run.get('week_label', '').lower()
+            period_label = run.get('period_label', '').lower()
+            periodicity = run.get('periodicity', 'WEEK')
             username = run.get('username', '').lower()
             executed_at = run.get('executed_at', '')
             
             if (search_term in control_name or 
-                search_term in week_label or 
+                search_term in period_label or 
                 search_term in username):
                 
                 # Formater la date pour l'affichage
                 display_date = self._format_datetime(executed_at)
                 
+                # Traduire la périodicité pour l'affichage
+                periodicity_labels = {
+                    'WEEK': 'Semaine',
+                    'MONTH': 'Mois',
+                    'QUARTER': 'Trimestre',
+                    'SEMESTER': 'Semestre'
+                }
+                display_periodicity = periodicity_labels.get(periodicity, periodicity)
+                
                 self.tree.insert('', 'end', iid=run['id'], values=(
                     run.get('control_name', ''),
-                    run.get('week_label', ''),
+                    display_periodicity,
+                    run.get('period_label', ''),
                     run.get('username', ''),
                     display_date
                 ))
@@ -222,10 +236,22 @@ class VersioningFrame(ctk.CTkFrame):
                 font=ctk.CTkFont(size=16, weight="bold")
             ).pack(anchor='w', padx=10, pady=5)
             
+            # Traduire la périodicité pour l'affichage
+            periodicity_labels = {
+                'WEEK': 'Semaine',
+                'MONTH': 'Mois',
+                'QUARTER': 'Trimestre',
+                'SEMESTER': 'Semestre'
+            }
+            period_type = periodicity_labels.get(
+                self.current_run_details.get('periodicity', 'WEEK'), 
+                'Période'
+            )
+            
             details_text = (
-                f" Semaine : {self.current_run_details['week_label']}\n"
-                f" Utilisateur : {self.current_run_details['username']}\n"
-                f" Exécuté le : {self._format_datetime(self.current_run_details['executed_at'])}"
+                f"📅 {period_type} : {self.current_run_details['period_label']}\n"
+                f"👤 Utilisateur : {self.current_run_details['username']}\n"
+                f"🕒 Exécuté le : {self._format_datetime(self.current_run_details['executed_at'])}"
             )
             
             ctk.CTkLabel(
@@ -423,9 +449,9 @@ class VersioningFrame(ctk.CTkFrame):
         
         # Créer un nom de fichier par défaut
         safe_name = re.sub(r'[^\w\.-]', '_', self.current_run_details.get('control_name', 'analyse'))
-        week = self.current_run_details.get('week_label', 'SXX')
+        period = self.current_run_details.get('period_label', 'PXX')
         timestamp = datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S')
-        default_filename = f"Resultats_{safe_name}_{week}_{timestamp}.xlsx"
+        default_filename = f"Resultats_{safe_name}_{period}_{timestamp}.xlsx"
         
         file_path = filedialog.asksaveasfilename(
             initialfile=default_filename,

@@ -94,53 +94,95 @@ class ControlEditorWindow(ctk.CTkToplevel):
     def insert_script_template(self):
         template = """# Script d'analyse pour Hyper-Framework
 #
-# --- DÉFINITION DES ENTRÉES ---
-# Le serveur lit cette variable pour générer les boutons de chargement.
-# La clé "format" est optionnelle mais recommandée pour guider l'utilisateur.
+# === 1. Définition des entrées ===
 __hyper_inputs__ = [
-    {"key": "ad_users", "label": "Extraction utilisateurs AD", "format": "csv"},
-    {"key": "sap_rh", "label": "Fichier employés SAP", "format": "xlsx"},
-    {"key": "notes", "label": "Notes de réunion", "format": "txt"}
+    {"key": "input_file", "label": "Fichier d'entrée (.csv)", "format": "csv"}
 ]
-# -------------------------------------------------------------------
 
+# === 2. Définition de la périodicité ===
+# Valeurs possibles : 'WEEK', 'MONTH', 'QUARTER', 'SEMESTER'
+__hyper_periodicity__ = 'WEEK'
+
+# === Définitions des différentes importations ===
 import pandas as pd
 import os
 
-def run(input_file_paths, output_dir_path):
-    \"\"\"
-    Point d'entrée de l'analyse.
-    
-    Args:
-        input_file_paths (dict): Dictionnaire des chemins de fichiers chargés.
-        output_dir_path (str):  Chemin du dossier pour les sauvegardes de fichiers.
+# =============================================================================
+# FONCTIONS DE TRAITEMENT
+# =============================================================================
 
-    Returns:
-        list: Une liste de dictionnaires, chaque dictionnaire représentant une section de résultat.
-    \"\"\"
+def charger_fichier(file_path):
+    try:
+        df = pd.read_csv(file_path)
+        return df
+    except Exception as e:
+        print(f"Erreur lors du chargement du fichier : {e}")
+        return pd.DataFrame({'Message': ['Hello World']})
+
+def traiter_donnees(df):
+    resultat_df = pd.DataFrame({
+        'Colonne 1': ['Hello World'],
+        'Colonne 2': ['Bienvenue dans Hyper-Framework'],
+        'Statut': ['OK']
+    })
+    return resultat_df
+
+def calculer_statistiques(df):
+    stats = {
+        'Nombre de lignes': len(df),
+        'Nombre de colonnes': len(df.columns),
+        'Message': 'Hello World'
+    }
+    return stats
+
+# =============================================================================
+# FONCTION PRINCIPALE
+# =============================================================================
+
+def run(input_file_paths, output_dir_path):
+   
+
+    Args:
+        input_file_paths (dict): Dictionnaire contenant les chemins des fichiers d'entrée
+        output_dir_path (str): Chemin du répertoire de sortie
     
+    Returns:
+        list: Liste de dictionnaires contenant les résultats à afficher
+  
     results = []
     
-    # --- DÉBUT DE VOTRE LOGIQUE ---
-    
-    # Exemple de lecture du fichier CSV
-    # ad_users_path = input_file_paths.get('ad_users')
-    # if ad_users_path:
-    #     df_ad = pd.read_csv(ad_users_path)
-    #     # ... votre code d'analyse sur df_ad ...
-    
-    # Exemple de structuration d'un résultat (à adapter)
-    # results.append({
-    #     'title': "Titre de votre analyse",
-    #     'dataframe': df_ad.head(10), # Utilisez un sous-ensemble pour les tests
-    #     'display_columns': [
-    #         {'key': 'col_technique_1', 'label': 'Nom de Colonne 1'},
-    #         {'key': 'col_technique_2', 'label': 'Nom de Colonne 2'}
-    #     ],
-    #     'summary_stats': {'Stat 1': 100, 'Stat 2': 50}
-    # })
-
-    # --- FIN DE VOTRE LOGIQUE ---
+    try:
+        # --- Étape 1 : Chargement des fichiers ---
+        input_df = charger_fichier(input_file_paths.get('input_file'))
+        
+        # --- Étape 2 : Traitement des données ---
+        resultat_df = traiter_donnees(input_df)
+        
+        # --- Étape 3 : Calcul des statistiques ---
+        stats = calculer_statistiques(resultat_df)
+        
+        # --- Étape 4 : Sauvegarde optionnelle (Excel) ---
+        output_file = os.path.join(output_dir_path, "rapport_hello_world.xlsx")
+        resultat_df.to_excel(output_file, index=False)
+        print(f"Rapport sauvegardé : {output_file}")
+        
+        # --- Étape 5 : Structuration du résultat pour l'affichage ---
+        results.append({
+            'title': "Hello World - Exemple de Template",
+            'dataframe': resultat_df,
+            'display_columns': [
+                {'key': 'Colonne 1', 'label': 'Message Principal'},
+                {'key': 'Colonne 2', 'label': 'Description'},
+                {'key': 'Statut', 'label': 'État'}
+            ],
+            'summary_stats': stats
+        })
+        
+    except Exception as e:
+        print(f"Une erreur est survenue durant l'exécution : {e}")
+        import traceback
+        traceback.print_exc()
+        raise e
     
     return results
 """

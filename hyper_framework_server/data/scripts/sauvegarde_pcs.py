@@ -5,6 +5,9 @@ __hyper_inputs__ = [
     {"key": "ad_file",     "label": "Utilisateur AD (.txt)"}
 ]
 
+# Périodicité du contrôle (analyse hebdomadaire)
+__hyper_periodicity__ = 'WEEK'
+
 import pandas as pd
 import numpy as np
 import os

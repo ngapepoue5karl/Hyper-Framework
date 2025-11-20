@@ -3,6 +3,7 @@ Dialogues personnalisés pour l'application Hyper-Framework
 """
 import customtkinter as ctk
 from tkinter import messagebox
+from datetime import datetime
 
 
 class ChangePasswordDialog(ctk.CTkToplevel):
@@ -56,17 +57,22 @@ class ChangePasswordDialog(ctk.CTkToplevel):
         self.destroy()
 
 
-class WeekInputDialog(ctk.CTkToplevel):
+class PeriodInputDialog(ctk.CTkToplevel):
     """
-    Fenêtre de dialogue pour saisir la semaine de l'analyse (ex: S22).
+    Fenêtre de dialogue générique pour saisir la période de l'analyse selon sa périodicité.
+    Supporte: WEEK, MONTH, QUARTER, SEMESTER
     """
-    def __init__(self, parent, control_name):
+    def __init__(self, parent, control_name, periodicity='WEEK'):
         super().__init__(parent)
         self.result = None
         self.control_name = control_name
+        self.periodicity = periodicity.upper()
 
-        self.title("Semaine de l'Analyse")
-        self.geometry("450x220")
+        # Configuration selon la périodicité
+        self.config = self._get_period_config()
+        
+        self.title(self.config['title'])
+        self.geometry("500x280")
         self.resizable(False, False)
 
         self.grid_columnconfigure(0, weight=1)
@@ -88,14 +94,27 @@ class WeekInputDialog(ctk.CTkToplevel):
 
         instruction_label = ctk.CTkLabel(
             main_frame, 
-            text="Veuillez indiquer la semaine de cette analyse\n(ex: S22 pour semaine 22)",
+            text=self.config['instruction'],
             font=ctk.CTkFont(size=12)
         )
-        instruction_label.pack(pady=(0, 10))
+        instruction_label.pack(pady=(0, 15))
 
-        self.week_entry = ctk.CTkEntry(main_frame, placeholder_text="S22", width=300)
-        self.week_entry.pack(pady=5)
-        self.week_entry.focus()
+        self.period_entry = ctk.CTkEntry(
+            main_frame, 
+            placeholder_text=self.config['placeholder'], 
+            width=350
+        )
+        self.period_entry.pack(pady=5)
+        self.period_entry.focus()
+        
+        # Exemples supplémentaires
+        examples_label = ctk.CTkLabel(
+            main_frame,
+            text=self.config['examples'],
+            font=ctk.CTkFont(size=10),
+            text_color="gray"
+        )
+        examples_label.pack(pady=(5, 0))
 
         button_frame = ctk.CTkFrame(main_frame, fg_color="transparent")
         button_frame.pack(pady=20)
@@ -106,14 +125,59 @@ class WeekInputDialog(ctk.CTkToplevel):
         # Lier la touche Entrée à la validation
         self.bind("<Return>", lambda event: self._on_ok())
 
+    def _get_period_config(self):
+        """Retourne la configuration spécifique à chaque type de périodicité."""
+        configs = {
+            'WEEK': {
+                'title': 'Semaine de l\'Analyse',
+                'instruction': 'Veuillez indiquer la semaine de cette analyse',
+                'placeholder': 'S22',
+                'examples': 'Exemples : S22, S01, S52',
+                'validation_msg': 'Veuillez indiquer une semaine (ex: S22 pour semaine 22).'
+            },
+            'MONTH': {
+                'title': 'Mois de l\'Analyse',
+                'instruction': 'Veuillez indiquer le mois de cette analyse',
+                'placeholder': 'M03',
+                'examples': 'Exemples : M03, M12',
+                'validation_msg': 'Veuillez indiquer un mois (ex: M03 pour le mois de Mars).'
+            },
+            'QUARTER': {
+                'title': 'Trimestre de l\'Analyse',
+                'instruction': 'Veuillez indiquer le trimestre de cette analyse',
+                'placeholder': 'T2',
+                'examples': 'Exemples : T1, T2,...',
+                'validation_msg': 'Veuillez indiquer un trimestre (ex: T2 pour le trimestre 2).'
+            },
+            'SEMESTER': {
+                'title': 'Semestre de l\'Analyse',
+                'instruction': 'Veuillez indiquer le semestre de cette analyse',
+                'placeholder': 'S1',
+                'examples': 'Exemples : S1, S2,...',
+                'validation_msg': 'Veuillez indiquer un semestre (ex: S1 pour le semestre 1).'
+            }
+        }
+        return configs.get(self.periodicity, configs['WEEK'])
+
     def _on_ok(self):
-        week = self.week_entry.get().strip()
-        if not week:
-            messagebox.showwarning("Semaine vide", "Veuillez indiquer une semaine (ex: S22).", parent=self)
+        period = self.period_entry.get().strip()
+        if not period:
+            messagebox.showwarning(
+                "Période vide", 
+                self.config['validation_msg'], 
+                parent=self
+            )
             return
-        self.result = week
+        self.result = period
         self.destroy()
 
     def _on_cancel(self):
         self.result = None
         self.destroy()
+
+
+# Garder l'ancienne classe pour la compatibilité (alias)
+class WeekInputDialog(PeriodInputDialog):
+    """Alias pour la compatibilité avec l'ancien code."""
+    def __init__(self, parent, control_name):
+        super().__init__(parent, control_name, periodicity='WEEK')

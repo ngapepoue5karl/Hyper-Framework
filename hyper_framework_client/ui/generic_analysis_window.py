@@ -9,11 +9,12 @@ from ..api.api_client import api_client
 from .themed_treeview import style_treeview
 
 class GenericAnalysisFrame(ctk.CTkFrame):
-    def __init__(self, master, app_parent, control_id, week_label):
+    def __init__(self, master, app_parent, control_id, period_label, periodicity='WEEK'):
         super().__init__(master)
         self.app_parent = app_parent
         self.control_id = control_id
-        self.week_label = week_label
+        self.period_label = period_label
+        self.periodicity = periodicity
         
         self.file_paths = {}
         self.input_widgets = {}
@@ -76,7 +77,8 @@ class GenericAnalysisFrame(ctk.CTkFrame):
 
         data_payload = {
             'user_data': json.dumps(self.user_data),
-            'week_label': self.week_label
+            'period_label': self.period_label,
+            'periodicity': self.periodicity
         }
 
         # Fonction qui sera exécutée dans le thread
@@ -135,13 +137,22 @@ class GenericAnalysisFrame(ctk.CTkFrame):
         top_frame.pack(side="top", fill="x", padx=10, pady=10)
         top_frame.grid_columnconfigure(1, weight=1)
         
-        # Affichage de la semaine en haut
-        week_info_frame = ctk.CTkFrame(top_frame, fg_color="transparent")
-        week_info_frame.grid(row=0, column=0, columnspan=3, sticky='ew', pady=(0, 10))
+        # Affichage de la période en haut
+        period_info_frame = ctk.CTkFrame(top_frame, fg_color="transparent")
+        period_info_frame.grid(row=0, column=0, columnspan=3, sticky='ew', pady=(0, 10))
+        
+        # Adapter le label selon la périodicité
+        period_type_labels = {
+            'WEEK': 'Semaine',
+            'MONTH': 'Mois',
+            'QUARTER': 'Trimestre',
+            'SEMESTER': 'Semestre'
+        }
+        period_type = period_type_labels.get(self.periodicity, 'Période')
         
         ctk.CTkLabel(
-            week_info_frame, 
-            text=f"Semaine : {self.week_label}",
+            period_info_frame, 
+            text=f" {period_type} : {self.period_label}",
             font=ctk.CTkFont(size=14, weight="bold")
         ).pack(side='left', padx=10)
         
@@ -242,7 +253,8 @@ class GenericAnalysisFrame(ctk.CTkFrame):
                 files_to_send[key] = (os.path.basename(path), open(path, 'rb'))
             data_payload = {
                 'user_data': json.dumps(self.user_data),
-                'week_label': self.week_label
+                'period_label': self.period_label,
+                'periodicity': self.periodicity
             }
             response = api_client.execute_and_generate_report(self.control_id, files_to_send, data_payload)
             generated_filename = response.get('report_filename')

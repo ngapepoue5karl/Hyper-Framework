@@ -7,6 +7,9 @@ __hyper_inputs__ = [
     {"key": "glpi_data", "label": "Données GLPI (.csv)"}
 ]
 
+# Périodicité du contrôle (analyse hebdomadaire)
+__hyper_periodicity__ = 'WEEK'
+
 import pandas as pd
 import numpy as np
 import chardet

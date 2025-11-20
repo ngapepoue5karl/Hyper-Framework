@@ -5,7 +5,7 @@ from tkinter import ttk, messagebox
 from ..api.api_client import api_client
 from .themed_treeview import style_treeview
 from ..auth_roles import Role
-from .dialogs import WeekInputDialog
+from .dialogs import PeriodInputDialog
 
 class AnalysisSelectionFrame(ctk.CTkFrame):
     def __init__(self, master, app_parent):
@@ -105,24 +105,35 @@ class AnalysisSelectionFrame(ctk.CTkFrame):
         
         control_id = self.tree.selection()[0]
         
-        # Récupérer le nom du contrôle pour l'afficher dans le dialogue
+        # Récupérer les détails du contrôle (nom et périodicité)
         control_name = None
+        control_data = None
         for ctrl in self.controls_data:
             if str(ctrl['id']) == str(control_id):
                 control_name = ctrl['name']
+                control_data = ctrl
                 break
         
         if not control_name:
             control_name = "Contrôle sélectionné"
         
-        # Afficher le dialogue pour saisir la semaine
-        dialog = WeekInputDialog(self, control_name)
-        self.wait_window(dialog)
-        week_label = dialog.result
-        
-        # Si l'utilisateur a annulé, on ne lance pas l'analyse
-        if not week_label:
+        # Récupérer les détails complets du contrôle pour avoir la périodicité
+        try:
+            username = self.app_parent.user_data['username']
+            full_control = api_client.get_control_details(control_id, username)
+            periodicity = full_control.get('periodicity', 'WEEK')
+        except Exception as e:
+            messagebox.showerror("Erreur", f"Impossible de récupérer les détails du contrôle: {e}", parent=self)
             return
         
-        # Ouvrir la fenêtre d'analyse avec la semaine
-        self.app_parent.open_selected_analysis(control_id, week_label)
+        # Afficher le dialogue adapté selon la périodicité
+        dialog = PeriodInputDialog(self, control_name, periodicity)
+        self.wait_window(dialog)
+        period_label = dialog.result
+        
+        # Si l'utilisateur a annulé, on ne lance pas l'analyse
+        if not period_label:
+            return
+        
+        # Ouvrir la fenêtre d'analyse avec la période et la périodicité
+        self.app_parent.open_selected_analysis(control_id, period_label, periodicity)

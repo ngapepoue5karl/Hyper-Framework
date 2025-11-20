@@ -50,10 +50,25 @@ def execute_and_generate_report():
 
         results_with_dfs = execute_script_from_file(script_path, input_file_paths, current_app.config['OUTPUTS_DIR'])
         
+        def convert_timestamps_to_strings(obj):
+            """Convertit récursivement tous les Timestamps en strings pour la sérialisation JSON"""
+            if isinstance(obj, pd.Timestamp):
+                return obj.strftime('%Y-%m-%d %H:%M:%S') if not pd.isna(obj) else None
+            elif isinstance(obj, dict):
+                return {k: convert_timestamps_to_strings(v) for k, v in obj.items()}
+            elif isinstance(obj, list):
+                return [convert_timestamps_to_strings(item) for item in obj]
+            elif pd.isna(obj):  # Gère les NaN, NaT, etc.
+                return None
+            return obj
+        
         analysis_results = []
         for result in results_with_dfs:
             if 'dataframe' in result and isinstance(result['dataframe'], pd.DataFrame):
-                result['items'] = result['dataframe'].to_dict('records')
+                # Convertir le DataFrame en dictionnaires
+                records = result['dataframe'].to_dict('records')
+                # Convertir tous les Timestamps en strings
+                result['items'] = convert_timestamps_to_strings(records)
                 del result['dataframe']
             analysis_results.append(result)
 

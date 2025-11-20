@@ -6,7 +6,7 @@ from ..api.api_client import api_client
 from ..auth_roles import Role, Permission, ROLE_PERMISSIONS
 
 # Importation des dialogues
-from .dialogs import ChangePasswordDialog, WeekInputDialog
+from .dialogs import ChangePasswordDialog, PeriodInputDialog
 
 # Importation des vues (Frames)
 from .user_management_window import UserManagementFrame
@@ -93,10 +93,10 @@ class MainWindow(ctk.CTkToplevel):
         self.current_frame = LogViewerFrame(self.main_content_frame, self)
         self.current_frame.pack(expand=True, fill="both")
 
-    def open_selected_analysis(self, control_id, week_label):
+    def open_selected_analysis(self, control_id, period_label, periodicity='WEEK'):
         if control_id:
             self.clear_main_content()
-            self.current_frame = GenericAnalysisFrame(self.main_content_frame, self, control_id, week_label)
+            self.current_frame = GenericAnalysisFrame(self.main_content_frame, self, control_id, period_label, periodicity)
             self.current_frame.pack(expand=True, fill="both")
 
     def open_versioning(self, control_id, control_name):

@@ -5,6 +5,10 @@ __hyper_inputs__ = [
     {"key": "externe_tanium", "label": "Fichier externe Tanium - Suivi (.xlsx)", "format": "xlsx"},
     {"key": "externe_crowdstrike", "label": "Fichier externe CrowdStrike - Suivi (.xlsx)", "format": "xlsx"},
 ]
+
+# Périodicité du contrôle (analyse hebdomadaire)
+__hyper_periodicity__ = 'WEEK'
+
 # -------------------------------------------------------------------
 
 import pandas as pd

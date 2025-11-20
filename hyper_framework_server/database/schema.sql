@@ -30,7 +30,8 @@ CREATE TABLE analysis_runs (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     control_id INTEGER NOT NULL,
     control_name TEXT NOT NULL,
-    week_label TEXT NOT NULL,           -- Ex: "S22" pour semaine 22
+    periodicity TEXT NOT NULL,          -- Type de périodicité: "WEEK", "MONTH", "QUARTER", "SEMESTER"
+    period_label TEXT NOT NULL,         -- Ex: "S22" pour semaine 22, "M03" pour mars, "T2" pour trimestre 2
     username TEXT NOT NULL,
     executed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     results_json TEXT NOT NULL,         -- Résultats de l'analyse au format JSON
