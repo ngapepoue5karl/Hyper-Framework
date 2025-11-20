@@ -16,8 +16,7 @@ _DB_FILE = _APP_DATA_DIR / "hyper_framework_server.db"
 
 # Dossiers de données
 _SCRIPTS_DIR = _APP_DATA_DIR / "scripts"
-_INPUTS_DIR = _APP_DATA_DIR / "inputs"
-_OUTPUTS_DIR = _APP_DATA_DIR / "outputs"
+_SAVE_DIR = _APP_DATA_DIR / "save"  # Nouveau dossier pour stocker les analyses
 _REPORTS_DIR = _APP_DATA_DIR / "reports"
 _LOGS_DIR = _APP_DATA_DIR / "logs" # <-- NOUVEAU
 
@@ -32,8 +31,7 @@ DEFAULT_ASSETS_DIR = SERVER_ROOT / "assets"
 dirs_to_create = [
     _APP_DATA_DIR,
     _SCRIPTS_DIR,
-    _INPUTS_DIR,
-    _OUTPUTS_DIR,
+    _SAVE_DIR,
     _REPORTS_DIR,
     _LOGS_DIR # <-- NOUVEAU
 ]
@@ -47,8 +45,7 @@ for dir_path in dirs_to_create:
 
 DB_FILE = str(_DB_FILE)
 SCRIPTS_DIR = str(_SCRIPTS_DIR)
-INPUTS_DIR = str(_INPUTS_DIR)
-OUTPUTS_DIR = str(_OUTPUTS_DIR)
+SAVE_DIR = str(_SAVE_DIR)
 REPORTS_DIR = str(_REPORTS_DIR)
 LOGS_DIR = str(_LOGS_DIR) # <-- NOUVEAU
 

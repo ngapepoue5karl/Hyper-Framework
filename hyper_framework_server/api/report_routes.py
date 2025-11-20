@@ -18,6 +18,7 @@ def execute_and_generate_report():
     user_data = json.loads(request.form.get('user_data', '{}'))
     username = user_data.get('username', 'unknown')
     control_id = request.form.get('control_id')
+    period_label = request.form.get('period_label', 'N/A')
     control_data_for_log = {'control_id': control_id}
 
     try:
@@ -33,22 +34,34 @@ def execute_and_generate_report():
         control_data = dict(control_row)
         control_data_for_log['control_name'] = control_data['name']
         control_data['input_definitions'] = json.loads(control_data['input_definitions'])
+        control_name = control_data['name']
 
         script_path = os.path.join(current_app.config['SCRIPTS_DIR'], control_data['script_filename'])
-        inputs_dir = current_app.config['INPUTS_DIR']
         run_timestamp = datetime.now().strftime('%Y%m%d-%H%M%S')
+        
+        # Nouvelle structure de dossiers
+        save_dir = current_app.config['SAVE_DIR']
+        control_folder = os.path.join(save_dir, control_name)
+        period_folder = os.path.join(control_folder, f"{control_name} {period_label}")
+        inputs_dir = os.path.join(period_folder, "Inputs")
+        outputs_dir = os.path.join(period_folder, "Outputs")
+        
+        # Créer les dossiers si nécessaire
+        os.makedirs(inputs_dir, exist_ok=True)
+        os.makedirs(outputs_dir, exist_ok=True)
+        
         input_file_paths = {}
 
         for input_def in control_data['input_definitions']:
             key = input_def['key']
             if key not in request.files: return jsonify({'error': f"Fichier manquant: {key}"}), 400
             file = request.files[key]
-            unique_filename = f"{run_timestamp}_{key}_{secure_filename(file.filename)}"
+            unique_filename = f"{key}_{secure_filename(file.filename)}"
             saved_path = os.path.join(inputs_dir, unique_filename)
             file.save(saved_path)
             input_file_paths[key] = saved_path
 
-        results_with_dfs = execute_script_from_file(script_path, input_file_paths, current_app.config['OUTPUTS_DIR'])
+        results_with_dfs = execute_script_from_file(script_path, input_file_paths, outputs_dir)
         
         def convert_timestamps_to_strings(obj):
             """Convertit récursivement tous les Timestamps en strings pour la sérialisation JSON"""
@@ -73,8 +86,9 @@ def execute_and_generate_report():
             analysis_results.append(result)
 
         safe_name = re.sub(r'[^\w\.-]', '_', control_data.get('name', 'analyse'))
-        report_filename = f"Rapport_{safe_name}_{datetime.now().strftime('%Y-%m-%d-%H-%M-%S')}.docx"
-        save_path = os.path.join(current_app.config['REPORTS_DIR'], report_filename)
+        report_filename = f"Rapport_{safe_name}_{period_label}_{datetime.now().strftime('%Y-%m-%d-%H-%M-%S')}.docx"
+        # Sauvegarder dans le dossier Outputs de la période
+        save_path = os.path.join(outputs_dir, report_filename)
         
         report_service.generate_and_save_report(
             user_data, control_data, analysis_results, save_path
@@ -92,17 +106,33 @@ def execute_and_generate_report():
         return jsonify({'error': f"Une erreur inattendue est survenue: {str(e)}"}), 500
 
 
-@bp.route('/download/<filename>', methods=['GET'])
-def download_report(filename):
+@bp.route('/download/<path:filepath>', methods=['GET'])
+def download_report(filepath):
+    """Télécharge un rapport depuis la nouvelle structure (save/Control/Control Period/Outputs/)
+    ou depuis l'ancien dossier reports/ pour compatibilité"""
     username = request.args.get('username', 'unknown')
     try:
+        # D'abord essayer dans la nouvelle structure save/
+        if '/' in filepath or '\\' in filepath:
+            save_dir = current_app.config['SAVE_DIR']
+            full_path = os.path.join(save_dir, filepath)
+            
+            # Vérification de sécurité
+            if os.path.abspath(full_path).startswith(os.path.abspath(save_dir)) and os.path.exists(full_path):
+                directory = os.path.dirname(full_path)
+                filename = os.path.basename(full_path)
+                response = send_from_directory(directory, filename, as_attachment=True)
+                logging_service.log_action(username, 'REPORT_DOWNLOAD', 'SUCCESS', {'filepath': filepath})
+                return response
+        
+        # Fallback : chercher dans l'ancien dossier reports/
         response = send_from_directory(
             current_app.config['REPORTS_DIR'],
-            filename,
+            filepath,
             as_attachment=True
         )
-        logging_service.log_action(username, 'REPORT_DOWNLOAD', 'SUCCESS', {'filename': filename})
+        logging_service.log_action(username, 'REPORT_DOWNLOAD', 'SUCCESS', {'filename': filepath})
         return response
     except FileNotFoundError:
-        logging_service.log_action(username, 'REPORT_DOWNLOAD', 'FAILURE', {'filename': filename, 'error': 'File not found'})
+        logging_service.log_action(username, 'REPORT_DOWNLOAD', 'FAILURE', {'filepath': filepath, 'error': 'File not found'})
         return jsonify({'error': 'Fichier rapport non trouvé.'}), 404

@@ -5,7 +5,7 @@ import importlib.util
 from pathlib import Path
 import os
 
-def execute_script_from_file(script_path: str, input_file_paths: dict, output_dir_path: str) -> list:
+def execute_script_from_file(script_path: str, input_file_paths: dict, output_dir_path: str, inputs_dir_path: str = None) -> list:
     """
     Exécute un script Python de manière directe et synchrone.
     Le script est importé dynamiquement et sa fonction 'run' est appelée.

@@ -116,8 +116,18 @@ def execute_control(control_id):
     try:
         script_path = os.path.join(current_app.config['SCRIPTS_DIR'], control['script_filename'])
         run_timestamp = datetime.now().strftime('%Y%m%d-%H%M%S')
-        inputs_dir = current_app.config['INPUTS_DIR']
-        outputs_dir = current_app.config['OUTPUTS_DIR']
+        
+        # Nouvelle structure de dossiers
+        save_dir = current_app.config['SAVE_DIR']
+        control_folder = os.path.join(save_dir, control_name)
+        period_folder = os.path.join(control_folder, f"{control_name} {period_label}")
+        inputs_dir = os.path.join(period_folder, "Inputs")
+        outputs_dir = os.path.join(period_folder, "Outputs")
+        
+        # Créer les dossiers si nécessaire
+        os.makedirs(inputs_dir, exist_ok=True)
+        os.makedirs(outputs_dir, exist_ok=True)
+        
         input_file_paths = {}
         input_definitions = json.loads(control['input_definitions'])
         
@@ -129,16 +139,19 @@ def execute_control(control_id):
             if key not in request.files: return jsonify({'error': f"Fichier manquant: {key}"}), 400
             file = request.files[key]
             safe_filename = secure_filename(file.filename)
-            unique_filename = f"{run_timestamp}_{key}_{safe_filename}"
+            # Plus besoin de timestamp dans le nom, la structure de dossiers assure l'unicité
+            unique_filename = f"{key}_{safe_filename}"
             saved_path = os.path.join(inputs_dir, unique_filename)
             file.save(saved_path)
             input_file_paths[key] = saved_path
             
-            # Enregistrer les infos du fichier
+            # Enregistrer les infos du fichier (avec chemin relatif pour flexibilité)
+            relative_path = os.path.join(control_name, f"{control_name} {period_label}", "Inputs", unique_filename)
             files_info.append({
                 'key': key,
                 'original_name': file.filename,
-                'saved_name': unique_filename
+                'saved_name': unique_filename,
+                'relative_path': relative_path
             })
             
         results_with_dfs = execute_script_from_file(script_path, input_file_paths, outputs_dir)
@@ -165,6 +178,18 @@ def execute_control(control_id):
                 del result['dataframe']
             serialized_results.append(result)
 
+        # Sauvegarder les résultats JSON dans le dossier Outputs
+        try:
+            results_json_path = os.path.join(outputs_dir, f"results_{run_timestamp}.json")
+            with open(results_json_path, 'w', encoding='utf-8') as f:
+                json.dump(serialized_results, f, ensure_ascii=False, indent=2)
+            
+            # Chemin relatif pour la base de données
+            relative_results_path = os.path.join(control_name, f"{control_name} {period_label}", "Outputs", f"results_{run_timestamp}.json")
+        except Exception as e:
+            print(f"Erreur lors de la sauvegarde du fichier JSON: {e}")
+            relative_results_path = None
+
         # Sauvegarder l'historique de l'analyse dans la base de données
         try:
             db.execute(
@@ -179,7 +204,13 @@ def execute_control(control_id):
             print(f"Erreur lors de la sauvegarde de l'historique: {e}")
             # On continue même si la sauvegarde échoue
 
-        logging_service.log_action(username, 'ANALYSIS_EXECUTE', 'SUCCESS', {'control_id': control_id, 'control_name': control_name, 'periodicity': periodicity, 'period_label': period_label})
+        logging_service.log_action(username, 'ANALYSIS_EXECUTE', 'SUCCESS', {
+            'control_id': control_id, 
+            'control_name': control_name, 
+            'periodicity': periodicity, 
+            'period_label': period_label,
+            'outputs_dir': outputs_dir
+        })
         return jsonify(serialized_results)
         
     except Exception as e:
@@ -187,10 +218,20 @@ def execute_control(control_id):
         logging_service.log_action(username, 'ANALYSIS_EXECUTE', 'FAILURE', {'control_id': control_id, 'control_name': control_name, 'periodicity': periodicity, 'period_label': period_label, 'error': str(e)})
         return jsonify({'error': f"Erreur serveur: {e}"}), 500
 
-@bp.route('/results/<filename>', methods=['GET'])
-def get_result_file(filename):
+@bp.route('/results/<path:filepath>', methods=['GET'])
+def get_result_file(filepath):
+    """Récupère un fichier de résultat avec son chemin relatif depuis save/"""
     try:
-        return send_from_directory(current_app.config['OUTPUTS_DIR'], filename, as_attachment=False)
+        save_dir = current_app.config['SAVE_DIR']
+        full_path = os.path.join(save_dir, filepath)
+        
+        # Vérification de sécurité : s'assurer que le chemin reste dans save_dir
+        if not os.path.abspath(full_path).startswith(os.path.abspath(save_dir)):
+            return jsonify({'error': 'Accès non autorisé.'}), 403
+            
+        directory = os.path.dirname(full_path)
+        filename = os.path.basename(full_path)
+        return send_from_directory(directory, filename, as_attachment=False)
     except FileNotFoundError:
         return jsonify({'error': 'Fichier de résultat non trouvé.'}), 404
 
