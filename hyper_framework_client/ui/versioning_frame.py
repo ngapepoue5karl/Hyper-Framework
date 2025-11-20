@@ -249,9 +249,9 @@ class VersioningFrame(ctk.CTkFrame):
             )
             
             details_text = (
-                f"📅 {period_type} : {self.current_run_details['period_label']}\n"
-                f"👤 Utilisateur : {self.current_run_details['username']}\n"
-                f"🕒 Exécuté le : {self._format_datetime(self.current_run_details['executed_at'])}"
+                f" {period_type} : {self.current_run_details['period_label']}\n"
+                f" Utilisateur : {self.current_run_details['username']}\n"
+                f" Exécuté le : {self._format_datetime(self.current_run_details['executed_at'])}"
             )
             
             ctk.CTkLabel(
