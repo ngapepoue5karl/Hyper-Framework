@@ -95,6 +95,7 @@ class ControlEditorWindow(ctk.CTkToplevel):
         template = """# Script d'analyse pour Hyper-Framework
 #
 # === 1. Définition des entrées ===
+# Définissez ici les fichiers requis pour votre analyse
 __hyper_inputs__ = [
     {"key": "input_file", "label": "Fichier d'entrée (.csv)", "format": "csv"}
 ]
@@ -103,7 +104,49 @@ __hyper_inputs__ = [
 # Valeurs possibles : 'WEEK', 'MONTH', 'QUARTER', 'SEMESTER'
 __hyper_periodicity__ = 'WEEK'
 
-# === Définitions des différentes importations ===
+# === 3. Définition des graphiques (OPTIONNEL) ===
+# Si vous souhaitez afficher des graphiques interactifs, configurez cette section.
+# Les graphiques sont générés automatiquement à partir des 'summary_stats' de vos résultats.
+#
+# Types de graphiques disponibles :
+# - "bar"   : Graphique en barres (comparaisons)
+# - "pie"   : Graphique circulaire (proportions)
+# - "gauge" : Jauge/Indicateur (taux avec seuils)
+# - "line"  : Graphique en lignes (évolutions)
+#
+# IMPORTANT : Les clés dans "keys" doivent EXACTEMENT correspondre aux clés 
+#             de votre dictionnaire 'summary_stats' dans la fonction run()
+#
+__hyper_charts__ = [
+    # Exemple 1 : Graphique en barres
+    {
+        "type": "bar",
+        "title": "Statistiques générales",
+        "keys": ["Nombre de lignes", "Nombre de colonnes"],  #  Doit correspondre à summary_stats
+        "colors": ["#4CAF50", "#2196F3"],  # Optionnel : couleurs personnalisées
+        "orientation": "vertical"  # "vertical" ou "horizontal"
+    },
+    
+    # Exemple 2 : Graphique circulaire (décommentez pour l'utiliser)
+    # {
+    #     "type": "pie",
+    #     "title": "Répartition des données",
+    #     "keys": ["Catégorie A", "Catégorie B"],
+    #     "colors": ["#4CAF50", "#F44336"]  # Vert et Rouge
+    # },
+    
+    # Exemple 3 : Jauge pour un taux (décommentez pour l'utiliser)
+    # {
+    #     "type": "gauge",
+    #     "title": "Taux de conformité",
+    #     "key": "Taux",  #  Notez : "key" au singulier pour la jauge
+    #     "max_value": 100,
+    #     "colors": ["#F44336", "#FF9800", "#4CAF50"],  # Rouge, Orange, Vert
+    #     "thresholds": [70, 90]  # <70% rouge, 70-90% orange, >90% vert
+    # }
+]
+
+# === 4. Importations ===
 import pandas as pd
 import os
 
@@ -112,14 +155,20 @@ import os
 # =============================================================================
 
 def charger_fichier(file_path):
+    \"\"\"Charge un fichier CSV et le convertit en DataFrame.\"\"\"
     try:
         df = pd.read_csv(file_path)
+        print(f" Fichier chargé avec succès : {len(df)} lignes")
         return df
     except Exception as e:
-        print(f"Erreur lors du chargement du fichier : {e}")
+        print(f" Erreur lors du chargement du fichier : {e}")
+        # Retourne un DataFrame par défaut en cas d'erreur
         return pd.DataFrame({'Message': ['Hello World']})
 
 def traiter_donnees(df):
+    \"\"\"Traite les données et retourne un DataFrame avec les résultats.\"\"\"
+    # --- VOTRE LOGIQUE DE TRAITEMENT ICI ---
+    # Exemple simple : création d'un DataFrame de résultats
     resultat_df = pd.DataFrame({
         'Colonne 1': ['Hello World'],
         'Colonne 2': ['Bienvenue dans Hyper-Framework'],
@@ -128,10 +177,19 @@ def traiter_donnees(df):
     return resultat_df
 
 def calculer_statistiques(df):
+    \"\"\"Calcule les statistiques à afficher dans l'interface.\"\"\"
+    # --- STATISTIQUES PERSONNALISÉES ---
+    # Ces statistiques seront affichées en haut des résultats
+    # ET utilisées pour générer les graphiques si __hyper_charts__ est défini
     stats = {
         'Nombre de lignes': len(df),
         'Nombre de colonnes': len(df.columns),
         'Message': 'Hello World'
+        # Ajoutez d'autres statistiques selon vos besoins :
+        # 'Total éléments': total,
+        # 'Conformes': conformes,
+        # 'Non conformes': non_conformes,
+        # 'Taux': f"{taux:.2f}%"
     }
     return stats
 
@@ -140,51 +198,114 @@ def calculer_statistiques(df):
 # =============================================================================
 
 def run(input_file_paths, output_dir_path):
-   
-
+    \"\"\"
+    Fonction principale appelée par Hyper-Framework.
+    
     Args:
         input_file_paths (dict): Dictionnaire contenant les chemins des fichiers d'entrée
-        output_dir_path (str): Chemin du répertoire de sortie
+                                 Format : {"key_du_fichier": "/chemin/complet/fichier.ext"}
+        output_dir_path (str): Chemin du répertoire de sortie pour sauvegarder les fichiers Excel
     
     Returns:
-        list: Liste de dictionnaires contenant les résultats à afficher
-  
+        list: Liste de dictionnaires contenant les résultats à afficher.
+              Chaque dictionnaire représente une section de résultats.
+              
+              Structure d'un résultat :
+              {
+                  'title': str,              # Titre de la section
+                  'dataframe': DataFrame,    # Données à afficher (sera converti en 'items')
+                  'display_columns': list,   # Colonnes à afficher avec leurs labels
+                  'summary_stats': dict,     # Statistiques de résumé (pour graphiques)
+                  'excel_output': str        # (Optionnel) Chemin du fichier Excel généré
+              }
+    \"\"\"
     results = []
     
     try:
+        print("=" * 70)
+        print("DÉBUT DE L'ANALYSE")
+        print("=" * 70)
+        
         # --- Étape 1 : Chargement des fichiers ---
+        print("\\n[1/5] Chargement des fichiers...")
         input_df = charger_fichier(input_file_paths.get('input_file'))
         
         # --- Étape 2 : Traitement des données ---
+        print("\\n[2/5] Traitement des données...")
         resultat_df = traiter_donnees(input_df)
+        print(f" {len(resultat_df)} résultats générés")
         
         # --- Étape 3 : Calcul des statistiques ---
+        print("\\n[3/5] Calcul des statistiques...")
         stats = calculer_statistiques(resultat_df)
+        print(f" Statistiques calculées : {list(stats.keys())}")
         
         # --- Étape 4 : Sauvegarde optionnelle (Excel) ---
+        print("\\n[4/5] Sauvegarde du rapport Excel...")
         output_file = os.path.join(output_dir_path, "rapport_hello_world.xlsx")
-        resultat_df.to_excel(output_file, index=False)
-        print(f"Rapport sauvegardé : {output_file}")
+        resultat_df.to_excel(output_file, index=False, engine='openpyxl')
+        print(f" Rapport sauvegardé : {output_file}")
         
         # --- Étape 5 : Structuration du résultat pour l'affichage ---
+        print("\\n[5/5] Préparation des résultats pour l'interface...")
         results.append({
             'title': "Hello World - Exemple de Template",
-            'dataframe': resultat_df,
+            'dataframe': resultat_df,  # Le framework convertira automatiquement en 'items'
             'display_columns': [
                 {'key': 'Colonne 1', 'label': 'Message Principal'},
                 {'key': 'Colonne 2', 'label': 'Description'},
                 {'key': 'Statut', 'label': 'État'}
             ],
-            'summary_stats': stats
+            'summary_stats': stats,  # Important pour les graphiques !
+            'excel_output': output_file  # (Optionnel)
         })
         
+        print("\\n" + "=" * 70)
+        print(" ANALYSE TERMINÉE AVEC SUCCÈS")
+        print("=" * 70)
+        
+        # Si __hyper_charts__ est défini, les graphiques seront générés automatiquement
+        # L'utilisateur verra un bouton " Voir les Graphiques" dans l'interface
+        
     except Exception as e:
-        print(f"Une erreur est survenue durant l'exécution : {e}")
+        print("\\n" + "=" * 70)
+        print(" ERREUR DURANT L'EXÉCUTION")
+        print("=" * 70)
+        print(f"Erreur : {e}")
         import traceback
         traceback.print_exc()
         raise e
     
     return results
+
+
+# =============================================================================
+# NOTES IMPORTANTES POUR LES DÉVELOPPEURS
+# =============================================================================
+#
+# 1. GRAPHIQUES :
+#    - Définissez __hyper_charts__ au début du fichier
+#    - Les clés dans "keys" doivent correspondre EXACTEMENT à celles de summary_stats
+#    - Les graphiques s'affichent automatiquement si summary_stats est présent
+#
+# 2. SUMMARY_STATS :
+#    - Utilisé pour afficher les statistiques ET générer les graphiques
+#    - Les valeurs peuvent être des nombres ou des strings avec "%"
+#    - Exemple : "Taux": "99.5%" ou "Taux": 99.5
+#
+# 3. DISPLAY_COLUMNS :
+#    - Définit quelles colonnes du DataFrame afficher et leurs labels
+#    - L'ordre des colonnes dans cette liste détermine l'ordre d'affichage
+#
+# 4. EXCEL_OUTPUT :
+#    - Optionnel, mais recommandé pour permettre le téléchargement
+#    - Peut contenir plusieurs feuilles si besoin
+#
+# 5. EXEMPLES DE GRAPHIQUES :
+#    Voir le script 'sauvegarde_pcs.py' pour un exemple complet
+#    Voir 'GUIDE_GRAPHIQUES_VEGALITE.md' pour la documentation complète
+#
+# =============================================================================
 """
         self.script_text.insert("1.0", template)
         self.highlight_syntax()

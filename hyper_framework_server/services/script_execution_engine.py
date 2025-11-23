@@ -34,6 +34,14 @@ def execute_script_from_file(script_path: str, input_file_paths: dict, output_di
         if not isinstance(results, list):
              raise TypeError("La fonction 'run' du script doit retourner une liste.")
 
+        # Ajouter les configurations de graphiques si elles existent
+        if hasattr(analysis_module, '__hyper_charts__'):
+            chart_configs = getattr(analysis_module, '__hyper_charts__')
+            # Ajouter les configurations de graphiques à chaque section de résultats
+            for result_section in results:
+                if 'summary_stats' in result_section and chart_configs:
+                    result_section['chart_configs'] = chart_configs
+
         return results
 
     except Exception as e:

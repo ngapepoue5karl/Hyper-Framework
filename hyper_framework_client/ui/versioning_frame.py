@@ -4,6 +4,9 @@ from ..api.api_client import api_client
 from .themed_treeview import style_treeview
 import datetime
 import re
+import json
+import tempfile
+import webbrowser
 
 
 class VersioningFrame(ctk.CTkFrame):
@@ -345,6 +348,21 @@ class VersioningFrame(ctk.CTkFrame):
                         text=stat_text, 
                         font=ctk.CTkFont(weight='bold')
                     ).pack(side='left', padx=15)
+        
+        # Afficher les graphiques si disponibles
+        chart_specs = data.get('chart_specs', [])
+        if chart_specs:
+            charts_frame = ctk.CTkFrame(frame, fg_color="transparent")
+            charts_frame.pack(fill='x', pady=(10, 10), padx=10)
+            
+            view_charts_btn = ctk.CTkButton(
+                charts_frame,
+                text="📊 Voir les Graphiques",
+                command=lambda specs=chart_specs: self.show_charts(specs),
+                fg_color="#2196F3",
+                hover_color="#1976D2"
+            )
+            view_charts_btn.pack(side='left', padx=5)
 
         # Tableau des données
         items = data.get('items', [])
@@ -435,6 +453,87 @@ class VersioningFrame(ctk.CTkFrame):
                 f"Impossible de télécharger les fichiers :\n{e}",
                 parent=self
             )
+
+    def show_charts(self, chart_specs):
+        """Affiche les graphiques Vega-Lite dans le navigateur par défaut"""
+        try:
+            # Générer le HTML avec les graphiques
+            html_content = self._create_html_with_vega(chart_specs)
+            
+            # Créer un fichier temporaire
+            temp_file = tempfile.NamedTemporaryFile(mode='w', delete=False, suffix='.html', encoding='utf-8')
+            temp_file.write(html_content)
+            temp_file.close()
+            
+            # Ouvrir dans le navigateur
+            webbrowser.open('file://' + temp_file.name)
+            
+        except Exception as e:
+            messagebox.showerror("Erreur", f"Impossible d'afficher les graphiques:\n{e}", parent=self)
+    
+    def _create_html_with_vega(self, chart_specs):
+        """Crée un document HTML avec les graphiques Vega-Lite"""
+        html_template = """
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+    <style>
+        body {{
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }}
+        .chart-container {{
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }}
+        #vis {{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }}
+        h1 {{
+            text-align: center;
+            color: #333;
+        }}
+    </style>
+</head>
+<body>
+    <h1>📊 Graphiques - {control_name}</h1>
+    <div id="vis"></div>
+    <script type="text/javascript">
+        const specs = {chart_specs_json};
+        const container = document.getElementById('vis');
+        
+        specs.forEach((spec, index) => {{
+            const chartDiv = document.createElement('div');
+            chartDiv.className = 'chart-container';
+            chartDiv.id = 'chart-' + index;
+            container.appendChild(chartDiv);
+            
+            vegaEmbed('#chart-' + index, spec, {{
+                actions: {{
+                    export: true,
+                    source: false,
+                    compiled: false,
+                    editor: false
+                }}
+            }});
+        }});
+    </script>
+</body>
+</html>
+"""
+        chart_specs_json = json.dumps(chart_specs, indent=2)
+        control_name = self.current_run_details.get('control_name', 'Analyse') if self.current_run_details else 'Analyse'
+        return html_template.format(chart_specs_json=chart_specs_json, control_name=control_name)
 
     def export_results(self):
         """Exporte les résultats de l'analyse sélectionnée en Excel"""

@@ -1,0 +1,472 @@
+[
+  {
+    "title": "Sauvegardes des données PCs",
+    "excel_output": "C:\\Users\\ngape\\OneDrive\\Documents\\COURS\\X4\\Semestre 7\\Stage\\Projet 2\\Hyper-Framework\\hyper_framework_server\\data\\save\\Sauvegarde PCs\\Sauvegarde PCs S05\\Outputs\\Rapport de conformité sauvegarde_Pcs.xlsx",
+    "display_columns": [
+      {
+        "key": "CN",
+        "label": "CN"
+      },
+      {
+        "key": "UserPrincipalName",
+        "label": "UserPrincipalName"
+      },
+      {
+        "key": "Description",
+        "label": "Description"
+      },
+      {
+        "key": "Department",
+        "label": "Department"
+      },
+      {
+        "key": "Title",
+        "label": "Title"
+      },
+      {
+        "key": "Office",
+        "label": "Office"
+      },
+      {
+        "key": "Enabled",
+        "label": "Enabled"
+      },
+      {
+        "key": "PasswordExpired",
+        "label": "PasswordExpired"
+      },
+      {
+        "key": "Service/générique?",
+        "label": "Service/générique?"
+      },
+      {
+        "key": "Compte Expiré?",
+        "label": "Compte Expiré?"
+      },
+      {
+        "key": "Comptes ayant une licence OneDrive",
+        "label": "Comptes ayant une licence OneDrive"
+      },
+      {
+        "key": "Comptes Sauvegardés",
+        "label": "Comptes Sauvegardés"
+      },
+      {
+        "key": "Date d'obtention de la licence",
+        "label": "Date d'obtention de la licence"
+      },
+      {
+        "key": "Date dernière synchronisation",
+        "label": "Date dernière synchronisation"
+      },
+      {
+        "key": ">= 30 Jrs",
+        "label": ">= 30 Jrs"
+      }
+    ],
+    "summary_stats": {
+      "Les utilisateurs actifs": 3046,
+      "Les utilisateurs Assujettis": 2581,
+      "Les utilisateurs avec licence": 2445,
+      "Les utilisateurs NOK": 9,
+      "Taux": "99.63%"
+    },
+    "chart_configs": [
+      {
+        "type": "bar",
+        "title": "Vue d'ensemble des utilisateurs",
+        "keys": [
+          "Les utilisateurs actifs",
+          "Les utilisateurs Assujettis",
+          "Les utilisateurs avec licence"
+        ],
+        "colors": [
+          "#4CAF50",
+          "#2196F3",
+          "#FF9800"
+        ],
+        "orientation": "vertical"
+      },
+      {
+        "type": "pie",
+        "title": "Conformité des sauvegardes",
+        "keys": [
+          "Les utilisateurs avec licence",
+          "Les utilisateurs NOK"
+        ],
+        "colors": [
+          "#4CAF50",
+          "#F44336"
+        ]
+      },
+      {
+        "type": "gauge",
+        "title": "Taux de conformité",
+        "key": "Taux",
+        "max_value": 100,
+        "colors": [
+          "#F44336",
+          "#FF9800",
+          "#4CAF50"
+        ],
+        "thresholds": [
+          90,
+          95
+        ]
+      }
+    ],
+    "items": [
+      {
+        "CN": "Bismarck TATOM FANKAM",
+        "UserPrincipalName": "bismarck.tatom@castel-afrique.com",
+        "Description": "Bismarck TATOM FANKAM - Infirmier (Prestataire)",
+        "Department": "DRH",
+        "Title": "Infirmier",
+        "Office": "Usine Bafoussam - Bafoussam",
+        "Enabled": "True",
+        "PasswordExpired": "False",
+        "Service/générique?": "FAUX",
+        "Compte Expiré?": "NON",
+        "Comptes ayant une licence OneDrive": "OUI",
+        "Comptes Sauvegardés": "NON",
+        "Date d'obtention de la licence": "2025-09-18 18:35:46Z",
+        "Date dernière synchronisation": "2025-09-29",
+        ">= 30 Jrs": "NOK"
+      },
+      {
+        "CN": "Christian MEKE EBANGA",
+        "UserPrincipalName": "christian.meke@castel-afrique.com",
+        "Description": "Christian MEKE EBANGA - Magasinier PF et Emballages",
+        "Department": "DU BAFOUSSAM",
+        "Title": "Magasinier PF et Emballages",
+        "Office": "Usine Bafoussam - Bafoussam",
+        "Enabled": "True",
+        "PasswordExpired": "False",
+        "Service/générique?": "FAUX",
+        "Compte Expiré?": "NON",
+        "Comptes ayant une licence OneDrive": "OUI",
+        "Comptes Sauvegardés": "NON",
+        "Date d'obtention de la licence": "2025-09-16 19:57:33Z",
+        "Date dernière synchronisation": "2025-09-18",
+        ">= 30 Jrs": "NOK"
+      },
+      {
+        "CN": "Claude Michele MINALA NGONO Epse ATANGA",
+        "UserPrincipalName": "claude.minala@castel-afrique.com",
+        "Description": "Claude Michele MINALA NGONO Epse ATANGA - Medicin généraliste (Prestataire)",
+        "Department": "DU",
+        "Title": "Medicin généraliste (Prestataire)",
+        "Office": "Usine de Yaounde",
+        "Enabled": "True",
+        "PasswordExpired": "False",
+        "Service/générique?": "FAUX",
+        "Compte Expiré?": "NON",
+        "Comptes ayant une licence OneDrive": "OUI",
+        "Comptes Sauvegardés": "NON",
+        "Date d'obtention de la licence": "2024-02-07 10:23:20Z",
+        "Date dernière synchronisation": "2025-08-20",
+        ">= 30 Jrs": "NOK"
+      },
+      {
+        "CN": "Eric Hervé VOUFO ZANFACK",
+        "UserPrincipalName": "eric.voufo@castel-afrique.com",
+        "Description": "Eric Herve VOUFO ZANFACK - Chef de Produit Senior Bieres Blondes et Stategiques",
+        "Department": "DCM/DMK",
+        "Title": "Chef de Produit Senior Bieres Blondes et Stategiques",
+        "Office": "Direction Generale - Bali",
+        "Enabled": "True",
+        "PasswordExpired": "False",
+        "Service/générique?": "FAUX",
+        "Compte Expiré?": "NON",
+        "Comptes ayant une licence OneDrive": "OUI",
+        "Comptes Sauvegardés": "NON",
+        "Date d'obtention de la licence": "2015-07-31 11:12:11Z",
+        "Date dernière synchronisation": "2025-09-02",
+        ">= 30 Jrs": "NOK"
+      },
+      {
+        "CN": "Etienne AWAMBA",
+        "UserPrincipalName": "etienne.awamba@castel-afrique.com",
+        "Description": "Etienne AWAMBA - Mecanicien Ajusteur",
+        "Department": "DU YAOUNDE",
+        "Title": "Mecanicien Ajusteur",
+        "Office": "Usines Yaounde - Mvan",
+        "Enabled": "True",
+        "PasswordExpired": "False",
+        "Service/générique?": "FAUX",
+        "Compte Expiré?": "NON",
+        "Comptes ayant une licence OneDrive": "OUI",
+        "Comptes Sauvegardés": "NON",
+        "Date d'obtention de la licence": "2024-06-23 12:13:41Z",
+        "Date dernière synchronisation": "2025-09-16",
+        ">= 30 Jrs": "NOK"
+      },
+      {
+        "CN": "Gaston Faustin SOUOP DJOMO",
+        "UserPrincipalName": "gaston.souop@castel-afrique.com",
+        "Description": "Gaston Faustin SOUOP DJOMO - Electricien",
+        "Department": "DU YAOUNDE",
+        "Title": "Electricien",
+        "Office": "Usines Yaounde - Mvan",
+        "Enabled": "True",
+        "PasswordExpired": "False",
+        "Service/générique?": "FAUX",
+        "Compte Expiré?": "NON",
+        "Comptes ayant une licence OneDrive": "OUI",
+        "Comptes Sauvegardés": "NON",
+        "Date d'obtention de la licence": "2017-11-14 14:53:23Z",
+        "Date dernière synchronisation": "2025-09-02",
+        ">= 30 Jrs": "NOK"
+      },
+      {
+        "CN": "Gcsa Fire Safety",
+        "UserPrincipalName": "gcsa.firesafety@castel-afrique.com",
+        "Description": "Gcsa Fire Safety - (BAL) GCSA",
+        "Department": "GCSA",
+        "Title": "(BAL) GCSA",
+        "Office": "Direction GCSA - Douala",
+        "Enabled": "True",
+        "PasswordExpired": "False",
+        "Service/générique?": "FAUX",
+        "Compte Expiré?": "NON",
+        "Comptes ayant une licence OneDrive": "OUI",
+        "Comptes Sauvegardés": "NON",
+        "Date d'obtention de la licence": "2024-09-03 07:52:57Z",
+        "Date dernière synchronisation": "2025-09-30",
+        ">= 30 Jrs": "NOK"
+      },
+      {
+        "CN": "Raphael NGNIGNIPA",
+        "UserPrincipalName": "raphael.ngnignipa@castel-afrique.com",
+        "Description": "Raphael NGNIGNIPA - Magasinier",
+        "Department": "DR OUEST",
+        "Title": "Magasinier",
+        "Office": "Region de l'Ouest - Bafoussam",
+        "Enabled": "True",
+        "PasswordExpired": "False",
+        "Service/générique?": "FAUX",
+        "Compte Expiré?": "NON",
+        "Comptes ayant une licence OneDrive": "OUI",
+        "Comptes Sauvegardés": "NON",
+        "Date d'obtention de la licence": "2025-08-02 10:58:30Z",
+        "Date dernière synchronisation": "2025-08-17",
+        ">= 30 Jrs": "NOK"
+      },
+      {
+        "CN": "Yvan Loïc EKOMO NTONGA",
+        "UserPrincipalName": "yvan.ekomo@castel-afrique.com",
+        "Description": "Yvan Loïc EKOMO NTONGA - STAGIAIRE",
+        "Department": "DSI",
+        "Title": "Directeur Industriel",
+        "Office": "siege",
+        "Enabled": "True",
+        "PasswordExpired": "False",
+        "Service/générique?": "FAUX",
+        "Compte Expiré?": "NON",
+        "Comptes ayant une licence OneDrive": "OUI",
+        "Comptes Sauvegardés": "NON",
+        "Date d'obtention de la licence": "2025-08-16 09:15:50Z",
+        "Date dernière synchronisation": "2025-08-16",
+        ">= 30 Jrs": "NOK"
+      }
+    ],
+    "chart_specs": [
+      {
+        "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+        "title": "Vue d'ensemble des utilisateurs",
+        "data": {
+          "values": [
+            {
+              "category": "Les utilisateurs actifs",
+              "value": 3046
+            },
+            {
+              "category": "Les utilisateurs Assujettis",
+              "value": 2581
+            },
+            {
+              "category": "Les utilisateurs avec licence",
+              "value": 2445
+            }
+          ]
+        },
+        "mark": {
+          "type": "bar"
+        },
+        "encoding": {
+          "x": {
+            "field": "category",
+            "type": "nominal",
+            "axis": {
+              "title": null,
+              "labelAngle": -45
+            },
+            "sort": null
+          },
+          "y": {
+            "field": "value",
+            "type": "quantitative",
+            "axis": {
+              "title": "Valeur"
+            }
+          },
+          "color": {
+            "field": "category",
+            "type": "nominal",
+            "legend": null,
+            "scale": {
+              "range": [
+                "#4CAF50",
+                "#2196F3",
+                "#FF9800"
+              ]
+            }
+          },
+          "tooltip": [
+            {
+              "field": "category",
+              "type": "nominal",
+              "title": "Catégorie"
+            },
+            {
+              "field": "value",
+              "type": "quantitative",
+              "title": "Valeur"
+            }
+          ]
+        },
+        "width": 500,
+        "height": 300
+      },
+      {
+        "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+        "title": "Conformité des sauvegardes",
+        "data": {
+          "values": [
+            {
+              "category": "Les utilisateurs avec licence",
+              "value": 2445
+            },
+            {
+              "category": "Les utilisateurs NOK",
+              "value": 9
+            }
+          ]
+        },
+        "mark": {
+          "type": "arc",
+          "innerRadius": 50
+        },
+        "encoding": {
+          "theta": {
+            "field": "value",
+            "type": "quantitative"
+          },
+          "color": {
+            "field": "category",
+            "type": "nominal",
+            "legend": {
+              "title": null
+            },
+            "scale": {
+              "range": [
+                "#4CAF50",
+                "#F44336"
+              ]
+            }
+          },
+          "tooltip": [
+            {
+              "field": "category",
+              "type": "nominal",
+              "title": "Catégorie"
+            },
+            {
+              "field": "value",
+              "type": "quantitative",
+              "title": "Valeur"
+            }
+          ]
+        },
+        "view": {
+          "stroke": null
+        },
+        "width": 400,
+        "height": 400
+      },
+      {
+        "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+        "title": "Taux de conformité",
+        "data": {
+          "values": [
+            {
+              "category": "Valeur",
+              "value": 99.63,
+              "order": 1
+            },
+            {
+              "category": "Reste",
+              "value": 0.37000000000000455,
+              "order": 2
+            }
+          ]
+        },
+        "layer": [
+          {
+            "mark": {
+              "type": "arc",
+              "innerRadius": 80,
+              "outerRadius": 120,
+              "cornerRadius": 10
+            },
+            "encoding": {
+              "theta": {
+                "field": "value",
+                "type": "quantitative",
+                "stack": true
+              },
+              "color": {
+                "field": "category",
+                "type": "nominal",
+                "scale": {
+                  "domain": [
+                    "Valeur",
+                    "Reste"
+                  ],
+                  "range": [
+                    "#4CAF50",
+                    "#E0E0E0"
+                  ]
+                },
+                "legend": null
+              },
+              "order": {
+                "field": "order",
+                "type": "ordinal"
+              }
+            }
+          },
+          {
+            "mark": {
+              "type": "text",
+              "align": "center",
+              "baseline": "middle",
+              "fontSize": 32,
+              "fontWeight": "bold"
+            },
+            "encoding": {
+              "text": {
+                "value": "99.6%"
+              }
+            }
+          }
+        ],
+        "view": {
+          "stroke": null
+        },
+        "width": 300,
+        "height": 300
+      }
+    ]
+  }
+]

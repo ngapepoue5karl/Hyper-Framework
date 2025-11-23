@@ -16,6 +16,7 @@ from ..services.script_execution_engine import execute_script_from_file
 from ..auth.roles import Role, Permission, ROLE_PERMISSIONS
 from ..services.logging_service import logging_service
 from ..services.security_service import analyze_code_security
+from ..services.chart_generator import generate_chart_specs
 
 bp = Blueprint('analysis', __name__, url_prefix='/api')
 
@@ -176,6 +177,19 @@ def execute_control(control_id):
                 # Convertir tous les Timestamps en strings
                 result['items'] = convert_timestamps_to_strings(records)
                 del result['dataframe']
+            
+            # Générer les spécifications Vega-Lite si chart_configs est présent
+            if 'chart_configs' in result and 'summary_stats' in result:
+                try:
+                    chart_specs = generate_chart_specs(
+                        result['summary_stats'],
+                        result['chart_configs']
+                    )
+                    result['chart_specs'] = chart_specs
+                except Exception as e:
+                    print(f"Erreur lors de la génération des graphiques: {e}")
+                    # On continue sans les graphiques en cas d'erreur
+                
             serialized_results.append(result)
 
         # Sauvegarder les résultats JSON dans le dossier Outputs

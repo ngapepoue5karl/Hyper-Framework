@@ -8,6 +8,32 @@ __hyper_inputs__ = [
 # Périodicité du contrôle (analyse hebdomadaire)
 __hyper_periodicity__ = 'WEEK'
 
+# Configuration des graphiques à afficher
+# Cette section définit les graphiques Vega-Lite qui seront générés automatiquement
+__hyper_charts__ = [
+    {
+        "type": "bar",
+        "title": "Vue d'ensemble des utilisateurs",
+        "keys": ["Les utilisateurs actifs", "Les utilisateurs Assujettis", "Les utilisateurs avec licence"],
+        "colors": ["#4CAF50", "#2196F3", "#FF9800"],
+        "orientation": "vertical"
+    },
+    {
+        "type": "pie",
+        "title": "Conformité des sauvegardes",
+        "keys": ["Les utilisateurs avec licence", "Les utilisateurs NOK"],
+        "colors": ["#4CAF50", "#F44336"]
+    },
+    {
+        "type": "gauge",
+        "title": "Taux de conformité",
+        "key": "Taux",
+        "max_value": 100,
+        "colors": ["#F44336", "#FF9800", "#4CAF50"],
+        "thresholds": [90, 95]
+    }
+]
+
 import pandas as pd
 import numpy as np
 import os
