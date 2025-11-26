@@ -9,7 +9,7 @@ Ce guide explique comment ajouter facilement des graphiques interactifs à vos s
 1. **Votre script** définit une variable `__hyper_charts__` qui configure les graphiques souhaités
 2. **Le framework** lit automatiquement cette configuration lors de l'exécution
 3. **Les graphiques** sont générés à partir des `summary_stats` de vos résultats
-4. **L'utilisateur** peut cliquer sur "📊 Voir les Graphiques" pour les visualiser dans son navigateur
+4. **L'utilisateur** peut cliquer sur " Voir les Graphiques" pour les visualiser dans son navigateur
 
 ## Types de Graphiques Disponibles
 
@@ -71,7 +71,7 @@ def run(input_file_paths: dict, output_dir_path: str):
 ### Étape 3 : Tester !
 
 1. Lancez votre analyse dans Hyper-Framework
-2. Un bouton "📊 Voir les Graphiques" apparaîtra automatiquement
+2. Un bouton " Voir les Graphiques" apparaîtra automatiquement
 3. Cliquez dessus pour voir vos graphiques dans le navigateur
 
 ---
@@ -301,7 +301,7 @@ return [{
 
 ## Dépannage
 
-### Le bouton "📊 Voir les Graphiques" n'apparaît pas
+### Le bouton " Voir les Graphiques" n'apparaît pas
 
 **Causes possibles :**
 1. La variable `__hyper_charts__` n'est pas définie dans votre script

@@ -8,7 +8,7 @@ Cette mise à jour ajoute un système complet de visualisation de données utili
 
 ## Fichiers Créés
 
-### 1. **hyper_framework_server/services/chart_generator.py** ✨ NOUVEAU
+### 1. **hyper_framework_server/services/chart_generator.py**  NOUVEAU
 **Rôle** : Module central de génération de graphiques Vega-Lite
 
 **Fonctionnalités** :
@@ -20,7 +20,7 @@ Cette mise à jour ajoute un système complet de visualisation de données utili
   - **Lignes** (`line`) : Évolutions (pour usages futurs)
 - `create_html_with_vega()` : Génère un document HTML complet avec les graphiques embarqués
 
-### 2. **GUIDE_GRAPHIQUES_VEGALITE.md** 📚 NOUVEAU
+### 2. **GUIDE_GRAPHIQUES_VEGALITE.md**  NOUVEAU
 **Rôle** : Documentation complète pour les développeurs
 
 **Contenu** :
@@ -109,7 +109,7 @@ if 'chart_configs' in result and 'summary_stats' in result:
 **Modifications** :
 - Ajout des imports : `tempfile`, `webbrowser`
 - Détection de `chart_specs` dans les résultats
-- Ajout d'un bouton "📊 Voir les Graphiques"
+- Ajout d'un bouton " Voir les Graphiques"
 - Méthodes `show_charts()` et `_create_html_with_vega()`
 
 **Nouveaux éléments** :
@@ -119,7 +119,7 @@ chart_specs = data.get('chart_specs', [])
 if chart_specs:
     view_charts_btn = ctk.CTkButton(
         charts_frame,
-        text="📊 Voir les Graphiques",
+        text=" Voir les Graphiques",
         command=lambda specs=chart_specs: self.show_charts(specs),
         fg_color="#2196F3",
         hover_color="#1976D2"
@@ -138,7 +138,7 @@ def show_charts(self, chart_specs):
 #### 5. **hyper_framework_client/ui/versioning_frame.py**
 **Modifications identiques à generic_analysis_window.py** :
 - Ajout des mêmes imports
-- Ajout du bouton "📊 Voir les Graphiques"
+- Ajout du bouton " Voir les Graphiques"
 - Méthodes `show_charts()` et `_create_html_with_vega()`
 
 ---
@@ -153,7 +153,7 @@ __hyper_charts__ = [
 ]
 ```
 
-### 2. Exécution (Serveur)
+### 2. Exécution (Serveur) 
 Lors de l'exécution du contrôle :
 1. `script_execution_engine.py` détecte `__hyper_charts__`
 2. Ajoute `chart_configs` aux résultats
@@ -164,7 +164,7 @@ Lors de l'exécution du contrôle :
 ### 3. Affichage (Client)
 Dans l'interface utilisateur :
 1. Le client reçoit le JSON avec `chart_specs`
-2. Un bouton "📊 Voir les Graphiques" apparaît
+2. Un bouton " Voir les Graphiques" apparaît
 3. Au clic, un fichier HTML est généré avec Vega-Embed
 4. Le navigateur s'ouvre automatiquement avec les graphiques interactifs
 
@@ -200,36 +200,6 @@ Dans l'interface utilisateur :
 ]
 ```
 
----
-
-## Avantages de Cette Implémentation
-
-### ✅ Facilité d'Utilisation
-- Configuration déclarative simple (1 dictionnaire Python)
-- Aucune connaissance de Vega-Lite requise
-- Code auto-documenté
-
-### ✅ Flexibilité
-- 4 types de graphiques prêts à l'emploi
-- Personnalisation des couleurs
-- Extension facile pour de nouveaux types
-
-### ✅ Maintenabilité
-- Séparation des responsabilités (génération séparée de l'affichage)
-- Code réutilisable dans tous les scripts
-- Documentation complète
-
-### ✅ Robustesse
-- Gestion d'erreurs (continue sans graphiques en cas de problème)
-- Validation des données
-- Pas d'impact sur les fonctionnalités existantes
-
-### ✅ Expérience Utilisateur
-- Graphiques interactifs (zoom, export)
-- Affichage dans le navigateur (pas de dépendance lourde)
-- Design moderne et propre
-
----
 
 ## Comment Ajouter des Graphiques à un Nouveau Contrôle
 
@@ -259,41 +229,6 @@ return [{
     }
 }]
 ```
-
-### Étape 3 : Tester
-1. Lancez l'analyse
-2. Cliquez sur "📊 Voir les Graphiques"
-3. Vérifiez dans le navigateur
-
----
-
-## Tests à Effectuer
-
-### ✅ Test 1 : Affichage du bouton
-- Lancer une analyse de `sauvegarde_pcs`
-- Vérifier que le bouton "📊 Voir les Graphiques" apparaît
-
-### ✅ Test 2 : Ouverture des graphiques
-- Cliquer sur le bouton
-- Vérifier que le navigateur s'ouvre avec 3 graphiques
-
-### ✅ Test 3 : Types de graphiques
-- Vérifier la présence d'un graphique en barres
-- Vérifier la présence d'un graphique circulaire
-- Vérifier la présence d'une jauge
-
-### ✅ Test 4 : Versioning
-- Aller dans "Gestion Contrôles" → Sélectionner "Sauvegarde PCs" → "Versioning"
-- Sélectionner une analyse passée
-- Cliquer sur "Voir les Résultats"
-- Vérifier que le bouton "📊 Voir les Graphiques" est présent
-- Cliquer et vérifier l'affichage
-
-### ✅ Test 5 : Compatibilité
-- Lancer un autre contrôle qui n'a pas `__hyper_charts__`
-- Vérifier qu'il fonctionne normalement (sans bouton graphiques)
-
----
 
 ## Dépendances Externes
 

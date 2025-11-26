@@ -1,0 +1,6 @@
+{"timestamp": "2025-11-24T08:30:06.037916", "username": "superadmin", "user_role": "SUPER_ADMIN", "ip_address": "10.100.0.29", "action": "USER_LOGIN", "status": "SUCCESS", "details": {"message": "Login successful"}}
+{"timestamp": "2025-11-24T08:30:06.121191", "username": "superadmin", "user_role": "SUPER_ADMIN", "ip_address": "10.100.0.29", "action": "VIEW_CONTROLS_LIST", "status": "SUCCESS", "details": {"count": 4}}
+{"timestamp": "2025-11-24T08:30:09.148323", "username": "superadmin", "user_role": "SUPER_ADMIN", "ip_address": "10.100.0.29", "action": "VIEW_CONTROLS_LIST", "status": "SUCCESS", "details": {"count": 4}}
+{"timestamp": "2025-11-24T08:30:10.542798", "username": "superadmin", "user_role": "SUPER_ADMIN", "ip_address": "10.100.0.29", "action": "VIEW_ANALYSIS_RUNS", "status": "SUCCESS", "details": {"count": 3}}
+{"timestamp": "2025-11-24T08:30:11.870685", "username": "superadmin", "user_role": "SUPER_ADMIN", "ip_address": "10.100.0.29", "action": "VIEW_ANALYSIS_RUN_DETAILS", "status": "SUCCESS", "details": {"run_id": 19}}
+{"timestamp": "2025-11-24T09:49:32.295092", "username": "superadmin", "user_role": "SUPER_ADMIN", "ip_address": "10.100.0.29", "action": "VIEW_CONTROLS_LIST", "status": "SUCCESS", "details": {"count": 4}}

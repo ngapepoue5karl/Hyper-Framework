@@ -357,7 +357,7 @@ class VersioningFrame(ctk.CTkFrame):
             
             view_charts_btn = ctk.CTkButton(
                 charts_frame,
-                text="📊 Voir les Graphiques",
+                text=" Voir les Graphiques",
                 command=lambda specs=chart_specs: self.show_charts(specs),
                 fg_color="#2196F3",
                 hover_color="#1976D2"
@@ -506,7 +506,7 @@ class VersioningFrame(ctk.CTkFrame):
     </style>
 </head>
 <body>
-    <h1>📊 Graphiques - {control_name}</h1>
+    <h1> Graphiques - {control_name}</h1>
     <div id="vis"></div>
     <script type="text/javascript">
         const specs = {chart_specs_json};

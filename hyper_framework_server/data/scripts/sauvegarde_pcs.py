@@ -22,7 +22,7 @@ __hyper_charts__ = [
         "type": "pie",
         "title": "Conformité des sauvegardes",
         "keys": ["Les utilisateurs avec licence", "Les utilisateurs NOK"],
-        "colors": ["#4CAF50", "#F44336"]
+        "colors": ["#4CAF50", "#F5473B"]
     },
     {
         "type": "gauge",

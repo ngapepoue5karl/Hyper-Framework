@@ -250,7 +250,7 @@ def _generate_gauge_chart(summary_stats: Dict[str, Any], config: Dict[str, Any])
 
 
 def _generate_line_chart(summary_stats: Dict[str, Any], config: Dict[str, Any]) -> Dict[str, Any]:
-    """Génère un graphique en lignes (pour évolutions temporelles si besoin futur)."""
+    """Génère un graphique en lignes."""
     keys = config.get("keys", [])
     title = config.get("title", "Évolution")
     colors = config.get("colors", None)
