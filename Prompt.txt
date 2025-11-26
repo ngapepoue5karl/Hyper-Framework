@@ -1,0 +1,11 @@
+Prends la peine de d'abord bien lire (de fond en comble) les fichiers du projet suivant ensuite aide moi sur ceci:
+
+
+Je veux générer des documents Word à partir des différents json des résultats de chaque contrôle.
+Je veux que lorsqu'on appuie sur le bouton "Générer et Télécharger (DOCX) après l'analyse de chaque contrôle cela génère un document word en fonction du json du contrôle
+(Si dans le json quand toi meme tu lis tu vis que c'est un tableau tu affiches le tableau en word aussi, ainsi de suite.)
+Trouve une bibliothèque appropriée pour faire cela et dit moi d'abord comment tu comptes procéder pour réaliser ce travail
+
+
+
+Le fichier word généré doit etre sauvegarder dans le dossier outputs du json du controle
