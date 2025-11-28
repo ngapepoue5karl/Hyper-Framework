@@ -342,6 +342,8 @@ def traiter(onedrive_path, users_path, ad_path, output_dir):
     office_col  = find_col(app_df, ["Office", "Location"]) or "Office"
     enabled_col = find_col(app_df, ["Enabled"]) or "Enabled"
     pwd_col     = find_col(app_df, ["PasswordExpired"]) or "PasswordExpired"
+    lastlogon_col = find_col(app_df, ["LastLogonDate"]) or "LastLogonDate"
+    samaccount_col = find_col(app_df, ["SamAccountName"]) or "SamAccountName"
 
     # Filtres demandés pour la vue
     mask = (
@@ -354,28 +356,20 @@ def traiter(onedrive_path, users_path, ad_path, output_dir):
         (app_df[">= 30 Jrs"].astype(str).str.upper().str.strip() == "NOK")
     )
 
-    # Colonnes à afficher (enrichies)
+    # Colonnes à afficher dans l'ordre demandé
     display_cols = [
-        cn_col,
-        upn_col,
         desc_col,
-        dept_col,
-        title_col,
-        office_col,
-        enabled_col,
-        pwd_col,
-        "Service/générique?",
-        "Compte Expiré?",
+        lastlogon_col,
+        samaccount_col,
+        upn_col,
         "Comptes ayant une licence OneDrive",
         "Comptes Sauvegardés",
-        "Date d'obtention de la licence",
-        "Date dernière synchronisation",
         ">= 30 Jrs"
     ]
     # Filtrer uniquement les colonnes existantes
     display_cols = [c for c in display_cols if c in app_df.columns]
 
-    view = app_df.loc[mask, display_cols].copy().sort_values(by=[cn_col if cn_col in app_df.columns else desc_col], kind="stable", na_position="last")
+    view = app_df.loc[mask, display_cols].copy().sort_values(by=[desc_col], kind="stable", na_position="last")
 
     # ------ Stats ------
     # 1) Nombre d'utilisateurs actifs:

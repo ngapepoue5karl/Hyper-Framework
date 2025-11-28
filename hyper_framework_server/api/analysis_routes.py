@@ -126,8 +126,12 @@ def execute_control(control_id):
         outputs_dir = os.path.join(period_folder, "Outputs")
         
         # Créer les dossiers si nécessaire
-        os.makedirs(inputs_dir, exist_ok=True)
-        os.makedirs(outputs_dir, exist_ok=True)
+        try:
+            os.makedirs(inputs_dir, exist_ok=True)
+            os.makedirs(outputs_dir, exist_ok=True)
+        except Exception as e:
+            print(f"Erreur lors de la création des dossiers: {e}")
+            return jsonify({'error': f"Impossible de créer les dossiers: {e}"}), 500
         
         input_file_paths = {}
         input_definitions = json.loads(control['input_definitions'])
@@ -139,9 +143,12 @@ def execute_control(control_id):
             key = input_def['key']
             if key not in request.files: return jsonify({'error': f"Fichier manquant: {key}"}), 400
             file = request.files[key]
-            safe_filename = secure_filename(file.filename)
-            # Plus besoin de timestamp dans le nom, la structure de dossiers assure l'unicité
-            unique_filename = f"{key}_{safe_filename}"
+            original_filename = file.filename
+            # Extraire l'extension du fichier
+            file_extension = os.path.splitext(original_filename)[1]
+            # Utiliser un nom court pour éviter la limite de 260 caractères Windows
+            # Format: clé + extension (ex: intune_file.csv au lieu de intune_file_DevicesWithInventory_UUID.csv)
+            unique_filename = f"{key}{file_extension}"
             saved_path = os.path.join(inputs_dir, unique_filename)
             file.save(saved_path)
             input_file_paths[key] = saved_path
@@ -217,6 +224,27 @@ def execute_control(control_id):
         except Exception as e:
             print(f"Erreur lors de la sauvegarde de l'historique: {e}")
             # On continue même si la sauvegarde échoue
+
+        # Génération automatique du rapport Word
+        try:
+            from ..services.report_service import report_service
+            
+            # Utiliser un nom de fichier court pour éviter la limite de 260 caractères Windows
+            report_filename = f"Rapport_{period_label}_{run_timestamp}.docx"
+            report_path = os.path.join(outputs_dir, report_filename)
+            
+            report_service.generate_and_save_report(
+                user_data={'username': username},
+                control_data={'name': control_name},
+                analysis_results=serialized_results,
+                save_path=report_path,
+                period_label=period_label
+            )
+        except Exception as e:
+            print(f"Erreur lors de la génération automatique du rapport Word: {e}")
+            import traceback
+            traceback.print_exc()
+            # On continue même si la génération du rapport échoue
 
         logging_service.log_action(username, 'ANALYSIS_EXECUTE', 'SUCCESS', {
             'control_id': control_id, 
