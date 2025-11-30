@@ -16,41 +16,31 @@ import re
 class ReportGenerator:
     def _add_footer_with_page_numbers(self, document):
         """
-        Ajoute un bas de page professionnel sur une ligne avec trois sections :
-        - Gauche : Tableau 2 lignes avec Version 1.4 / RESTREINT
-        - Centre : Ce document est la propriété de Boissons du Cameroun (en rouge)
-        - Droite : Tableau 1 ligne avec Page X sur Y
+        Ajoute un bas de page avec un tableau à 3 colonnes et 2 lignes :
+        - Colonne 1 : 2 cellules séparées (Version 1.4 / RESTREINT) avec bordures
+        - Colonne 2 : Cellule fusionnée verticalement avec texte rouge
+        - Colonne 3 : Cellule fusionnée verticalement avec numérotation
         """
         section = document.sections[0]
         footer = section.footer
         
-        # Créer un tableau principal à 3 colonnes sur 1 ligne
-        footer_table = footer.add_table(rows=1, cols=3, width=Inches(6.5))
+        # Créer un tableau à 3 colonnes et 2 lignes
+        footer_table = footer.add_table(rows=2, cols=3, width=Inches(6.5))
         footer_table.autofit = False
         
         # Ajuster les largeurs des colonnes
-        footer_table.columns[0].width = Inches(1.8)
-        footer_table.columns[1].width = Inches(3.0)
-        footer_table.columns[2].width = Inches(1.7)
+        footer_table.columns[0].width = Inches(1.5)
+        footer_table.columns[1].width = Inches(3.7)
+        footer_table.columns[2].width = Inches(1.3)
         
-        cells = footer_table.rows[0].cells
-        
-        # --- GAUCHE : Sous-tableau Version/RESTREINT ---
-        left_cell = cells[0]
-        left_cell._element.clear_content()
-        left_table = left_cell.add_table(rows=2, cols=1)
-        left_table.style = 'Table Grid'
-        
-        # Ajuster la largeur du sous-tableau
-        for row in left_table.rows:
-            for cell in row.cells:
-                cell.width = Inches(1.8)
-        
-        version_cell = left_table.rows[0].cells[0]
+        # --- COLONNE 1 : Version 1.4 et RESTREINT (2 cellules séparées) ---
+        version_cell = footer_table.rows[0].cells[0]
         version_para = version_cell.paragraphs[0]
         version_run = version_para.add_run('Version 1.4')
-        version_run.font.size = Pt(10)
+        version_run.font.name = 'Arial'
+        version_run.font.size = Pt(8)
         version_run.font.bold = True
+        version_run.font.color.rgb = RGBColor(0, 0, 0)  # Noir
         version_para.alignment = WD_ALIGN_PARAGRAPH.CENTER
         
         # Centrer verticalement
@@ -60,11 +50,13 @@ class ReportGenerator:
         tcVAlign_v.set(qn('w:val'), 'center')
         tcPr_v.append(tcVAlign_v)
         
-        restreint_cell = left_table.rows[1].cells[0]
+        restreint_cell = footer_table.rows[1].cells[0]
         restreint_para = restreint_cell.paragraphs[0]
         restreint_run = restreint_para.add_run('RESTREINT')
-        restreint_run.font.size = Pt(10)
+        restreint_run.font.name = 'Arial'
+        restreint_run.font.size = Pt(8)
         restreint_run.font.bold = True
+        restreint_run.font.color.rgb = RGBColor(0, 0, 0)  # Noir
         restreint_para.alignment = WD_ALIGN_PARAGRAPH.CENTER
         
         # Centrer verticalement
@@ -74,44 +66,43 @@ class ReportGenerator:
         tcVAlign_r.set(qn('w:val'), 'center')
         tcPr_r.append(tcVAlign_r)
         
-        # --- CENTRE : Texte de propriété en rouge ---
-        center_cell = cells[1]
-        center_para = center_cell.paragraphs[0]
+        # --- COLONNE 2 : Fusionner les 2 cellules verticalement ---
+        center_cell_top = footer_table.rows[0].cells[1]
+        center_cell_bottom = footer_table.rows[1].cells[1]
+        center_cell_top.merge(center_cell_bottom)
+        
+        center_para = center_cell_top.paragraphs[0]
         center_run = center_para.add_run('Ce document est la propriété de Boissons du Cameroun')
-        center_run.font.size = Pt(11)
-        center_run.font.color.rgb = RGBColor(255, 0, 0)
+        center_run.font.name = 'Arial'
+        center_run.font.size = Pt(8)
+        center_run.font.color.rgb = RGBColor(255, 0, 0)  # Rouge
+        center_run.font.bold = False
         center_para.alignment = WD_ALIGN_PARAGRAPH.CENTER
         
         # Centrer verticalement
-        tc_center = center_cell._element
+        tc_center = center_cell_top._element
         tcPr_center = tc_center.get_or_add_tcPr()
         tcVAlign_center = OxmlElement('w:vAlign')
         tcVAlign_center.set(qn('w:val'), 'center')
         tcPr_center.append(tcVAlign_center)
         
-        # --- DROITE : Sous-tableau Page X sur Y ---
-        right_cell = cells[2]
-        # Supprimer le paragraphe par défaut
-        right_cell._element.clear_content()
+        # --- COLONNE 3 : Fusionner les 2 cellules verticalement ---
+        right_cell_top = footer_table.rows[0].cells[2]
+        right_cell_bottom = footer_table.rows[1].cells[2]
+        right_cell_top.merge(right_cell_bottom)
         
-        right_table = right_cell.add_table(rows=1, cols=1)
-        right_table.style = 'Table Grid'
+        right_para = right_cell_top.paragraphs[0]
+        right_para.alignment = WD_ALIGN_PARAGRAPH.CENTER
         
-        # Ajuster la largeur
-        for row in right_table.rows:
-            for cell in row.cells:
-                cell.width = Inches(1.7)
+        # Ajouter "P a g e "
+        page_text_run = right_para.add_run('P a g e ')
+        page_text_run.font.name = 'Arial'
+        page_text_run.font.size = Pt(8)
+        page_text_run.font.bold = True
+        page_text_run.font.color.rgb = RGBColor(128, 128, 128)  # Gris
         
-        page_cell = right_table.rows[0].cells[0]
-        page_para = page_cell.paragraphs[0]
-        
-        # Ajouter "Page "
-        page_run = page_para.add_run('Page ')
-        page_run.font.size = Pt(10)
-        page_run.font.bold = True
-        
-        # Numéro de page actuel
-        page_num_run = page_para.add_run()
+        # Numéro de page actuel (en rouge)
+        page_num_run = right_para.add_run()
         fldChar1 = OxmlElement('w:fldChar')
         fldChar1.set(qn('w:fldCharType'), 'begin')
         page_num_run._r.append(fldChar1)
@@ -124,16 +115,20 @@ class ReportGenerator:
         fldChar2 = OxmlElement('w:fldChar')
         fldChar2.set(qn('w:fldCharType'), 'end')
         page_num_run._r.append(fldChar2)
-        page_num_run.font.size = Pt(10)
+        page_num_run.font.name = 'Arial'
+        page_num_run.font.size = Pt(8)
         page_num_run.font.bold = True
+        page_num_run.font.color.rgb = RGBColor(255, 0, 0)  # Rouge
         
         # Ajouter " sur "
-        sur_run = page_para.add_run(' sur ')
-        sur_run.font.size = Pt(10)
+        sur_run = right_para.add_run(' sur ')
+        sur_run.font.name = 'Arial'
+        sur_run.font.size = Pt(8)
         sur_run.font.bold = True
+        sur_run.font.color.rgb = RGBColor(128, 128, 128)  # Gris
         
-        # Nombre total de pages
-        total_pages_run = page_para.add_run()
+        # Nombre total de pages (en rouge)
+        total_pages_run = right_para.add_run()
         fldChar3 = OxmlElement('w:fldChar')
         fldChar3.set(qn('w:fldCharType'), 'begin')
         total_pages_run._r.append(fldChar3)
@@ -146,34 +141,52 @@ class ReportGenerator:
         fldChar4 = OxmlElement('w:fldChar')
         fldChar4.set(qn('w:fldCharType'), 'end')
         total_pages_run._r.append(fldChar4)
-        total_pages_run.font.size = Pt(10)
+        total_pages_run.font.name = 'Arial'
+        total_pages_run.font.size = Pt(8)
         total_pages_run.font.bold = True
-        
-        page_para.alignment = WD_ALIGN_PARAGRAPH.CENTER
+        total_pages_run.font.color.rgb = RGBColor(255, 0, 0)  # Rouge
         
         # Centrer verticalement
-        tc_page = page_cell._element
-        tcPr_page = tc_page.get_or_add_tcPr()
-        tcVAlign_page = OxmlElement('w:vAlign')
-        tcVAlign_page.set(qn('w:val'), 'center')
-        tcPr_page.append(tcVAlign_page)
+        tc_right = right_cell_top._element
+        tcPr_right = tc_right.get_or_add_tcPr()
+        tcVAlign_right = OxmlElement('w:vAlign')
+        tcVAlign_right.set(qn('w:val'), 'center')
+        tcPr_right.append(tcVAlign_right)
         
-        # Supprimer TOUTES les bordures du tableau principal
+        # --- Configurer les bordures du tableau ---
         tbl = footer_table._element
         tblPr = tbl.tblPr
         if tblPr is None:
             tblPr = OxmlElement('w:tblPr')
             tbl.insert(0, tblPr)
         
+        # Bordures du tableau principal
         tblBorders = OxmlElement('w:tblBorders')
+        
+        # Seules les bordures de la colonne 1 sont visibles
         for border_name in ['top', 'left', 'bottom', 'right', 'insideH', 'insideV']:
             border = OxmlElement(f'w:{border_name}')
-            border.set(qn('w:val'), 'none')
-            border.set(qn('w:sz'), '0')
+            border.set(qn('w:val'), 'single')
+            border.set(qn('w:sz'), '4')  # Bordure fine
             border.set(qn('w:space'), '0')
-            border.set(qn('w:color'), 'auto')
+            border.set(qn('w:color'), '000000')  # Noir
             tblBorders.append(border)
         tblPr.append(tblBorders)
+        
+        # Supprimer les bordures des cellules des colonnes 2 et 3
+        for row in footer_table.rows:
+            for i, cell in enumerate(row.cells):
+                if i > 0:  # Colonnes 2 et 3
+                    tcPr = cell._element.get_or_add_tcPr()
+                    tcBorders = OxmlElement('w:tcBorders')
+                    for border_name in ['top', 'left', 'bottom', 'right']:
+                        border = OxmlElement(f'w:{border_name}')
+                        border.set(qn('w:val'), 'none')
+                        border.set(qn('w:sz'), '0')
+                        border.set(qn('w:space'), '0')
+                        border.set(qn('w:color'), 'auto')
+                        tcBorders.append(border)
+                    tcPr.append(tcBorders)
 
     def _generate_chart_image(self, chart_config, summary_stats):
         """
