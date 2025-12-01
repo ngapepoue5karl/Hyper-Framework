@@ -14,6 +14,314 @@ import tempfile
 import re
 
 class ReportGenerator:
+    def _add_header_with_logo_and_table(self, document, control_name, control_code, analysis_results):
+        """
+        Ajoute un en-tête avec :
+        - Ligne 1 : Logo (gauche) | Titre centré | Code de contrôle (droite)
+        - Ligne 2 : Tableau avec les informations du contrôle
+        """
+        section = document.sections[0]
+        header = section.header
+        
+        # Nettoyer l'en-tête existant
+        for paragraph in header.paragraphs:
+            paragraph.clear()
+        
+        # --- LIGNE 1 : Logo, Titre, Code ---
+        # Créer un tableau à 3 colonnes pour la première ligne
+        top_table = header.add_table(rows=1, cols=3, width=Inches(6.5))
+        top_table.autofit = False
+        
+        # Ajuster les largeurs des colonnes
+        top_table.columns[0].width = Inches(1.5)  # Logo
+        top_table.columns[1].width = Inches(3.5)  # Titre
+        top_table.columns[2].width = Inches(1.5)  # Code
+        
+        # Colonne 1 : Logo
+        logo_cell = top_table.rows[0].cells[0]
+        logo_para = logo_cell.paragraphs[0]
+        
+        # Chemin vers le logo
+        logo_path = os.path.join(
+            os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+            'assets', 'images', 'logo_default.png'
+        )
+        
+        if os.path.exists(logo_path):
+            logo_run = logo_para.add_run()
+            logo_run.add_picture(logo_path, width=Inches(1.2))
+        else:
+            # Fallback si le logo n'existe pas
+            logo_para.add_run('LOGO')
+        
+        # Centrer verticalement le logo
+        tc_logo = logo_cell._element
+        tcPr_logo = tc_logo.get_or_add_tcPr()
+        tcVAlign_logo = OxmlElement('w:vAlign')
+        tcVAlign_logo.set(qn('w:val'), 'center')
+        tcPr_logo.append(tcVAlign_logo)
+        
+        # Colonne 2 : Titre centré
+        title_cell = top_table.rows[0].cells[1]
+        title_para = title_cell.paragraphs[0]
+        title_run = title_para.add_run(control_name)
+        title_run.font.name = 'Arial'
+        title_run.font.size = Pt(18)
+        title_run.font.bold = True
+        title_run.font.color.rgb = RGBColor(0, 0, 0)
+        title_para.alignment = WD_ALIGN_PARAGRAPH.CENTER
+        
+        # Centrer verticalement le titre
+        tc_title = title_cell._element
+        tcPr_title = tc_title.get_or_add_tcPr()
+        tcVAlign_title = OxmlElement('w:vAlign')
+        tcVAlign_title.set(qn('w:val'), 'center')
+        tcPr_title.append(tcVAlign_title)
+        
+        # Colonne 3 : Code de contrôle
+        code_cell = top_table.rows[0].cells[2]
+        code_para = code_cell.paragraphs[0]
+        code_run = code_para.add_run(control_code)
+        code_run.font.name = 'Arial'
+        code_run.font.size = Pt(10)
+        code_run.font.bold = True
+        code_run.font.color.rgb = RGBColor(0, 0, 0)
+        code_para.alignment = WD_ALIGN_PARAGRAPH.CENTER
+        
+        # Centrer verticalement le code
+        tc_code = code_cell._element
+        tcPr_code = tc_code.get_or_add_tcPr()
+        tcVAlign_code = OxmlElement('w:vAlign')
+        tcVAlign_code.set(qn('w:val'), 'center')
+        tcPr_code.append(tcVAlign_code)
+        
+        # Ajouter des bordures uniquement autour du tableau du haut (bordure externe)
+        tbl_top = top_table._element
+        tblPr_top = tbl_top.tblPr
+        if tblPr_top is None:
+            tblPr_top = OxmlElement('w:tblPr')
+            tbl_top.insert(0, tblPr_top)
+        
+        tblBorders_top = OxmlElement('w:tblBorders')
+        for border_name in ['top', 'left', 'right']:
+            border = OxmlElement(f'w:{border_name}')
+            border.set(qn('w:val'), 'single')
+            border.set(qn('w:sz'), '4')
+            border.set(qn('w:space'), '0')
+            border.set(qn('w:color'), '000000')
+            tblBorders_top.append(border)
+        # Pas de bordure bottom pour le tableau du haut
+        border_bottom = OxmlElement('w:bottom')
+        border_bottom.set(qn('w:val'), 'none')
+        border_bottom.set(qn('w:sz'), '0')
+        tblBorders_top.append(border_bottom)
+        # Supprimer les bordures internes verticales
+        for border_name in ['insideH', 'insideV']:
+            border = OxmlElement(f'w:{border_name}')
+            border.set(qn('w:val'), 'none')
+            border.set(qn('w:sz'), '0')
+            tblBorders_top.append(border)
+        tblPr_top.append(tblBorders_top)
+        
+        # --- LIGNE 2 : Tableau des informations (directement attaché sans espace) ---
+        info_table = header.add_table(rows=2, cols=6, width=Inches(6.5))
+        info_table.autofit = False
+        
+        # Définir les en-têtes du tableau
+        headers = [
+            'Application concernée',
+            'Couche concernée',
+            'Référence du risque',
+            'Nom du risque',
+            'Conclusion',
+            'Nom du contrôle'
+        ]
+        
+        # Remplir les en-têtes
+        header_cells = info_table.rows[0].cells
+        for i, header_text in enumerate(headers):
+            cell = header_cells[i]
+            cell_para = cell.paragraphs[0]
+            cell_run = cell_para.add_run(header_text)
+            cell_run.font.name = 'Arial'
+            cell_run.font.size = Pt(10)
+            cell_run.font.bold = True
+            cell_para.alignment = WD_ALIGN_PARAGRAPH.CENTER
+            
+            # Centrer verticalement
+            tc = cell._element
+            tcPr = tc.get_or_add_tcPr()
+            tcVAlign = OxmlElement('w:vAlign')
+            tcVAlign.set(qn('w:val'), 'center')
+            tcPr.append(tcVAlign)
+        
+        # Remplir les données du tableau avec contenu multiligne dans les cellules
+        data_cells = info_table.rows[1].cells
+        
+        # Extraire les données de la première section d'analyse si disponible
+        if analysis_results and len(analysis_results) > 0:
+            first_section = analysis_results[0]
+            items = first_section.get('items', [])
+            
+            if items and len(items) > 0:
+                first_item = items[0]
+                
+                # Données multilignes pour chaque cellule
+                data_values = [
+                    first_item.get('application', 'OneDrive'),
+                    first_item.get('couche', 'Données'),
+                    first_item.get('reference_risque', 'R182, R211'),
+                    'Indisponibilité du système d\'information\nPerte des données',  # Multiligne
+                    first_item.get('conclusion', ''),
+                    first_item.get('nom_controle', 'Sauvegarde des données des PCs')
+                ]
+            else:
+                data_values = ['OneDrive', 'Données', 'R182, R211', 'Indisponibilité du système d\'information\nPerte des données', '', 'Suivi des connexions via VPN']
+        else:
+            data_values = ['OneDrive', 'Données', 'R182, R211', 'Indisponibilité du système d\'information\nPerte des données', '', 'Suivi des connexions via VPN']
+        
+        for i, value in enumerate(data_values):
+            cell = data_cells[i]
+            cell_para = cell.paragraphs[0]
+            
+            # Gérer les valeurs multilignes
+            if '\n' in str(value):
+                lines = str(value).split('\n')
+                for j, line in enumerate(lines):
+                    if j > 0:
+                        cell_para = cell.add_paragraph()
+                    cell_run = cell_para.add_run(line)
+                    cell_run.font.name = 'Arial'
+                    cell_run.font.size = Pt(9)
+                    cell_para.alignment = WD_ALIGN_PARAGRAPH.CENTER
+            else:
+                cell_run = cell_para.add_run(str(value))
+                cell_run.font.name = 'Arial'
+                cell_run.font.size = Pt(9)
+                cell_para.alignment = WD_ALIGN_PARAGRAPH.CENTER
+            
+            # Centrer verticalement
+            tc = cell._element
+            tcPr = tc.get_or_add_tcPr()
+            tcVAlign = OxmlElement('w:vAlign')
+            tcVAlign.set(qn('w:val'), 'center')
+            tcPr.append(tcVAlign)
+        
+        # Configurer les bordures du tableau d'informations (sans bordure top car lié au tableau du haut)
+        tbl_info = info_table._element
+        tblPr_info = tbl_info.tblPr
+        if tblPr_info is None:
+            tblPr_info = OxmlElement('w:tblPr')
+            tbl_info.insert(0, tblPr_info)
+        
+        tblBorders_info = OxmlElement('w:tblBorders')
+        # Pas de bordure top
+        border_top = OxmlElement('w:top')
+        border_top.set(qn('w:val'), 'none')
+        border_top.set(qn('w:sz'), '0')
+        tblBorders_info.append(border_top)
+        # Bordures left, right, bottom, insideH, insideV
+        for border_name in ['left', 'right', 'insideH', 'insideV']:
+            border = OxmlElement(f'w:{border_name}')
+            border.set(qn('w:val'), 'single')
+            border.set(qn('w:sz'), '4')
+            border.set(qn('w:space'), '0')
+            border.set(qn('w:color'), '000000')
+            tblBorders_info.append(border)
+        # Pas de bordure bottom pour ce tableau
+        border_bottom = OxmlElement('w:bottom')
+        border_bottom.set(qn('w:val'), 'none')
+        border_bottom.set(qn('w:sz'), '0')
+        tblBorders_info.append(border_bottom)
+        tblPr_info.append(tblBorders_info)
+        
+        # --- LIGNE 3 : Tableau du bas (Destinataire, Ref Description, PS3) ---
+        bottom_table = header.add_table(rows=1, cols=3, width=Inches(6.5))
+        bottom_table.autofit = False
+        
+        bottom_table.columns[0].width = Inches(3.5)
+        bottom_table.columns[1].width = Inches(2.0)
+        bottom_table.columns[2].width = Inches(1.0)
+        
+        # Cellule 1 : Destinataire
+        dest_cell = bottom_table.rows[0].cells[0]
+        dest_para = dest_cell.paragraphs[0]
+        dest_run1 = dest_para.add_run('Destinataire : ')
+        dest_run1.font.name = 'Arial'
+        dest_run1.font.size = Pt(9)
+        dest_run1.font.bold = True
+        dest_run2 = dest_para.add_run('Tout le personnel de la direction des systèmes d\'informations')
+        dest_run2.font.name = 'Arial'
+        dest_run2.font.size = Pt(9)
+        
+        # Centrer verticalement
+        tc_dest = dest_cell._element
+        tcPr_dest = tc_dest.get_or_add_tcPr()
+        tcVAlign_dest = OxmlElement('w:vAlign')
+        tcVAlign_dest.set(qn('w:val'), 'center')
+        tcPr_dest.append(tcVAlign_dest)
+        
+        # Cellule 2 : Ref Description
+        ref_cell = bottom_table.rows[0].cells[1]
+        ref_para = ref_cell.paragraphs[0]
+        ref_run1 = ref_para.add_run('Ref Description : ')
+        ref_run1.font.name = 'Arial'
+        ref_run1.font.size = Pt(9)
+        ref_run1.font.bold = True
+        ref_run2 = ref_para.add_run('CTL_SSI_DON_SAVE_2')
+        ref_run2.font.name = 'Arial'
+        ref_run2.font.size = Pt(9)
+        
+        # Centrer verticalement
+        tc_ref = ref_cell._element
+        tcPr_ref = tc_ref.get_or_add_tcPr()
+        tcVAlign_ref = OxmlElement('w:vAlign')
+        tcVAlign_ref.set(qn('w:val'), 'center')
+        tcPr_ref.append(tcVAlign_ref)
+        
+        # Cellule 3 : Code supplémentaire
+        ps_cell = bottom_table.rows[0].cells[2]
+        ps_para = ps_cell.paragraphs[0]
+        ps_run = ps_para.add_run('PS3_BC_SSI_FEN_3')
+        ps_run.font.name = 'Arial'
+        ps_run.font.size = Pt(9)
+        ps_para.alignment = WD_ALIGN_PARAGRAPH.CENTER
+        
+        # Centrer verticalement
+        tc_ps = ps_cell._element
+        tcPr_ps = tc_ps.get_or_add_tcPr()
+        tcVAlign_ps = OxmlElement('w:vAlign')
+        tcVAlign_ps.set(qn('w:val'), 'center')
+        tcPr_ps.append(tcVAlign_ps)
+        
+        # Configurer les bordures du tableau du bas (ferme le tableau complet)
+        tbl_bottom = bottom_table._element
+        tblPr_bottom = tbl_bottom.tblPr
+        if tblPr_bottom is None:
+            tblPr_bottom = OxmlElement('w:tblPr')
+            tbl_bottom.insert(0, tblPr_bottom)
+        
+        tblBorders_bottom = OxmlElement('w:tblBorders')
+        # Pas de bordure top car lié au tableau info
+        border_top = OxmlElement('w:top')
+        border_top.set(qn('w:val'), 'none')
+        border_top.set(qn('w:sz'), '0')
+        tblBorders_bottom.append(border_top)
+        # Bordures left, right, bottom, insideV
+        for border_name in ['left', 'right', 'bottom', 'insideV']:
+            border = OxmlElement(f'w:{border_name}')
+            border.set(qn('w:val'), 'single')
+            border.set(qn('w:sz'), '4')
+            border.set(qn('w:space'), '0')
+            border.set(qn('w:color'), '000000')
+            tblBorders_bottom.append(border)
+        # Pas de insideH car une seule ligne
+        border_insideH = OxmlElement('w:insideH')
+        border_insideH.set(qn('w:val'), 'none')
+        border_insideH.set(qn('w:sz'), '0')
+        tblBorders_bottom.append(border_insideH)
+        tblPr_bottom.append(tblBorders_bottom)
+    
     def _add_footer_with_page_numbers(self, document):
         """
         Ajoute un bas de page avec un tableau à 3 colonnes et 2 lignes :
@@ -305,6 +613,14 @@ class ReportGenerator:
             font.name = 'Calibri'
             font.size = Pt(11)
 
+            # --- Ajouter l'en-tête avec logo et tableau ---
+            control_name = control_data.get('name', 'N/A')
+            control_code = control_data.get('code', 'CTL_SSI_02_SAVE_2025_10_3')
+            self._add_header_with_logo_and_table(document, control_name, control_code, analysis_results)
+            
+            # --- Ajouter le bas de page ---
+            self._add_footer_with_page_numbers(document)
+
             # --- En-tête du document ---
             document.add_heading("Rapport d'Analyse de Controle", level=0)
             
@@ -314,14 +630,11 @@ class ReportGenerator:
 
             p_control = document.add_paragraph()
             p_control.add_run('Controle execute : ').bold = True
-            p_control.add_run(control_data.get('name', 'N/A'))
+            p_control.add_run(control_name)
             
             p_period = document.add_paragraph()
             p_period.add_run('Periode : ').bold = True
             p_period.add_run(period_label)
-            
-            # --- Ajouter le bas de page ---
-            self._add_footer_with_page_numbers(document)
             
             document.add_page_break()
 
