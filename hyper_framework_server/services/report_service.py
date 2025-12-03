@@ -9,16 +9,62 @@ from docx.oxml.ns import qn
 import matplotlib
 matplotlib.use('Agg')  # Mode non-interactif
 import matplotlib.pyplot as plt
+import matplotlib.patches as mpatches
 import os
 import tempfile
 import re
 
 class ReportGenerator:
-    def _add_header_with_logo_and_table(self, document, control_name, control_code, analysis_results):
+    def _create_conclusion_hexagon(self, compliance_rate):
+        """
+        Crée un hexagone coloré selon le taux de conformité.
+        
+        Args:
+            compliance_rate: Taux de conformité en pourcentage (0-100)
+            
+        Returns:
+            Chemin vers l'image temporaire de l'hexagone
+        """
+        # Déterminer la couleur selon le taux
+        if compliance_rate >= 95:
+            color = '#4CAF50'  # Vert
+        elif compliance_rate >= 50:
+            color = '#FFC107'  # Jaune/Orange
+        else:
+            color = '#F44336'  # Rouge
+        
+        # Créer la figure
+        fig, ax = plt.subplots(figsize=(0.5, 0.5), dpi=150)
+        ax.set_xlim(-1.2, 1.2)
+        ax.set_ylim(-1.2, 1.2)
+        ax.axis('off')
+        
+        # Créer l'hexagone
+        hexagon = mpatches.RegularPolygon(
+            (0, 0),  # Centre
+            6,  # Nombre de côtés
+            radius=1,
+            facecolor=color,
+            edgecolor='black',
+            linewidth=1
+        )
+        ax.add_patch(hexagon)
+        
+        # Sauvegarder dans un fichier temporaire
+        temp_file = tempfile.NamedTemporaryFile(delete=False, suffix='.png')
+        plt.savefig(temp_file.name, format='png', dpi=150, bbox_inches='tight', pad_inches=0)
+        plt.close()
+        
+        return temp_file.name
+    def _add_header_with_logo_and_table(self, document, control_name, control_code, analysis_results, control_metadata=None, execution_date=None):
         """
         Ajoute un en-tête avec :
         - Ligne 1 : Logo (gauche) | Titre centré | Code de contrôle (droite)
         - Ligne 2 : Tableau avec les informations du contrôle
+        
+        Args:
+            control_metadata: Dictionnaire contenant les métadonnées du contrôle
+            execution_date: Date d'exécution au format YYYYMMDD-HHMMSS
         """
         section = document.sections[0]
         header = section.header
@@ -29,11 +75,12 @@ class ReportGenerator:
         
         # --- LIGNE 1 : Logo, Titre, Code ---
         # Créer un tableau à 3 colonnes pour la première ligne
-        top_table = header.add_table(rows=1, cols=3, width=Inches(6.5))
+        top_table = header.add_table(rows=1, cols=3, width=Inches(6.0))
         top_table.autofit = False
+        top_table.alignment = WD_ALIGN_PARAGRAPH.CENTER
         
         # Ajuster les largeurs des colonnes
-        top_table.columns[0].width = Inches(1.5)  # Logo
+        top_table.columns[0].width = Inches(1.0)  # Logo
         top_table.columns[1].width = Inches(3.5)  # Titre
         top_table.columns[2].width = Inches(1.5)  # Code
         
@@ -49,7 +96,7 @@ class ReportGenerator:
         
         if os.path.exists(logo_path):
             logo_run = logo_para.add_run()
-            logo_run.add_picture(logo_path, width=Inches(1.2))
+            logo_run.add_picture(logo_path, width=Inches(0.8))
         else:
             # Fallback si le logo n'existe pas
             logo_para.add_run('LOGO')
@@ -66,7 +113,7 @@ class ReportGenerator:
         title_para = title_cell.paragraphs[0]
         title_run = title_para.add_run(control_name)
         title_run.font.name = 'Arial'
-        title_run.font.size = Pt(18)
+        title_run.font.size = Pt(14)
         title_run.font.bold = True
         title_run.font.color.rgb = RGBColor(0, 0, 0)
         title_para.alignment = WD_ALIGN_PARAGRAPH.CENTER
@@ -78,12 +125,24 @@ class ReportGenerator:
         tcVAlign_title.set(qn('w:val'), 'center')
         tcPr_title.append(tcVAlign_title)
         
-        # Colonne 3 : Code de contrôle
+        # Colonne 3 : Code de contrôle avec date dynamique
         code_cell = top_table.rows[0].cells[2]
         code_para = code_cell.paragraphs[0]
-        code_run = code_para.add_run(control_code)
+        
+        # Construire le code avec la date d'exécution
+        if control_metadata and execution_date:
+            control_code_prefix = control_metadata.get('control_code_prefix', control_code)
+            # Extraire la date du timestamp (format: YYYYMMDD-HHMMSS)
+            date_part = execution_date.split('-')[0]  # YYYYMMDD
+            # Convertir en format YYYY_MM_DD
+            formatted_date = f"{date_part[:4]}_{date_part[4:6]}_{date_part[6:8]}"
+            full_control_code = f"{control_code_prefix}_{formatted_date}"
+        else:
+            full_control_code = control_code
+        
+        code_run = code_para.add_run(full_control_code)
         code_run.font.name = 'Arial'
-        code_run.font.size = Pt(10)
+        code_run.font.size = Pt(8)
         code_run.font.bold = True
         code_run.font.color.rgb = RGBColor(0, 0, 0)
         code_para.alignment = WD_ALIGN_PARAGRAPH.CENTER
@@ -124,8 +183,9 @@ class ReportGenerator:
         tblPr_top.append(tblBorders_top)
         
         # --- LIGNE 2 : Tableau des informations (directement attaché sans espace) ---
-        info_table = header.add_table(rows=2, cols=6, width=Inches(6.5))
+        info_table = header.add_table(rows=2, cols=6, width=Inches(6.0))
         info_table.autofit = False
+        info_table.alignment = WD_ALIGN_PARAGRAPH.CENTER
         
         # Définir les en-têtes du tableau
         headers = [
@@ -144,7 +204,7 @@ class ReportGenerator:
             cell_para = cell.paragraphs[0]
             cell_run = cell_para.add_run(header_text)
             cell_run.font.name = 'Arial'
-            cell_run.font.size = Pt(10)
+            cell_run.font.size = Pt(8)
             cell_run.font.bold = True
             cell_para.alignment = WD_ALIGN_PARAGRAPH.CENTER
             
@@ -155,49 +215,88 @@ class ReportGenerator:
             tcVAlign.set(qn('w:val'), 'center')
             tcPr.append(tcVAlign)
         
-        # Remplir les données du tableau avec contenu multiligne dans les cellules
         data_cells = info_table.rows[1].cells
         
-        # Extraire les données de la première section d'analyse si disponible
+        # Utiliser les métadonnées du contrôle si disponibles
+        if control_metadata:
+            application = control_metadata.get('application', 'N/A')
+            layer = control_metadata.get('layer', 'N/A')
+            risk_reference = control_metadata.get('risk_reference', 'N/A')
+            risk_name = control_metadata.get('risk_name', 'N/A')
+            control_name_meta = control_metadata.get('control_name', control_name)
+        else:
+            # Valeurs par défaut si pas de métadonnées
+            application = 'N/A'
+            layer = 'N/A'
+            risk_reference = 'N/A'
+            risk_name = 'N/A'
+            control_name_meta = control_name
+        
+        # Calculer le taux de conformité pour la conclusion (hexagone)
+        compliance_rate = 0
         if analysis_results and len(analysis_results) > 0:
             first_section = analysis_results[0]
-            items = first_section.get('items', [])
+            summary_stats = first_section.get('summary_stats', {})
             
-            if items and len(items) > 0:
-                first_item = items[0]
-                
-                # Données multilignes pour chaque cellule
-                data_values = [
-                    first_item.get('application', 'OneDrive'),
-                    first_item.get('couche', 'Données'),
-                    first_item.get('reference_risque', 'R182, R211'),
-                    'Indisponibilité du système d\'information\nPerte des données',  # Multiligne
-                    first_item.get('conclusion', ''),
-                    first_item.get('nom_controle', 'Sauvegarde des données des PCs')
-                ]
-            else:
-                data_values = ['OneDrive', 'Données', 'R182, R211', 'Indisponibilité du système d\'information\nPerte des données', '', 'Suivi des connexions via VPN']
-        else:
-            data_values = ['OneDrive', 'Données', 'R182, R211', 'Indisponibilité du système d\'information\nPerte des données', '', 'Suivi des connexions via VPN']
+            # Chercher le taux dans les statistiques
+            for key, value in summary_stats.items():
+                if 'taux' in key.lower() or 'conformité' in key.lower() or 'conformite' in key.lower():
+                    # Extraire le nombre du pourcentage
+                    if isinstance(value, str):
+                        match = re.search(r'(\d+\.?\d*)', value)
+                        if match:
+                            compliance_rate = float(match.group(1))
+                            break
+                    elif isinstance(value, (int, float)):
+                        compliance_rate = float(value)
+                        break
+        
+        data_values = [
+            application,
+            layer,
+            risk_reference,
+            risk_name,
+            None,  # Conclusion sera une image d'hexagone
+            control_name_meta
+        ]
         
         for i, value in enumerate(data_values):
             cell = data_cells[i]
             cell_para = cell.paragraphs[0]
             
+            # Colonne 4 (index 4) = Conclusion avec hexagone
+            if i == 4:
+                try:
+                    hexagon_path = self._create_conclusion_hexagon(compliance_rate)
+                    cell_run = cell_para.add_run()
+                    cell_run.add_picture(hexagon_path, width=Inches(0.25))
+                    cell_para.alignment = WD_ALIGN_PARAGRAPH.CENTER
+                    # Nettoyer le fichier temporaire
+                    try:
+                        os.unlink(hexagon_path)
+                    except:
+                        pass
+                except Exception as e:
+                    print(f"Erreur lors de la création de l'hexagone: {e}")
+                    # Fallback: afficher le taux en texte
+                    cell_run = cell_para.add_run(f"{compliance_rate:.1f}%")
+                    cell_run.font.name = 'Arial'
+                    cell_run.font.size = Pt(7)
+                    cell_para.alignment = WD_ALIGN_PARAGRAPH.CENTER
             # Gérer les valeurs multilignes
-            if '\n' in str(value):
+            elif value is not None and '\n' in str(value):
                 lines = str(value).split('\n')
                 for j, line in enumerate(lines):
                     if j > 0:
                         cell_para = cell.add_paragraph()
                     cell_run = cell_para.add_run(line)
                     cell_run.font.name = 'Arial'
-                    cell_run.font.size = Pt(9)
+                    cell_run.font.size = Pt(7)
                     cell_para.alignment = WD_ALIGN_PARAGRAPH.CENTER
             else:
-                cell_run = cell_para.add_run(str(value))
+                cell_run = cell_para.add_run(str(value) if value is not None else '')
                 cell_run.font.name = 'Arial'
-                cell_run.font.size = Pt(9)
+                cell_run.font.size = Pt(7)
                 cell_para.alignment = WD_ALIGN_PARAGRAPH.CENTER
             
             # Centrer verticalement
@@ -236,11 +335,12 @@ class ReportGenerator:
         tblPr_info.append(tblBorders_info)
         
         # --- LIGNE 3 : Tableau du bas (Destinataire, Ref Description, PS3) ---
-        bottom_table = header.add_table(rows=1, cols=3, width=Inches(6.5))
+        bottom_table = header.add_table(rows=1, cols=3, width=Inches(6.0))
         bottom_table.autofit = False
+        bottom_table.alignment = WD_ALIGN_PARAGRAPH.CENTER
         
-        bottom_table.columns[0].width = Inches(3.5)
-        bottom_table.columns[1].width = Inches(2.0)
+        bottom_table.columns[0].width = Inches(3.2)
+        bottom_table.columns[1].width = Inches(1.8)
         bottom_table.columns[2].width = Inches(1.0)
         
         # Cellule 1 : Destinataire
@@ -248,11 +348,11 @@ class ReportGenerator:
         dest_para = dest_cell.paragraphs[0]
         dest_run1 = dest_para.add_run('Destinataire : ')
         dest_run1.font.name = 'Arial'
-        dest_run1.font.size = Pt(9)
+        dest_run1.font.size = Pt(7)
         dest_run1.font.bold = True
         dest_run2 = dest_para.add_run('Tout le personnel de la direction des systèmes d\'informations')
         dest_run2.font.name = 'Arial'
-        dest_run2.font.size = Pt(9)
+        dest_run2.font.size = Pt(7)
         
         # Centrer verticalement
         tc_dest = dest_cell._element
@@ -261,16 +361,21 @@ class ReportGenerator:
         tcVAlign_dest.set(qn('w:val'), 'center')
         tcPr_dest.append(tcVAlign_dest)
         
-        # Cellule 2 : Ref Description
+        # Cellule 2 : Ref Description (depuis métadonnées)
         ref_cell = bottom_table.rows[0].cells[1]
         ref_para = ref_cell.paragraphs[0]
         ref_run1 = ref_para.add_run('Ref Description : ')
         ref_run1.font.name = 'Arial'
-        ref_run1.font.size = Pt(9)
+        ref_run1.font.size = Pt(7)
         ref_run1.font.bold = True
-        ref_run2 = ref_para.add_run('CTL_SSI_DON_SAVE_2')
+        
+        ref_description = 'N/A'
+        if control_metadata:
+            ref_description = control_metadata.get('ref_description', 'N/A')
+        
+        ref_run2 = ref_para.add_run(ref_description)
         ref_run2.font.name = 'Arial'
-        ref_run2.font.size = Pt(9)
+        ref_run2.font.size = Pt(7)
         
         # Centrer verticalement
         tc_ref = ref_cell._element
@@ -284,7 +389,7 @@ class ReportGenerator:
         ps_para = ps_cell.paragraphs[0]
         ps_run = ps_para.add_run('PS3_BC_SSI_FEN_3')
         ps_run.font.name = 'Arial'
-        ps_run.font.size = Pt(9)
+        ps_run.font.size = Pt(7)
         ps_para.alignment = WD_ALIGN_PARAGRAPH.CENTER
         
         # Centrer verticalement
@@ -598,10 +703,14 @@ class ReportGenerator:
             print(f"Erreur lors de la génération du graphique '{title}': {e}")
             return None
     
-    def generate_and_save_report(self, user_data, control_data, analysis_results, save_path, period_label='N/A'):
+    def generate_and_save_report(self, user_data, control_data, analysis_results, save_path, period_label='N/A', control_metadata=None, execution_date=None):
         """
         Génère un rapport DOCX programmatiquement en utilisant python-docx.
         Inclut les graphiques générés avec matplotlib.
+        
+        Args:
+            control_metadata: Métadonnées du contrôle définies dans le script
+            execution_date: Date d'exécution au format YYYYMMDD-HHMMSS
         """
         document = docx.Document()
         temp_chart_files = []  # Pour nettoyer les fichiers temporaires
@@ -616,7 +725,14 @@ class ReportGenerator:
             # --- Ajouter l'en-tête avec logo et tableau ---
             control_name = control_data.get('name', 'N/A')
             control_code = control_data.get('code', 'CTL_SSI_02_SAVE_2025_10_3')
-            self._add_header_with_logo_and_table(document, control_name, control_code, analysis_results)
+            self._add_header_with_logo_and_table(
+                document, 
+                control_name, 
+                control_code, 
+                analysis_results,
+                control_metadata=control_metadata,
+                execution_date=execution_date
+            )
             
             # --- Ajouter le bas de page ---
             self._add_footer_with_page_numbers(document)

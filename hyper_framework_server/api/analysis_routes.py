@@ -118,7 +118,7 @@ def execute_control(control_id):
         script_path = os.path.join(current_app.config['SCRIPTS_DIR'], control['script_filename'])
         run_timestamp = datetime.now().strftime('%Y%m%d-%H%M%S')
         
-        # Nouvelle structure de dossiers
+        # Nouvelle structure de dossiers (simplifiée pour éviter les chemins trop longs)
         save_dir = current_app.config['SAVE_DIR']
         control_folder = os.path.join(save_dir, control_name)
         period_folder = os.path.join(control_folder, f"{control_name} {period_label}")
@@ -129,8 +129,11 @@ def execute_control(control_id):
         try:
             os.makedirs(inputs_dir, exist_ok=True)
             os.makedirs(outputs_dir, exist_ok=True)
+
         except Exception as e:
             print(f"Erreur lors de la création des dossiers: {e}")
+            import traceback
+            traceback.print_exc()
             return jsonify({'error': f"Impossible de créer les dossiers: {e}"}), 500
         
         input_file_paths = {}
@@ -154,7 +157,7 @@ def execute_control(control_id):
             input_file_paths[key] = saved_path
             
             # Enregistrer les infos du fichier (avec chemin relatif pour flexibilité)
-            relative_path = os.path.join(control_name, f"{control_name} {period_label}", "Inputs", unique_filename)
+            relative_path = os.path.join(control_name, period_label, "Inputs", unique_filename)
             files_info.append({
                 'key': key,
                 'original_name': file.filename,
@@ -162,7 +165,7 @@ def execute_control(control_id):
                 'relative_path': relative_path
             })
             
-        results_with_dfs = execute_script_from_file(script_path, input_file_paths, outputs_dir)
+        results_with_dfs, control_metadata = execute_script_from_file(script_path, input_file_paths, outputs_dir)
         
         def convert_timestamps_to_strings(obj):
             """Convertit récursivement tous les Timestamps en strings pour la sérialisation JSON"""
@@ -201,12 +204,14 @@ def execute_control(control_id):
 
         # Sauvegarder les résultats JSON dans le dossier Outputs
         try:
+            # S'assurer que le dossier Outputs existe toujours
+            os.makedirs(outputs_dir, exist_ok=True)
             results_json_path = os.path.join(outputs_dir, f"results_{run_timestamp}.json")
             with open(results_json_path, 'w', encoding='utf-8') as f:
                 json.dump(serialized_results, f, ensure_ascii=False, indent=2)
             
             # Chemin relatif pour la base de données
-            relative_results_path = os.path.join(control_name, f"{control_name} {period_label}", "Outputs", f"results_{run_timestamp}.json")
+            relative_results_path = os.path.join(control_name, period_label, "Outputs", f"results_{run_timestamp}.json")
         except Exception as e:
             print(f"Erreur lors de la sauvegarde du fichier JSON: {e}")
             relative_results_path = None
@@ -229,6 +234,9 @@ def execute_control(control_id):
         try:
             from ..services.report_service import report_service
             
+            # S'assurer que le dossier Outputs existe toujours
+            os.makedirs(outputs_dir, exist_ok=True)
+            
             # Utiliser un nom de fichier court pour éviter la limite de 260 caractères Windows
             report_filename = f"Rapport_{period_label}_{run_timestamp}.docx"
             report_path = os.path.join(outputs_dir, report_filename)
@@ -238,7 +246,9 @@ def execute_control(control_id):
                 control_data={'name': control_name},
                 analysis_results=serialized_results,
                 save_path=report_path,
-                period_label=period_label
+                period_label=period_label,
+                control_metadata=control_metadata,
+                execution_date=run_timestamp
             )
         except Exception as e:
             print(f"Erreur lors de la génération automatique du rapport Word: {e}")

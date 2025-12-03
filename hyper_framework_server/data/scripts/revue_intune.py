@@ -10,6 +10,17 @@ __hyper_inputs__ = [
 # Périodicité du contrôle (analyse hebdomadaire)
 __hyper_periodicity__ = 'WEEK'
 
+# Métadonnées du contrôle pour l'en-tête du rapport
+__hyper_control_metadata__ = {
+    "control_code_prefix": "CTL_SSI_03_INT",  # La date sera ajoutée automatiquement
+    "application": "Intune, AD, GLPI",
+    "layer": "Physique",
+    "risk_reference": "R25",
+    "risk_name": "Utilisation non autorisée des équipements",
+    "control_name": "Revue des équipements multiples par utilisateur",
+    "ref_description": "CTL_SSI_PHY_INT_1"
+}
+
 import pandas as pd
 import numpy as np
 import chardet
@@ -122,6 +133,8 @@ def creer_fichier_intermediaire(intune_df, ad_df, glpi_df, fichier_sortie_path):
             df[col] = pd.NA
 
     df_final = df[colonnes_finales]
+    # Créer le dossier de sortie s'il n'existe pas
+    os.makedirs(os.path.dirname(fichier_sortie_path), exist_ok=True)
     df_final.to_excel(fichier_sortie_path, index=False)
     print(f"Fichier intermédiaire créé avec succès : {fichier_sortie_path}")
     return df_final
@@ -168,6 +181,9 @@ def traiter_fichier_excel(fichier_entree, fichier_sortie):
     # Trier les résultats par Propriétaire
     df_final = df_final.sort_values(by=['Propriétaire'])
     df_filtree = df_filtree.sort_values(by=['Propriétaire'])
+    
+    # Créer le dossier de sortie s'il n'existe pas
+    os.makedirs(os.path.dirname(fichier_sortie), exist_ok=True)
     
     # Créer un fichier Excel avec deux feuilles
     with pd.ExcelWriter(fichier_sortie) as writer:

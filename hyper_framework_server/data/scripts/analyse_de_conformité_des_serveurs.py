@@ -9,6 +9,17 @@ __hyper_inputs__ = [
 # Périodicité du contrôle (analyse hebdomadaire)
 __hyper_periodicity__ = 'WEEK'
 
+# Métadonnées du contrôle pour l'en-tête du rapport
+__hyper_control_metadata__ = {
+    "control_code_prefix": "CTL_SSI_01_SRV",  # La date sera ajoutée automatiquement
+    "application": "CrowdStrike, Tanium, AD",
+    "layer": "Physique",
+    "risk_reference": "R24",
+    "risk_name": "Absence de contrôle efficace de modification de configuration",
+    "control_name": "Conformité des serveurs",
+    "ref_description": "CTL_SSI_PHY_SRV_1"
+}
+
 # -------------------------------------------------------------------
 
 import pandas as pd
@@ -127,6 +138,8 @@ def run(input_file_paths, output_dir_path):
 
         # Sauvegarde
         try:
+            # Créer le dossier de sortie s'il n'existe pas
+            os.makedirs(output_dir_path, exist_ok=True)
             timestamp = datetime.datetime.now().strftime('%Y%m%d-%H%M%S')
             output_filepath = os.path.join(output_dir_path, f"rapport_conformite_complet_{timestamp}.xlsx")
             ad_df_enriched.to_excel(output_filepath, index=False, engine='openpyxl')

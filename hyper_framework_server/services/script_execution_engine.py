@@ -41,8 +41,13 @@ def execute_script_from_file(script_path: str, input_file_paths: dict, output_di
             for result_section in results:
                 if 'summary_stats' in result_section and chart_configs:
                     result_section['chart_configs'] = chart_configs
+        
+        # Extraire les métadonnées du contrôle si elles existent
+        control_metadata = None
+        if hasattr(analysis_module, '__hyper_control_metadata__'):
+            control_metadata = getattr(analysis_module, '__hyper_control_metadata__')
 
-        return results
+        return results, control_metadata
 
     except Exception as e:
         # En cas d'erreur dans le script, on la propage

@@ -14,6 +14,17 @@ __hyper_inputs__ = [
 # Périodicité du contrôle (analyse hebdomadaire)
 __hyper_periodicity__ = 'WEEK'
 
+# Métadonnées du contrôle pour l'en-tête du rapport
+__hyper_control_metadata__ = {
+    "control_code_prefix": "CTL_SSI_01_TMO",  # La date sera ajoutée automatiquement
+    "application": "CrowdStrike, Tanium, AD, GLPI, Intune",
+    "layer": "Physique",
+    "risk_reference": "R24",
+    "risk_name": "Absence de contrôle efficace de modification de configuration",
+    "control_name": "Conformité des terminaux",
+    "ref_description": "CTL_SSI_PHY_TMO_1"
+}
+
 # --- Import des bibliothèques nécessaires ---
 import pandas as pd
 import numpy as np

@@ -8,6 +8,17 @@ __hyper_inputs__ = [
 # Périodicité du contrôle (analyse hebdomadaire)
 __hyper_periodicity__ = 'WEEK'
 
+# Métadonnées du contrôle pour l'en-tête du rapport
+__hyper_control_metadata__ = {
+    "control_code_prefix": "CTL_SSI_02_SAVE",  # La date sera ajoutée automatiquement
+    "application": "OneDrive",
+    "layer": "Données",
+    "risk_reference": "R182, R211",
+    "risk_name": "Indisponibilité du système d'information\nPerte des données",
+    "control_name": "Sauvegarde des données des PCs",
+    "ref_description": "CTL_SSI_DON_SAVE_2"
+}
+
 # Configuration des graphiques à afficher
 # Cette section définit les graphiques Vega-Lite qui seront générés automatiquement
 __hyper_charts__ = [
@@ -306,6 +317,9 @@ def compute_app_flags(ad_df: pd.DataFrame, users_df: pd.DataFrame, onedrive_df: 
 # Traitement principal
 # ================================
 def traiter(onedrive_path, users_path, ad_path, output_dir):
+    # Créer le dossier de sortie s'il n'existe pas
+    os.makedirs(output_dir, exist_ok=True)
+    
     onedrive_df = read_csv_safely(onedrive_path)   # Extraction OneDrive
     users_df    = read_csv_safely(users_path)      # Liste des licences OneDrive
     ad_df       = read_ad_utf16_mixed(ad_path)     # Utilisateur AD
