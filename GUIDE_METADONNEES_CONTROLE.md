@@ -18,7 +18,9 @@ __hyper_control_metadata__ = {
     "risk_reference": "R123, R456",             # Références des risques (séparées par des virgules)
     "risk_name": "Nom du risque",               # Nom du risque (peut être multiligne avec \n)
     "control_name": "Nom du contrôle",          # Nom complet du contrôle
-    "ref_description": "CTL_SSI_XXX_XXX_X"      # Référence de description
+    "ref_description": "CTL_SSI_XXX_XXX_X",     # Référence de description
+    "description": "Description du contrôle",   # Description détaillée du contrôle
+    "analyse": "Points d'analyse du contrôle"   # Liste des points d'analyse (peut être multiligne)
 }
 ```
 
@@ -95,6 +97,30 @@ La référence de description du contrôle (différente du code).
 - `"CTL_SSI_PHY_TMO_1"`
 - `"CTL_SSI_PHY_SRV_1"`
 
+### 8. `description`
+**Format :** Texte libre
+
+La description détaillée du contrôle expliquant son objectif.
+
+**Exemples :**
+- `"Vérifier que la synchronisation des données des utilisateurs de SABC est activée sur OneDrive."`
+- `"Ce contrôle a pour but d'assurer le suivi de la conformité des terminaux mis à la disposition du personnel du Groupe SABC."`
+- `"Ce contrôle a pour but d'assurer le suivi de la conformité des serveurs du Groupe SABC."`
+
+### 9. `analyse`
+**Format :** Texte libre (supporte le multiligne avec `\n` ou triple quotes)
+
+La liste des points d'analyse effectués par le contrôle. Pour les listes à puces, utiliser le caractère `•`.
+
+**Exemples :**
+- Simple : `"Ressortir les utilisateurs dont les données n'ont pas été synchronisées sur OneDrive au cours des 30 derniers jours."`
+- Multiligne :
+```python
+"""• Ressortir les équipements Windows non-conformes sur Intune ;
+• Ressortir les équipements de l'AD qui ne sont pas enrôlés sur Intune ;
+• Ressortir les ordinateurs personnels qui sont enrôlés sur Intune."""
+```
+
 ---
 
 ## Exemples Complets
@@ -119,7 +145,9 @@ __hyper_control_metadata__ = {
     "risk_reference": "R182, R211",
     "risk_name": "Indisponibilité du système d'information\nPerte des données",
     "control_name": "Sauvegarde des données des PCs",
-    "ref_description": "CTL_SSI_DON_SAVE_2"
+    "ref_description": "CTL_SSI_DON_SAVE_2",
+    "description": "Vérifier que la synchronisation des données des utilisateurs de SABC est activée sur OneDrive.",
+    "analyse": "Ressortir les utilisateurs dont les données n'ont pas été synchronisées sur OneDrive au cours des 30 derniers jours."
 }
 
 # ... reste du script ...
@@ -145,7 +173,15 @@ __hyper_control_metadata__ = {
     "risk_reference": "R24",
     "risk_name": "Absence de contrôle efficace de modification de configuration",
     "control_name": "Conformité des terminaux",
-    "ref_description": "CTL_SSI_PHY_TMO_1"
+    "ref_description": "CTL_SSI_PHY_TMO_1",
+    "description": "Ce contrôle a pour but d'assurer le suivi de la conformité des terminaux mis à la disposition du personnel du Groupe SABC.",
+    "analyse": """• Ressortir les équipements Windows non-conformes sur Intune (compliance ≠ compliant) ;
+• Ressortir les équipements de l'AD qui ne sont pas enrôlés sur Intune ;
+• Ressortir les ordinateurs personnels qui sont enrôlés sur Intune ;
+• Ressortir les équipements de l'AD qui n'apparaissent pas sur CrowdStrike ;
+• Ressortir les équipements de l'AD qui n'apparaissent pas sur Tanium ;
+• Ressortir les équipements de l'AD qui ne remontent pas LAPS ;
+• Ressortir les équipements de l'AD dont la version de Windows < 10.0 (19045)."""
 }
 
 # ... reste du script ...
@@ -171,7 +207,11 @@ __hyper_control_metadata__ = {
     "risk_reference": "R24",
     "risk_name": "Absence de contrôle efficace de modification de configuration",
     "control_name": "Conformité des serveurs",
-    "ref_description": "CTL_SSI_PHY_SRV_1"
+    "ref_description": "CTL_SSI_PHY_SRV_1",
+    "description": "Ce contrôle a pour but d'assurer le suivi de la conformité des serveurs du Groupe SABC.",
+    "analyse": """• Ressortir les serveurs de l'AD qui n'apparaissent pas sur CrowdStrike ;
+• Ressortir les serveurs de l'AD qui n'apparaissent pas sur Tanium ;
+• Ressortir les serveurs de l'AD dont l'OS est antérieur à Windows Server 2016."""
 }
 
 # ... reste du script ...

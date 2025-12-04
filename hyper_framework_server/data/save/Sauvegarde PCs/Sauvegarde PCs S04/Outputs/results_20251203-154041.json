@@ -1,0 +1,368 @@
+[
+  {
+    "title": "Sauvegardes des données PCs",
+    "excel_output": "D:\\NGAPEP01\\OneDrive - Castel Afrique\\Documents\\Projet SABC\\Projet 6.0\\Hyper-Framework\\hyper_framework_server\\data\\save\\Sauvegarde PCs\\Sauvegarde PCs S04\\Outputs\\Rapport de conformité sauvegarde_Pcs.xlsx",
+    "display_columns": [
+      {
+        "key": "Description",
+        "label": "Description"
+      },
+      {
+        "key": "LastLogonDate",
+        "label": "LastLogonDate"
+      },
+      {
+        "key": "SamAccountName",
+        "label": "SamAccountName"
+      },
+      {
+        "key": "UserPrincipalName",
+        "label": "UserPrincipalName"
+      },
+      {
+        "key": "Comptes ayant une licence OneDrive",
+        "label": "Comptes ayant une licence OneDrive"
+      },
+      {
+        "key": "Comptes Sauvegardés",
+        "label": "Comptes Sauvegardés"
+      },
+      {
+        "key": ">= 30 Jrs",
+        "label": ">= 30 Jrs"
+      }
+    ],
+    "summary_stats": {
+      "Les utilisateurs actifs": 3046,
+      "Les utilisateurs Assujettis": 2579,
+      "Les utilisateurs avec licence": 2443,
+      "Les utilisateurs NOK": 9,
+      "Taux": "99.63%"
+    },
+    "chart_configs": [
+      {
+        "type": "bar",
+        "title": "Vue d'ensemble des utilisateurs",
+        "keys": [
+          "Les utilisateurs actifs",
+          "Les utilisateurs Assujettis",
+          "Les utilisateurs avec licence"
+        ],
+        "colors": [
+          "#4CAF50",
+          "#2196F3",
+          "#FF9800"
+        ],
+        "orientation": "vertical"
+      },
+      {
+        "type": "pie",
+        "title": "Conformité des sauvegardes",
+        "keys": [
+          "Les utilisateurs avec licence",
+          "Les utilisateurs NOK"
+        ],
+        "colors": [
+          "#4CAF50",
+          "#F5473B"
+        ]
+      },
+      {
+        "type": "gauge",
+        "title": "Taux de conformité",
+        "key": "Taux",
+        "max_value": 100,
+        "colors": [
+          "#F44336",
+          "#FF9800",
+          "#4CAF50"
+        ],
+        "thresholds": [
+          90,
+          95
+        ]
+      }
+    ],
+    "items": [
+      {
+        "Description": "Bismarck TATOM FANKAM - Infirmier (Prestataire)",
+        "LastLogonDate": "09/29/2025 16:45:50",
+        "SamAccountName": "TATOM01",
+        "UserPrincipalName": "bismarck.tatom@castel-afrique.com",
+        "Comptes ayant une licence OneDrive": "OUI",
+        "Comptes Sauvegardés": "NON",
+        ">= 30 Jrs": "NOK"
+      },
+      {
+        "Description": "Christian MEKE EBANGA - Magasinier PF et Emballages",
+        "LastLogonDate": "09/18/2025 15:59:10",
+        "SamAccountName": "MEKE01",
+        "UserPrincipalName": "christian.meke@castel-afrique.com",
+        "Comptes ayant une licence OneDrive": "OUI",
+        "Comptes Sauvegardés": "NON",
+        ">= 30 Jrs": "NOK"
+      },
+      {
+        "Description": "Claude Michele MINALA NGONO Epse ATANGA - Medicin généraliste (Prestataire)",
+        "LastLogonDate": "09/22/2025 13:20:38",
+        "SamAccountName": "MINALA01",
+        "UserPrincipalName": "claude.minala@castel-afrique.com",
+        "Comptes ayant une licence OneDrive": "OUI",
+        "Comptes Sauvegardés": "NON",
+        ">= 30 Jrs": "NOK"
+      },
+      {
+        "Description": "Eric Herve VOUFO ZANFACK - Chef de Produit Senior Bieres Blondes et Stategiques",
+        "LastLogonDate": "09/25/2025 09:17:29",
+        "SamAccountName": "VOUFO01",
+        "UserPrincipalName": "eric.voufo@castel-afrique.com",
+        "Comptes ayant une licence OneDrive": "OUI",
+        "Comptes Sauvegardés": "NON",
+        ">= 30 Jrs": "NOK"
+      },
+      {
+        "Description": "Etienne AWAMBA - Mecanicien Ajusteur",
+        "LastLogonDate": "09/16/2025 13:04:39",
+        "SamAccountName": "AWAMBA01",
+        "UserPrincipalName": "etienne.awamba@castel-afrique.com",
+        "Comptes ayant une licence OneDrive": "OUI",
+        "Comptes Sauvegardés": "NON",
+        ">= 30 Jrs": "NOK"
+      },
+      {
+        "Description": "Gaston Faustin SOUOP DJOMO - Electricien",
+        "LastLogonDate": "09/02/2025 15:27:35",
+        "SamAccountName": "SOUOP02",
+        "UserPrincipalName": "gaston.souop@castel-afrique.com",
+        "Comptes ayant une licence OneDrive": "OUI",
+        "Comptes Sauvegardés": "NON",
+        ">= 30 Jrs": "NOK"
+      },
+      {
+        "Description": "Gcsa Fire Safety - (BAL) GCSA",
+        "LastLogonDate": "",
+        "SamAccountName": "FIRESA01",
+        "UserPrincipalName": "gcsa.firesafety@castel-afrique.com",
+        "Comptes ayant une licence OneDrive": "OUI",
+        "Comptes Sauvegardés": "NON",
+        ">= 30 Jrs": "NOK"
+      },
+      {
+        "Description": "Raphael NGNIGNIPA - Magasinier",
+        "LastLogonDate": "09/25/2025 05:31:02",
+        "SamAccountName": "NGNIGN01",
+        "UserPrincipalName": "raphael.ngnignipa@castel-afrique.com",
+        "Comptes ayant une licence OneDrive": "OUI",
+        "Comptes Sauvegardés": "NON",
+        ">= 30 Jrs": "NOK"
+      },
+      {
+        "Description": "Yvan Loïc EKOMO NTONGA - STAGIAIRE",
+        "LastLogonDate": "09/05/2025 10:57:12",
+        "SamAccountName": "EKOMO01",
+        "UserPrincipalName": "yvan.ekomo@castel-afrique.com",
+        "Comptes ayant une licence OneDrive": "OUI",
+        "Comptes Sauvegardés": "NON",
+        ">= 30 Jrs": "NOK"
+      }
+    ],
+    "chart_specs": [
+      {
+        "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+        "title": "Vue d'ensemble des utilisateurs",
+        "data": {
+          "values": [
+            {
+              "category": "Les utilisateurs actifs",
+              "value": 3046
+            },
+            {
+              "category": "Les utilisateurs Assujettis",
+              "value": 2579
+            },
+            {
+              "category": "Les utilisateurs avec licence",
+              "value": 2443
+            }
+          ]
+        },
+        "mark": {
+          "type": "bar"
+        },
+        "encoding": {
+          "x": {
+            "field": "category",
+            "type": "nominal",
+            "axis": {
+              "title": null,
+              "labelAngle": -45
+            },
+            "sort": null
+          },
+          "y": {
+            "field": "value",
+            "type": "quantitative",
+            "axis": {
+              "title": "Valeur"
+            }
+          },
+          "color": {
+            "field": "category",
+            "type": "nominal",
+            "legend": null,
+            "scale": {
+              "range": [
+                "#4CAF50",
+                "#2196F3",
+                "#FF9800"
+              ]
+            }
+          },
+          "tooltip": [
+            {
+              "field": "category",
+              "type": "nominal",
+              "title": "Catégorie"
+            },
+            {
+              "field": "value",
+              "type": "quantitative",
+              "title": "Valeur"
+            }
+          ]
+        },
+        "width": 500,
+        "height": 300
+      },
+      {
+        "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+        "title": "Conformité des sauvegardes",
+        "data": {
+          "values": [
+            {
+              "category": "Les utilisateurs avec licence",
+              "value": 2443
+            },
+            {
+              "category": "Les utilisateurs NOK",
+              "value": 9
+            }
+          ]
+        },
+        "mark": {
+          "type": "arc",
+          "innerRadius": 50
+        },
+        "encoding": {
+          "theta": {
+            "field": "value",
+            "type": "quantitative"
+          },
+          "color": {
+            "field": "category",
+            "type": "nominal",
+            "legend": {
+              "title": null
+            },
+            "scale": {
+              "range": [
+                "#4CAF50",
+                "#F5473B"
+              ]
+            }
+          },
+          "tooltip": [
+            {
+              "field": "category",
+              "type": "nominal",
+              "title": "Catégorie"
+            },
+            {
+              "field": "value",
+              "type": "quantitative",
+              "title": "Valeur"
+            }
+          ]
+        },
+        "view": {
+          "stroke": null
+        },
+        "width": 400,
+        "height": 400
+      },
+      {
+        "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+        "title": "Taux de conformité",
+        "data": {
+          "values": [
+            {
+              "category": "Valeur",
+              "value": 99.63,
+              "order": 1
+            },
+            {
+              "category": "Reste",
+              "value": 0.37000000000000455,
+              "order": 2
+            }
+          ]
+        },
+        "layer": [
+          {
+            "mark": {
+              "type": "arc",
+              "innerRadius": 80,
+              "outerRadius": 120,
+              "cornerRadius": 10
+            },
+            "encoding": {
+              "theta": {
+                "field": "value",
+                "type": "quantitative",
+                "stack": true
+              },
+              "color": {
+                "field": "category",
+                "type": "nominal",
+                "scale": {
+                  "domain": [
+                    "Valeur",
+                    "Reste"
+                  ],
+                  "range": [
+                    "#4CAF50",
+                    "#E0E0E0"
+                  ]
+                },
+                "legend": null
+              },
+              "order": {
+                "field": "order",
+                "type": "ordinal"
+              }
+            }
+          },
+          {
+            "mark": {
+              "type": "text",
+              "align": "center",
+              "baseline": "middle",
+              "fontSize": 32,
+              "fontWeight": "bold"
+            },
+            "encoding": {
+              "text": {
+                "value": "99.6%"
+              }
+            }
+          }
+        ],
+        "view": {
+          "stroke": null
+        },
+        "width": 300,
+        "height": 300
+      }
+    ]
+  }
+]

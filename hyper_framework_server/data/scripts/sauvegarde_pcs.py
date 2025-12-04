@@ -16,7 +16,9 @@ __hyper_control_metadata__ = {
     "risk_reference": "R182, R211",
     "risk_name": "Indisponibilité du système d'information\nPerte des données",
     "control_name": "Sauvegarde des données des PCs",
-    "ref_description": "CTL_SSI_DON_SAVE_2"
+    "ref_description": "CTL_SSI_DON_SAVE_2",
+    "description": "Vérifier que la synchronisation des données des utilisateurs de SABC est activée sur OneDrive.",
+    "analyse": "Ressortir les utilisateurs dont les données n'ont pas été synchronisées sur OneDrive au cours des 30 derniers jours."
 }
 
 # Configuration des graphiques à afficher

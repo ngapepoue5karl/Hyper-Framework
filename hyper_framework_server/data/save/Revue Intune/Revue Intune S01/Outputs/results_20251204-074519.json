@@ -1,0 +1,5767 @@
+[
+  {
+    "title": "Analyse des équipements multiples par propriétaire",
+    "display_columns": [
+      {
+        "key": "Propriétaire",
+        "label": "Propriétaire"
+      },
+      {
+        "key": "Nombre total équipements",
+        "label": "Nombre total équipements"
+      },
+      {
+        "key": "Ordinateur Personnel",
+        "label": "Ordinateur Personnel"
+      },
+      {
+        "key": "Smartphones",
+        "label": "Smartphones"
+      },
+      {
+        "key": "Équipement SABC",
+        "label": "Équipement SABC"
+      }
+    ],
+    "summary_stats": {
+      "Nb Total Propriétaire Intune": 819,
+      "Nb de pers ayant >=3 équip.": 272,
+      "Taux de conformité": "66.79%"
+    },
+    "items": [
+      {
+        "Propriétaire": " OGORK NDJAMPA - Sales Executive",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "AGENT D APPUI QHSE - profil generique",
+        "Nombre total équipements": 4,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 3
+      },
+      {
+        "Propriétaire": "AICHATA SOULEIMANOU EPSE ABDOULKARIM - Chef de Produit Senior Eaux",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "ALI WANTOUNA - Chef de Service Surete",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "AMASSOKA MOUSSA - Chef de Secteur Junior",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Abdon KAMGA - Chef Service Maintenance et Moulerie",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Abraham SIMEU - Contremaitre Principal HSSE",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Achille Alain SEBE NANE - Chef Service Controle de Gestion",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Achille NGANDO EDJENGUELE - Directeur d'Usine Senior",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Achille PIANOU NGONKO - Program Manager",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Achille TCHOUENKAM - Chef de Secteur",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 3,
+        "Équipement SABC": 0
+      },
+      {
+        "Propriétaire": "Achille WAFO - Contremaitre Support Maintenance Conditionnement",
+        "Nombre total équipements": 4,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Adele Pascaline BAEG - Consultant Junior Fonctionnel Informatique",
+        "Nombre total équipements": 5,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 5
+      },
+      {
+        "Propriétaire": "Adolphe DIEUKO - Chef de Quart",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Adolphe ELONGUE ABOUA - Superviseur Regional Biere A Pression",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Adolphe FOTIE - Chef de Secteur Junior",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 0
+      },
+      {
+        "Propriétaire": "Adolphe NDEBI ELESSA - Chef de District Ventes Bonaberi 2",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Agent QUALITE- Agent qualités (Prestataire)",
+        "Nombre total équipements": 5,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 5
+      },
+      {
+        "Propriétaire": "Agnes Clarisse MATHIO MBAPPE - Chef de Secteur",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 0
+      },
+      {
+        "Propriétaire": "Agnes Eugenie MAMA - Chef de Secteur",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 0
+      },
+      {
+        "Propriétaire": "Agnes OUANDJI EPSE KAMGANG - Chef de Secteur Senior",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 0
+      },
+      {
+        "Propriétaire": "Agnes TOOH DIMUNGUE - Auditeur Qualite",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Aicha NGOUHOUO MBOUONDI EPSE MOUAFON - Assistant RH - Developpement",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Aime Anselme AOUSSAMBA - Chef d'Atelier Production des Fluides",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Alain Basile NGOUEN MFOUAPON - Superviseur National Senior Evenementiel/Sponsoring",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Alain Christian ODODI BALONG - Magasinier",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Alain DJONGOUE - Chef de Division Exploitation / Logistique Scondaire",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Alain Joel TOUKAM OUETE - Snr Divisional Sales Manager - Central",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 3,
+        "Équipement SABC": 0
+      },
+      {
+        "Propriétaire": "Alain Lesage TODJOU NOUMSI - Agent Logistique",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Alain Magloire NYANGA NGAH - Chef de Quart",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Alain NGOUONGO KAMDEM - Chef de Departement Maintenance",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Alain Patrice MANI - Magasinier Emballages",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Alain Stephane WABO - Chef de Service Surete et Securite",
+        "Nombre total équipements": 4,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Alain TADIE FUMTUM - Directeur d'Exploitation",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Alain TCHOUTA - Responsable Programme de Reponses Clients et Consommateurs",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Alane Loïc KAPOUO NONO - Dessinateur-Projeteur",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Albert Bertrand DJENE DJENE - Chef Service Commercial Bertoua/Akonolinga",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Albert Joel PIPA KOLA - Superviseur National TT - Off Trade",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Albert MBOM MVONDO - Contremaitre Principal Maintenance Infrastructure et Froid",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Albert MBOND - Chef de Secteur Junior",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Alex Romeo GUMTE TAMBA - Contremaitre Infrastructures Commerciales et Froid",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Alexandre Albert HIDJOP BAKOUI - Chef Service Communication Externe et Evenementielle",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 1,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Alexis Edith NYOUM - Chef Service Senior Analyse et Reclamation Fournisseurs",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Alexis MBE - Contremaitre Mecanicien",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Alexis SNAMOUNG - Chef d'Atelier Conditionnement",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Alexis WATO WAFO - Infirmier",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Alfred Edmond FOTIER TEGADJWE - Chef de Secteur",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 0
+      },
+      {
+        "Propriétaire": "Alfred KOBA DISSO - Administrateur Reseau et Telecom",
+        "Nombre total équipements": 4,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Alfred NADJIM DJEMIA - Technicien Methodes Approvisionnement",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Aline NGO TJESNGUI - Directeur Marketing",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Alliance CHEUWEBE LEUNA - Chef Service Senior Automatisme",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Alphonse TSEKANE - Asset care shift lead",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Amos Nestor KOI - Trade And Marketing Operator",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Amour Fabrice FOKENG ATEKEU NGUETEMY - Chef Service Fabrication",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Anastasia ALEMACHA EMENKENG - Chef de Service Ressources Humaines",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Anderson TABONING AWAH - Chef de Secteur",
+        "Nombre total équipements": 4,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 3,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Andre Dupont ITALEN BIYA - Instrumentiste",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Andre JOKOP - Mecanicien",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Andre MINTSA - Magasinier",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Angele Maheva DJAPA - Comptable",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Anicet Ghislain FOKA TATOCHE - Contremaitre Senior Electricite / Instrumentation",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Anne Germaine NDOUM - Assistant Senior RH Administration",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 3
+      },
+      {
+        "Propriétaire": "Anne Marie MATANGA EPSE LINGOM - Chef de Departement Achats Production MPP/MPC",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Annette Nicole OBOM EPSE LOBE MANGA - Technicien Achats",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Annie Christiane NGUI - Chef Service Laboratoire",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Annie Claire TCHAWA - Chef de Service Tresorerie Back Office",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Annie DJIDJA NEMBOT Epse FOTSO DEFO - Area Business Development Manager",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Anthony Paul Flavien NKOTO - Stagiaire GCSA",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Antoine BEMA - Chef de Service Support Fonctionnel et Helpdesk",
+        "Nombre total équipements": 5,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 5
+      },
+      {
+        "Propriétaire": "Antoine Roger MBENA - Juriste Senior Contrats",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Aoudou NJIKAM - Technicien de Laboratoire",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Apollo AMAYA MBA - Chef de Secteur",
+        "Nombre total équipements": 4,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 3,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Arauld Darius POHOKO FOKA -  STAGIAIRE FNE PROCESS -LABO ET TRAITEMENT DES EAUX",
+        "Nombre total équipements": 9,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 9
+      },
+      {
+        "Propriétaire": "Armand NGONPE - Chef d'Atelier Fabrication Biere",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Armand NGOUANA BOUNA - Contremaitre Mecanicien",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Armand SOCTEMI TIAKO - Contremaitre Senior Maintenance Mecanique",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Armand TCHOING PAGA - Chef d'Exploitation Commerciale",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Armand TCHOUNKEU TCHAZOU - Contremaitre Principal Pyrometrie",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Armel NOUMTCHUE THITCHO - Contremaitre Entretien des Infrastructures",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Armel Obaker NANA NZOUWA - Chef Secteur",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 0
+      },
+      {
+        "Propriétaire": "Armel Raoul TAGNE NGOUANOM - Contremaitre Principal Step et Protection de L'environnement",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Armelle Lidwine MISSE MISSE - Chef de Secteur Senior",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 3,
+        "Équipement SABC": 0
+      },
+      {
+        "Propriétaire": "Armelle Vicky TCHOKONTE KAMAHA - Chef Service QHSE - Site SIAC",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Arnaud ABOULE - Contremaitre Principal Instrumentiste",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Arnaud Rostand MOCTO - Chef Service Exploitation",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Arnauld DASSI PUEPI - Contremaitre Materiel Roulant",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Arnol FODOUOP - Assistant Reseaux Sociaux",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Arold Yvan LIEGNOU - Mecanicien",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 1,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Arouna PEGHOUMA KETCHOU - Contremaitre Conditionnement",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Arthur TAMKO- Prestataire EH2S",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Arthur Vignier SIMO - Administrateur Data Center (Stagiaire FNE)",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Assad Joel NJIFENG NSANGOU - Ux Designer",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Asthyr Leric TCHOMTCHOUA MBOU - Comptable Junior Fournisseurs",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Astrid NGOUPEYOU NGANDJONG epse BEMBO - Head of Customer Marketing",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Athanasius EBUA - Brewing Team Leader",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Aubin BETKEU JUSSE - Superviseur Sponsoring et Evenements",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Aubin Roderick FONGANG PANLAP -  Administrateur Data Center  (Stagiaire FNE)",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Audrey Karen DE MBIE - Assistant Junior RH - Developpement",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Audrey Laila OVOUNDI AYISSI - Operateur de Saisie",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Augustin FODJO - Chef de Secteur Junior",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 0
+      },
+      {
+        "Propriétaire": "Augustin Thierry TANG MESSI - Superviseur Gestion / Pilotage des Zones",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Auriol EWANE EKOUME NDEMA - Juriste Senior Sinistres et Administration Baux",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "BILE BISSICK Yvette Claudie Epouse NGUEDJIO - Responsable Senior Audit Systeme",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "BRUEL ROSNY TEUGA NJAMGA - Chef de Secteur Junior",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Bachirou MOHAMADOU - Contremaitre Junior Production des Fluides",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Bakary MAMOUDOU - Divisional Sales Manager-North",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Balbine Aimee NODJOM MEMBEU - Chef de Secteur",
+        "Nombre total équipements": 5,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 4,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Barthelemy BOUNAI - Superviseur Regional Senior Marketing Operationnel",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Beatrice KOUTOUKENG - Chef de Secteur Junior",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Beaugrand NJOYA NGOUNGA - Contremaitre Principal Step et Protection de L'environnement",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Benjamin NJOCKE DIKANJO - Chef de Service Support Fonctionnel et Helpdesk",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Benjamin NKONO - Chef de Groupe Instrumentiste",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Benjamin OGEN NDI - Tax, Treasury & Risk Manager",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Benjamin POUAKA - Ingenieur Methodes Mecanique Fabrication",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Benoit MBOULA - Secretaire General en Charge de la Conformite et des Relations Publiques",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 2,
+        "Smartphones": 0,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Berlin NTEPI SIPEHOU - Chef de District Ventes Bonaberi 1",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Bernadette Therese BITOLOG - Sales Executive",
+        "Nombre total équipements": 4,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 3,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Bernard ADUMPI - Senior Brewing Operator",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 0
+      },
+      {
+        "Propriétaire": "Bernard AYUK EBOT - Finance Operations Manager",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Bernard Christian DJEUKAM DJEUKAM - Business Analyst Region",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 3
+      },
+      {
+        "Propriétaire": "Bernard Isaac MOUKOKO EBONGUE - Chef de Secteur Senior Support Fonctionnel & Helpdesk",
+        "Nombre total équipements": 11,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 3,
+        "Équipement SABC": 8
+      },
+      {
+        "Propriétaire": "Bernard Xavier BONMBA NOUBIMBOO - Chef d'Atelier Conditionnement",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 1,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Berthe Jacqueline Michelle NGAIGNE - Chef de Division Ressources Humaines",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Bertille ABEGA Epse BOUBA KAELE   - Brand Manager - RTD",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Bertin BOUKAM - Process Owner Processus Cœur de Metier",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Bertin MAN - Operateur Traitement des Eaux",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Bertrand FOUMENA - Chef de Service Senior Distribution",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Bertrand KENDO TONGA - Contremaitre Principal Electricite et Instrumentation",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Bertrand NKOTH LIBAM - RTR Manager",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Bibiane Lisette MEVA EYEBE - Attachee de Direction",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Bienvenu MBOKOLO - Chef Service Materiel Roulant",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Billy Ruffin ZAFACK - Chef Service Senior Applications Industrielles",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Bismarck Caprivi DEPP - Administrateur des Systemes",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Blaise NDANGANG TCHAPDA - Directeur des Systemes d'Information",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Blaise NSA'A BASSOGBAG - Controleur de Gestion Senior RH",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Blanche Elvire ELONG - Chef de Secteur",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Boris Armel NGAHA TCHAHO - Chef Section Formation Technique",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Boris ELOK SANGNO -  Agent Agent Suivi Réalisation des Projets Marketing & Techniq. (Prestataire)",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Boris Joel KOLONKOUO MIAFO - Contremaitre Laboratoire et TTE",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Bossis Lanor FOKO - Support Fonctionnel et Helpdesk (Occasionnel)",
+        "Nombre total équipements": 7,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 6
+      },
+      {
+        "Propriétaire": "Brice ABEGA ESOMBA - Chef de Service Senior Transformation Digitale et Medias",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Brice KABAM - Senior Trade And Marketing Operator",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Brice KIEYOU NOUMBISSI - Sales Automation Manager",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Brice MONTHE - Responsable Medias et Digital",
+        "Nombre total équipements": 4,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Brigitte Huberte ASSE DALLE EPSE DOUMBE - Assistant Senior Rh Developpement",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Bruno KOUAM DJOKO - Chef Section Planification Intrants",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Bruno NGANANG NDJONKAM - Ingenieur Food Safety et Nettoyage Desinfection",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Bruno VAREILLE - Directeur Logistique et Achats",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "CCDBAFOUSSAM-Chef de Centre Commercial",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "CCDBAMENDA-Chef de Centre Commercial",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "CCDBANGANGTE-Chef de Centre de Distribution",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "CCDGAROUA-Chef de Centre de Distribution",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "CCDMAROUA-Chef de Centre de Commercial",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "CCDMBALMAYO  - Chef de Centre de Distribution",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "CCDMBOUDA-Chef de Centre de Distribution",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "CCDSANGMELIMA-Chef de Centre de Distribution",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Calista TEGHA CHUO -  chef secteur",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Calvin Innocent NGONGANG - Chef Service Commercial Senior Duricam",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Calvin NGOUHO - Reviseur Investissement",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Carel Gautier DOUANLA TATSABONG - Contremaitre Principal Verrerie",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Carelle BELLA ETEME - Shift Electrician (Temporaire)",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Carine BELLA FOE - Responsable Corporate",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Carine EGOLE - Chef de Service Support Fonctionnel et Helpdesk",
+        "Nombre total équipements": 4,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 4
+      },
+      {
+        "Propriétaire": "Carine Hortense Agathe NGUIMBOUS EPSE MENOUMI - Acheteur Junior Outillage",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Carine MANFOUO GNITEDEM - Maintenance Planner (Temporaire)",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 0
+      },
+      {
+        "Propriétaire": "Carine SOH - Technicien Traitement des Eaux",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Carole Manasse NGUEKO FOGNO EPSE TCHOUPE - Comptable Senior Centralisation Comptable",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Cecile MOUTO NDAMBWE - Projet LIMS",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Cecile TCHUIENCHE EPSE DJOKO - Chef de Bureau Principal Achats MPC",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 3
+      },
+      {
+        "Propriétaire": "Cedric Armel YONING KONGAWA - Instrumentiste",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Cedric MBIAKOP DOMKO - Technicien de Laboratoire",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Celestine KOUEKAM YOUTCHEU EPSE MAGNI - Metrologue",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Celine Pages HAPPI NGAMOU EPSE LOWE - Assistant Senior Rh Siac",
+        "Nombre total équipements": 4,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Centre COMMANDE MODERN TRADE - BAL partagee Compte Messagerie COMMANDE MODERN TRADE Centre",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Chamberline TCHOUZIN FEUBA - Attachee de Direction",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Chance NGNOBOUDEM - Pilote d'Exploitation Systemes d'Informations",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 1,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Chanceline Laure TIKAYA - Chef Service Dedouanement",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Charden Clermond CHANTCHO DJIEYEP - Contremaitre Conditionnement",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Charles AVOUTIA TSANANG - Ingenieur Principal Food Safety et Nettoyage Desinfection",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Charles Aloys NJIMONCHARE NJIAYOUM - Trade And Marketing Operator",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Charles Eric ATANGANA - Rsponsable QHSE",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Charles Gaby BONA LOBE - Ingenieur Packaging et Laboratoire d'Essais",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Charles Michael MOTASSI MOTASSI - Chef de service senior développement et innovation",
+        "Nombre total équipements": 4,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Charles NJOCK NYEMECK - Chef Secteur",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 0
+      },
+      {
+        "Propriétaire": "Charles Steve TCHANA - Support fonctionnel et helpdesk",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 3
+      },
+      {
+        "Propriétaire": "Chrislain WAKAM SOUOP - Contremaitre Services Generaux",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Christian Eric MOUALEU EPALLE - Financial Accountant Group & Local Reporting",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Christian FEUWA KAMOUGNE - Contremaitre Senior Conditionnement",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Christian Landry EYINGA - Chef de Secteur de Remplacement",
+        "Nombre total équipements": 4,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 4,
+        "Équipement SABC": 0
+      },
+      {
+        "Propriétaire": "Christian MBOGOS MBA - Chef d'Atelier Electricite et Instrumentation",
+        "Nombre total équipements": 4,
+        "Ordinateur Personnel": 2,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Christian MOUICHE NJIMBAN - Trade And Marketing Operator",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Christian TCHIMOU - Medecin Referent (Prestataire)",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Christian Victor BITOM - Chef de Service Senior Marketing Operationnel",
+        "Nombre total équipements": 4,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 3,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Christian YADASSI LAME - Responsable Suivi Inspection Reglementaire",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Christiane NDJIONDJOP NANGOB Epse ELANGA - Chef de District Ventes Modern Trade",
+        "Nombre total équipements": 4,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 3
+      },
+      {
+        "Propriétaire": "Christophe KAMDEM - Chef d'Atelier Fabrication Biere",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Clarisse NJAHAM EPSE GOUABE - Chef de Secteur Senior",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 3,
+        "Équipement SABC": 0
+      },
+      {
+        "Propriétaire": "Clarisse TCHOUANGUEM TCHOUANCHE EPSE YONDZI - Chef de Departement Centre de Services Informatiques",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Clarisse TEMGOUA - Chef Section Gestion Pilotage des Zones",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Claude Alain TEKEUBEN GAMWO - Sales Manager Senior Modern Trade",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Claude Emmanuel MBONING - Contremaitre Junior Magasin PR",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 3
+      },
+      {
+        "Propriétaire": "Claude Michele MINALA NGONO Epse ATANGA - Medicin généraliste (Prestataire)",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Claude Mohamed RIFOUE A MBASSA - Sales Executive",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Claude Urbain NGUETIA - Chef de Service Materiel Roulant",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Cleford FONGANG FONJAH - Wholesales Executive",
+        "Nombre total équipements": 4,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 3,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Clement MANI - Chef Section Gestion / Pilotage de Zones",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Clement TINDAWO - Dry End Specialist",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Cloterre ATONFACK KWIATAGOU - Technicien Surete et Securite",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Clotilde WANDJI - Chef de Service Senior Ressources Humaines",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Clovis Georgin FOTEM - Magasinier Principal",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Colette Merveille WANDJI TITCHO - Chef de Produit Bieres Brunes",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Constant MONGO - Responsable Medias",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Corine NGAN NGAN - Chef de Secteur Senior",
+        "Nombre total équipements": 4,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Crepin EFON - Comptable Preparation Reglements Etrangers",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Cresence Leslie SOUMIL MONGOP - Stagiaire Fiscalité",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Cyrille Brice TCHANA - Superviseur Junior Video Surveillance",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Cyrille YOTCHOUM - Assistant Exploitation MT",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 2,
+        "Smartphones": 0,
+        "Équipement SABC": 0
+      },
+      {
+        "Propriétaire": "DJOMOU Philicia - Technicien de Laboratoire",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "DOUSWE WANGBASSAM - Contremaitre Conditionnement",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Daddy Andrew NYAMA - Data Modeliste (Temporaire)",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 3
+      },
+      {
+        "Propriétaire": "Damien OMOLOMA -  Warehouse supervisor",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Daniel BELLO TABE - AM",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 0
+      },
+      {
+        "Propriétaire": "Daniel Felix BAMBAE - Chef de Groupe Magasin Pr",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Daniel Francis YAMFA - Chef de Secteur Junior",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Dany BILOUNGA BINDOM - Employe Ouvrier Polyvalent",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Daurice Vidal WANDJI - Chef d'Atelier Conditionnement",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "David Gareph DONGMO - Contremaitre principal Brassage",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 3
+      },
+      {
+        "Propriétaire": "David Mathurin NYEMB - Spirits Development Executive",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 0
+      },
+      {
+        "Propriétaire": "David TAGNE - Chef Service Materiel Roulant",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "David TOUBOUBE - Contremaitre Conditionnement",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "David Thierry ABAZE ABAZE - Chef de Secteur Senior",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 3,
+        "Équipement SABC": 0
+      },
+      {
+        "Propriétaire": "Didime Xavier MBEE MBEE - Contremaitre Logistique Pf Plastique",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Dieudonne NGATTI - Magasinier MPC",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Dieudonne NGUEMELEU - Chef de Secteur Senior",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 0
+      },
+      {
+        "Propriétaire": "Divine FOBITEH - Chef Service Commercial Bamenda",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Doleance MEGUE EPSE YOMBO - Chef de Secteur Senior",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 0
+      },
+      {
+        "Propriétaire": "Dominique BITJOKA - Program Manager",
+        "Nombre total équipements": 4,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 3
+      },
+      {
+        "Propriétaire": "Dominique Franck KAMGA SOUOP - Contremaitre Principal Fabrication",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Dominique KAMTCHOUM NANA - Contremaitre Principal Matieres Premieres Consomables",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Dominique Raoul BELING EFA - Chef de Service Gpec",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Durrel DIONI MUNKI - Sales Executive",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 3,
+        "Équipement SABC": 0
+      },
+      {
+        "Propriétaire": "EJENGUELE Ethan - Contremaitre Maintenance Mecanique",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "EO - Technicien Traitement des Eaux",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Edith KINGA SEKA - Chef de Secteur",
+        "Nombre total équipements": 4,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 3,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Elee BEYDO - Day mechanic",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Eliane-Eve DJOMO NONO - CHEF BUREAU ACHAT (Prestataire)",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Elise Marlyse NZIE BOUEDJILA - Senior Sales Performance Analyst",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Elise Yolande MOBY - Chef de Service Budgets et Ristournes",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Elvirose NGUELEFACK DJOUDJI - Chef de Secteur Junior",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 3,
+        "Équipement SABC": 0
+      },
+      {
+        "Propriétaire": "Emile Marin NDESSIDJI BOUGOUE - Chef Magasinier Pieces de Rechanges",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Emile TOUKO WENDEU - Chef de Service Support Fonctionnel et Helpdesk",
+        "Nombre total équipements": 7,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 6,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Emilienne Hortense EKALLE EPSE SONGA - Chef Section Relations Sociales",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Emmanuel Christian EBWELLE - Chef Section Paie",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 3
+      },
+      {
+        "Propriétaire": "Emmanuel DISSAKE - Chef de District Ventes Ndokoti 2",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Emmanuel Franklin SIMO BOMDA - Mecanicien",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Emmanuel NDIKUM ASAFOR - Packaging Operator",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Emmanuel NDONLA - Contremaitre Principal Maintenance Mecanique Fabrication et Services Generaux",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Emmanuel NYANIT - Magasinier",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Emmanuel Pascal FEMBE - Chef Section Approvisionnement Biere et Alcool Mix",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Emmanuel Sergio FOTSO - Prestataire",
+        "Nombre total équipements": 6,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 6
+      },
+      {
+        "Propriétaire": "Eric EBWELLE - Chef de Service Developpement des Ressources Humaines",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Eric MBIENDOU - Chef de Service Paie",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Eric Narcisse OUM NDJENG - Chef Service Senior Data Management",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Eric Serge GUETCHUENG - Chef de Service Securite Routiere",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Eric TATCHIM - Contremaitre Junior Production des Fluides",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Eric Verlin CHOMNOUE SIMO - Contremaitre Support Maintenance",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 3
+      },
+      {
+        "Propriétaire": "Eric Xavier ESSOMBA - Chef d'Atelier Conditionnement Chaine 4",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Eric YENZOUNG KONLA - Contremaitre Principal Instrumentiste",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Ernest Alain FODJO CHETEU - Chef de Bureau Principal Gestion / Pilotage des Zones",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Ernest Desire SOH - Chef de Secteur",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 0
+      },
+      {
+        "Propriétaire": "Ernest LOBE EBELLE - Superviseur Animation Monde Nuit",
+        "Nombre total équipements": 4,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 3,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Ernest Yves MOUDOUTHE ETABA - Chef de Secteur",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Esaie KABIWA NJIAYAP - Chef de Quart",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Estel Jacky EVINA EVINA - Contremaitre Maintenance Mecanique",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Estelle MBOUOMSIE - Analyste MPP, MPC",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Esther Agathe MATCHI OUMBE EPSE ESSONO - Acheteur PR",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Esther Anny BATOUAN - Assistant Senior RH - Developpement",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Etienne Edmond MBE - Coordinateur Sante au Travail",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Etienne Magloire MBE YOBOL - Chef d'Atelier Conditionnement",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 3
+      },
+      {
+        "Propriétaire": "Eugene FOMEKONG - Sales Executive",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Euloge Bertrand NSOP - Magasinier MPC",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Eunice ASOKA NTUMNYUY - Chef de Secteur",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Eva Claudine EKANE YONDO - Chef de Section Transit Export",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Evelyn NGWE TITA - Chef Service Commercial Senior Modern Trade",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Evelyne NJOINGUE TCHATCHOUA - Chef Service Senior Laboratoire",
+        "Nombre total équipements": 5,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 4
+      },
+      {
+        "Propriétaire": "FRANKLIN FONJAH  FONGANG - Chef Secteur",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 0
+      },
+      {
+        "Propriétaire": "Fabienne Lydie NDEM A NYOUNG - Chef de Secteur",
+        "Nombre total équipements": 6,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 3,
+        "Équipement SABC": 3
+      },
+      {
+        "Propriétaire": "Fabiola Aline NGALE NEMANGOU - Controleur de Gestion Senior Sourcing",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Fabiola MASSO MBA - Chef de Bureau Principal Achats Centralises Prestations - Centre",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Fabrice Aurelien MENGUE - Magasinier",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Fabrice DJAKOU NOUTCHA - Contremaitre Principal Embouteillage",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Fabrice Fredy TCHUENTE NOUTONG - Chef Section Magasin MPC SIAC",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Fabrice KOUOPTCHOP TASENG - Ingenieur Principal Infrastructures et Reseaux",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Fabrice Mamert NGA TSANGA - Contremaitre Maintenance Mecanique",
+        "Nombre total équipements": 4,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 3
+      },
+      {
+        "Propriétaire": "Fabrice WAMBO NGACHE - Chef Section de la Logistique",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Fabrice YONDZI -  Data Scientist (Prestataire)",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Fadimatou YAYA - Chef de Service Senior Tresorerie",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Felicite MICHELLE SOPPO - Chef de Secteur",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 0
+      },
+      {
+        "Propriétaire": "Felix Gildas NDICKA EPALLE - Consultant Fonctionnel Informatique Administratif",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Felix MORNADJI - Ingenieur Principal Food Safety et Nettoyage Desinfection",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Fenzy Laure LAFFO ADJO - Assistante Comptable (Prestataire)",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Ferdinand KAKAM NGNGOUE - prestataire",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Ferdinand NDJIPMAYO BILONG - Chef Section Gestion des Talents",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Fils Samuel MASSEE - Customer Service Analyst",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Firmin MOUDIO - Chef de Secteur Senior",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 0
+      },
+      {
+        "Propriétaire": "Firmin TEGUIA KAMDEM - Chef de Secteur Senior",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 0
+      },
+      {
+        "Propriétaire": "Flaven FORTIA ASANGWE - Chef de Secteur Senior de Remplacement",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 0
+      },
+      {
+        "Propriétaire": "Flavienne Sully NGA EVINA - Chef de Bureau Principal Analyses des Declarations Douanieres",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Fleura De Storelle NONO DAYO - Chef de Departement Audit Systeme et Amelioration Continue",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Floriane MAWAMBA - Chef de Secteur",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 0
+      },
+      {
+        "Propriétaire": "Francine NGOUDJO - Chef de Segment Brsa et Eaux",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Francis B'DJALIEU NAMENOU - Chef de Secteur",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Francis KALLA - Directeur d'Usine Senior",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Francis TINA MBALLA - Chef de Produit Senior Mutzig/Heineken",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Franck Cédric Noel ABENA ATEBA - Comptable Junior Analytique Filiales",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Franck Paulin Junior LENGUE EBELE - Chef de Produit Senior Alcool Mix",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Francois Nazzer TCHEUWA - Operateur de Saisie",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 0
+      },
+      {
+        "Propriétaire": "Francois SEMBEY NANA - Contremaitre Maintenance Mecanique",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Francois YAMALA - Contremaitre Principal Materiel Roulant",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Francois YOUGOUDA HAMAN - Contremaitre Principal Conditionnement",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 0
+      },
+      {
+        "Propriétaire": "Franklin POKAM - Contremaitre Junior Support Maintenance",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Freddy WAFO KAMGUE - Chef de Division Maintenance Services Generaux et Travaux Neufs",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Frederic REYANG - Responsable Audit Systeme Groupe",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Fulbert ELOUMOU - Contremaitre Principal Fabrication",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 1,
+        "Smartphones": 1,
+        "Équipement SABC": 0
+      },
+      {
+        "Propriétaire": "Gabriel NHANAK OMOK - Trade And Marketing Operator",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Garonne Minos MBATCHOU - Chef de Secteur",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 0
+      },
+      {
+        "Propriétaire": "Gaston KITIO - Contremaitre Principal Fabrication",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Gaston TSAGUE - Contremaitre Logistique Pf Verre",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 3
+      },
+      {
+        "Propriétaire": "George Raoul TONYA NGASSA - Assistant Senior Administration des Ventes",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Georges BWEMBA - Comptable Fournisseurs",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Georges Clement TJESNGUI - Chef de Service Surete Securite",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Georges ECHUCK - Packaging shift mechanic",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Georges NYAME MOUTONGO - Chef de Secteur Junior",
+        "Nombre total équipements": 4,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 3,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Georges SAME MOUKOURY - Auditeur Qualite",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Gerard NGOMSI - Chef de Secteur Senior de Remplacement",
+        "Nombre total équipements": 4,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 3,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Ghislain Donald DONGMO KENFACK - Chef de Service Business Intelligence",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Ghislain NYADJAM NZOUNKEU - Chef de Secteur Junior",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 0
+      },
+      {
+        "Propriétaire": "Gilberte KALEMONE KOUASSI - Chef de Secteur Junior Corporate",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Gilles BATIPE HAKOUA - Contremaitre Maintenance Electrique",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Giquel ZITOUO TCHOFFO - Contremaitre Principal Electricite / Instrumentation",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Giscard Kajoh JIMINDA - Trade And Marketing Operator",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Gisele NYOUNGA KOUM EPSE THODJOM - Attachee de Direction",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Gislain Emmanuel TENEGOUM - Contremaitre Senior Laboratoire",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Godefroy KAMSUE - Contremaitre Principal Composition",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Godwill ETIME AJIEH - Human Resources Business Partner",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Guedjeou OUSMANOU - Contremaitre Principal Fabrication",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 1,
+        "Smartphones": 0,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Guideline MEDOM FOWE - Senior Trade And Marketing Operator",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Guilaine MAWOUA KOAGNE - Responsable Surete et Securite",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Gustave BWANGA BWANGA - Assistant Communication Evenementielle",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Guy Bertin DETTA WAPPI - Intendant (Prestataire)",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Guy Flavien DAYAWA - Directeur d'Usine",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Guy Merlin TCHAPDA MBONI - Contremaitre Junior Conditionnement",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Guy Paulin KAMNO FOKWA - Technicien Metrologie",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Gérard IBEE - Contremaitre Junior Conditionnement",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 0
+      },
+      {
+        "Propriétaire": "HOTLINE - BAL partagee Hotline",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Habib KENFACK - Responsable Senior Environnement",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Harold YONTCHUI NOUJA - Chef Service MPC",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Hassan ADAMOU - Chef Service Senior Ressources Humaines",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Hassan FOUAPON KOUOTOU - Acheteur Senior Pr Imports Services Generaux / Fabrication",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Helene Desire EKOSSO ESSOKA EPSE NDJIP - Chef de Departement Ventes Traditional Trade",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Hermann DJOMOU GUENOUE - Chef d'Atelier Support Maintenance",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Hermann Daniel DIEUPA NGONGANG- Assistant Materiel Roulant (Prestataire)",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Hermann Joel LOBE EDIMO - Sales Executive",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 0
+      },
+      {
+        "Propriétaire": "Herve Colin NGAHA TCHAKOUTIO - Chef de Quart",
+        "Nombre total équipements": 4,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 3,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Herve Emmanuel WAFO FOTSO - Chef de Secteur",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Herve YOMBA MBIAKOP - Comptable Realisations Reglements",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Hessel Raoul NANA NJENJI - Marketing Manager - Innovations, Lagers, Malta & RTDs",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Hillmann Martin TAYIWOH BOYUNIFONG - Sales Executive",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 0
+      },
+      {
+        "Propriétaire": "Honore NGUEYA CLOUYA - Support Fonctionnel et Helpdesk (Prestataire)",
+        "Nombre total équipements": 47,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 46
+      },
+      {
+        "Propriétaire": "Hugues ESSOMBA ELAH - Superviseur Senior Gestion du Materiels et Equipements Publicitaires",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Hugues NGUEPJOUO PIEDJIO - Chef d'Atelier Conditionnement",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 0
+      },
+      {
+        "Propriétaire": "Huguette Sandrine MOUALEU NDEUGOUE - Wholesales Executive",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Hyacinthe TEMA - ",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "IYABI Blaise Alexandre - Trade And Marketing Operator",
+        "Nombre total équipements": 4,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 3,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Ibrahim Desire MOUPE - Chef de Service Senior Exploitations Commerciales",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Ida Enjema KANGE - Contremaitre Senior Laboratoire",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Iderline Sidonie LOBE BEBE NEE TUEGUE - Chef Service Commercial Senior Bonaberi",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Idriss Steve ONDOUA KEYA - Magasinier PR",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Idrissa KOUAYEP - Magasinier",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Ines Patricia EKIBI - Comptable",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Innocent Desire BIANGDEBNE - Chef de Service Equipements Fluides et Energie",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Iris Michael DKOUAM KOUKEZO - Chef d'Atelier Maintenance Electrique/Instrumentation",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Isabelle KOUWE LOVET - Chef Section Gestion / Pilotage de Zones",
+        "Nombre total équipements": 4,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Ismael Djalil NJOYA NDAM -Support helpdesk (Prestataire)",
+        "Nombre total équipements": 28,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 27
+      },
+      {
+        "Propriétaire": "Ismael MOUNDEN YONGNO - Chef d'Atelier Conditionnement",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Ismaila IYADJOBO - Responsable Junior Surete Securite",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Jackie Emeline MENANDJI FONOU - Chef de Secteur Junior",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Jackson NGWANI - Responsable QHSE",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Jacqueline Rachel Irene ELAMBI - Chef de Secteur Senior",
+        "Nombre total équipements": 5,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 4,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Jacques Constant EKENG - Chef de Service Senior Securite",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Jacques Didier NGOA - Magasinier",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Jacques ELIMBI - President de L'Association Elite du Football by Boissons du Cameroun",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Jacques Eric BISSO ZAMBO - Chef Service Maintenance",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Jacques Hugues OMBOG'OMOM DJANGA - Chef de Departement Maintenance des Usines de Yaounde",
+        "Nombre total équipements": 6,
+        "Ordinateur Personnel": 2,
+        "Smartphones": 3,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Jacques Jacques BEMGA - Superviseur Regional Biere Pression",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Jacques MONGUE - Chef Section Fournisseurs Site Ex- SIAC",
+        "Nombre total équipements": 4,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 4
+      },
+      {
+        "Propriétaire": "Jean - Mecanicien",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 1,
+        "Smartphones": 0,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Jean Bernard DJOUONKEP - Chef Service Paie",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Jean Bienvenu BOOCK - Human Resources Business Partner",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Jean Calvin DJOMDJOU - Chef de Service Senior QHSE - Sites Littoral",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Jean Charles AKONO NGOA - Chef Section Administration Rh",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 3
+      },
+      {
+        "Propriétaire": "Jean Claude AKAMBA ONONO - Agent Logistique",
+        "Nombre total équipements": 4,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 3
+      },
+      {
+        "Propriétaire": "Jean Claude GOBE - Magasinier Emballages",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Jean Daniel FOMBOURE FEWOU - Magasinier Pieces de Rechange",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Jean Emile MBIDA - Sales Capability Manager",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Jean GUESSOLA SANGA - Chef de District Ventes Traditional Trade",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Jean Jacques ABESSOLO - Chef Section Realisation Reglements",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Jean Jacques BAKAM SOP - Area Business Development Manager",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Jean Joris TCHATCHOUA NKWAYIM - Controleur Qualite",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Jean Leonard EYAGABUOSSE - Chef d'Atelier Maintenance Mecanique Conditionnement",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Jean Marc ANYOUZO'O - Chef d'Atelier Conditionnement",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Jean Marc MEKA - Directeur Commercial et Marketing",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Jean Marcel NANGA - Occupational Health Specialist",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Jean Marcel TCHITIO - Superviseur Junior Programme Reponses Clients et Consommateurs",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Jean Marie MAKON - Chef de District Ventes Ndokoti 1",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Jean Marie TIENTCHEU -  Warehouse Officer",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Jean Oscar EBELLE MPOCKO - Chef de Quart Junior",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Jean Pascal DJIEGOM - Chef Service Sénior Maintenance",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Jean Patient MBELEK - Chef de Secteur",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Jean Patrick EBO OKOMEN - Chef Service Support Fonctionnel et Helpdesk",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 3
+      },
+      {
+        "Propriétaire": "Jean Paulin NDI - Chef de Secteur",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Jean Pierre ABEGA - Sales Executive",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 0
+      },
+      {
+        "Propriétaire": "Jean Pierre ELLA - Sales Ops Analysts",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 3
+      },
+      {
+        "Propriétaire": "Jean Pierre NDIOMO - Chef de Secteur Senior",
+        "Nombre total équipements": 4,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 4,
+        "Équipement SABC": 0
+      },
+      {
+        "Propriétaire": "Jean Rene NSEKE NSEKE - Assistant Comptable  (Prestataire)",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Jean ZOA ELONG - Assistant RH - Administration",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Jean-Noel ANANG BOTONDONO - Sales Executive",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 0
+      },
+      {
+        "Propriétaire": "Jeanne Arlette NGO MBAKWO EPSE NDJOCK - Chef de District Ventes Modern Trade",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Jeanne EKWEL AYA - Chef de Secteur Junior",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Jeanne Sandrine IKANGA - Charge de la Communication",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Jeannot MANDJO - Agent de Maitrise de Remplacement",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Jehu KAMDEU TCHANDJOU - Directeur Regional",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Jeremie NIBO APOUKOENG MBOVEMBENO - Comptable Junior Fournisseurs",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Job Sabbas KAMGAIN KAMSU - Auditeur Interne Pole Industriel",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Joel DJEUKOUA - Chef de Secteur",
+        "Nombre total équipements": 4,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 3,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Joel Henri PRISO KOUELLE - Technical Program Manager",
+        "Nombre total équipements": 7,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 7
+      },
+      {
+        "Propriétaire": "Joel NANA NGUENANG - Controleur Qualite MPC",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Joele DJOUELA NGUEYOUNOU - Chef de Secteur",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 0
+      },
+      {
+        "Propriétaire": "Joelle Francine NJIKE EPSE NIMENI - Chef de Secteur Junior",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "John CHE JOHN - Cadre Polyvalent",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Jonathan TAFO - ",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Joseph ABE TABI - Contremaitre Principal Fabrication",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Joseph DJIEUBOU - Chef d'Atelier Maintennace Electrique",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Joseph Desire ETSEKE - Chef Service Conditionnement et Siroperie",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Joseph Marie KAHEGON - Chef de Secteur Junior",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Joseph NGUEMBOG - Chef de Secteur",
+        "Nombre total équipements": 4,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 3,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Josiane Delphine GUEDJO - Comptable Fournisseurs Etrangers",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Josue Orateur NJOH - Contremaitre Senior Conditionnement",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Judicael TOUKAM - Chef Section Comptable",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Judith Flore MEDOM KOUAM Epse KAMDEM - Ingenieur Gestion des Procedes en Fabrication",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Judith Lily FONGUE NKENGMO - Assistant Materiel Roulant",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Judith NEGUE FOTSO - Chef de Secteur Senior",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 0
+      },
+      {
+        "Propriétaire": "Jules Bernard NKEGA - Superviseur",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Jules DIBABO TCHOUMKEU - Superviseur Senior QHSE",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Jules Polydort MBAMI - Warehouse Officer",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Jules SIMOU - Chef Service Senior Methodes et Achats Pieces de Rechanges",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Julie NGAKUI EPSE NDJIENDE - Assistante Administrative",
+        "Nombre total équipements": 4,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 3
+      },
+      {
+        "Propriétaire": "Julius DAJIO TSAGUE - Reliability lead Brewing",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Justemmanuel SAADIFFO NOUMEDEM - Contremaitre Principal Maintenance Infrastructure et Froid",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Justin DOUALLA SEPPO - Chef Service Tresorerie Front Office",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Justin Jaures NJONKOUE WOGUEP - Chef de Secteur Senior de Remplacement",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 0
+      },
+      {
+        "Propriétaire": "Justin KUATE FOALENG - Contremaitre Senior Conditionnement",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Justin Martial BODO ABENA - Responsable fluide",
+        "Nombre total équipements": 5,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 4,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Justin NGOUPEYOU - Prestataire TEMI",
+        "Nombre total équipements": 15,
+        "Ordinateur Personnel": 1,
+        "Smartphones": 1,
+        "Équipement SABC": 13
+      },
+      {
+        "Propriétaire": "Justin ZYEBE - Chef d'Atelier Maintenance Mecanique Conditionnement",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "KEMBEU NZADI - Superviseur SI (Occasionnel)",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Kelvine NOUBOUSSI EPSE MVONDO - Innovation Manager - Beer & RTDs",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Kengne OUAFFO - Chef de Secteur Junior",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Kevin Landry NSEKE NSEKE - Assistant Technique",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 1,
+        "Smartphones": 0,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Kevine MEKWEAZE - Ingenieur Methodes et Procedes Fabrication",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Kristine MASOPO NSONGO - Secretaire Technique",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Kuntz Samuel EKEKE MELONG - Chef de Departement Planification Organisation et Gestion des Talents",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "LOGA PEG Therese Danielle - Chef de Secteur",
+        "Nombre total équipements": 4,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 3,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Lablanche MOUKOLLE - Magasinier",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Lamine VONDOU MADI - Assistant Junior Logistique",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 0
+      },
+      {
+        "Propriétaire": "Landry BASSALANG BEBALL - Controleur de Gestion Senior",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Larissa CHIEMNYE - QGHE (Temporaire)",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Larissa NDEDI - ",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Laura Pelagie KAMGUEP - Chef Service Senior Controle Qualite",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Laure ADA NIKOUNDE - Chef Service Controle de Gestion / Ccial et Mktg",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Laure Marie ETISSIE MOUTENG - Assistant Export (PRESTATAIRE)",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Laurent Christian MENOUNGA ONANA - Chef Service Maintenance & Services Generaux",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Laurentine Elsa BILANG - Technicien Commercial",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Lavie NDJELLE ESSOME - Contremaitre Production Presses",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Lawrence KAMDOUM FORSOH - MOVE Transition Manager",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Lemeux Pascal GANNO FOUAMENE - Chef d'Atelier Production des Fluides",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Leolein BOLLANGA - Sales Executive",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 0
+      },
+      {
+        "Propriétaire": "Leon Stephane KAMGANG TCHINDJO - Chef Magasin Usine",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Leon TCHAHE - Contremaitre Senior Conditionnement",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Leonard AZAPFACK - Contremaitre Soufflage",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Leonard KEMGANG NGUETCHOM - Directeur Regional Senior",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Leonard MBEDE MEZANG - Chef de Secteur",
+        "Nombre total équipements": 5,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 3
+      },
+      {
+        "Propriétaire": "Leonard NINTIDEM - Chef de Quart",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 3
+      },
+      {
+        "Propriétaire": "Leonard NZENANG - Chef de Service Senior Formation Commerciale",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Leonce Placide TCHOUMKEU - Superviseur Surete et Securite",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Leopold SOUP NZESSA - Contremaitre Maintenance Mecanique, Services Generaux, Fabrication et Step",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Leopold Saker NDIHOU TAYO - Chef de Service Senior Exploitations Commerciales",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Leopoldnie NGANOU FOZIN EPSE TAYOMNOU - Chef de Secteur Senior",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 0
+      },
+      {
+        "Propriétaire": "Lidie TOWO EPSE NDAMENDEU - Chef d'Exploitation Commerciale Ndokoti",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Lise Rollie NKOUAMO PANGO - Consultant Junior Fonctionnel Informatique",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Littoral CLUB VIP - BAL partagee Compte Messagerie Client VIP Littoral",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 3
+      },
+      {
+        "Propriétaire": "Louis AMBOMBO AWOUA - Directeur Process Qualite",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Louis Brice NGASSAM NGASSAM - Contremaitre Principal Production Presse",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Louis Marie DJAPA - Contremaitre Principal Support Maintenance",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Louis Marie TAGNE TALOM - Contremaitre Principal Mecanicien",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Louis Stephane NGAMO - Chef Service Mainenance Conditionnement",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Love Freddy NGUIFO NENDA - Contremaitre Principal Fusion",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Luc Francis HONBA II - Chef de Quart",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 0
+      },
+      {
+        "Propriétaire": "Lucas MPEI ARIKAM - Vomi Controller",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Lucas NKWEI - Chef Magasin Usine",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 3
+      },
+      {
+        "Propriétaire": "Lucienne MAMBA FOSSI - Chef Section Comptable",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Ludovic TCHUINCHE  - Sales Executive",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 0
+      },
+      {
+        "Propriétaire": "Lydie Tatiana NGOKA - Chef Secteur",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 0
+      },
+      {
+        "Propriétaire": "Lydienne Huguette MOUTO NSEKE - Chef de Section Administration RH",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 3
+      },
+      {
+        "Propriétaire": "MBANG A BOL - Chef d'Atelier Maintenance Mecanique Conditionnement",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "MOMHA BALOGOG John Parfait - Contremaitre Siroperie TC",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Mahamat MALLA MOUSSA - Contremaitre Principal Fabrication",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 1,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Marc Eric TCHAPMY - Chef de Division Achats Hors Production",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Marcel Joris DJIHOU DJOMPHA - Magasinier Cariste",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Marcel MBENGA - Superviseur Regional Marketing Operationnel",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Marcel NEN EBONGUE - Chef de Departement Controle Qualite et Developpements",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Marcelle TCHAPTCHET NGAMOU EPSE TATCHI - Contremaitre Principal Microbiologie et Degustation",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Marcelle Tatiana MBOUKUICHOIE MAMWA - Sales Executive",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Mardochee FOTZEU TCHAKOUNTE - Chef de Quart",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Marguerite ENGOME NJOH - Superviseur National Senior TT - On Trade",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Maria Lysiana MOUANDJO MWANGA - Chef de Secteur de Remplacement",
+        "Nombre total équipements": 4,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Mariane Henriette BOABDA NOLABO - Sales Executive",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 0
+      },
+      {
+        "Propriétaire": "Marie Angele MELIEDJE EPSE NGANDJUI TOCHE - Attachee de Direction",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Marie Antoinette MPOULEU DISSI EPSE CHUITCHEU - Responsable Sponsoring et Evenements",
+        "Nombre total équipements": 4,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 3,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Marie Bertrand NGATEMI - Ingenieur Methode Mecanique Conditionnement",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Marie Bridinette MELIKENE - Chef de Service Administration du Personnel",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Marie Christine MBENDE NDONGUE - Assistant Comptable  (Prestataire)",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Marie Joel EBONGO DJONI - Supply",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Marie Laure FOPAH TCHOUMTCHOUA EPSE FONGUIENG - Ingenieur Principal Applications Sada",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Marie MEGUEM EPSE KEPSU - Trade And Marketing Operator",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Marie Noel MOUKETE NGOH - Chef de Departement Commercial TT",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Marie Prudence BILONG EPSE DJOMATCHOUA - Chef de Secteur Senior",
+        "Nombre total équipements": 4,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 4,
+        "Équipement SABC": 0
+      },
+      {
+        "Propriétaire": "Marie Therese Aurely MPAKT EPSE BABOUGA - Chef de Secteur",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Marius CKWEBOU NGAMGA - Controleur de Gestion Senior",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 3
+      },
+      {
+        "Propriétaire": "Marius NEMBOT - Data Business Analyst",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Martial BIKOLA - Chef d'Atelier Entretien des Infrastructure",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Martin Claude MBEMA - Chef Section Fournisseurs",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Martin Franck DIN EBOUMBOU - Assistant Froid",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Martin LISSOM - Chef de District Ventes Traditional Trade",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Martin TSAKENG WABA - Senior CP&R Supply Analyst",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 3
+      },
+      {
+        "Propriétaire": "Martine Ines MAYAGI - Responsable Junior Surete Securite",
+        "Nombre total équipements": 4,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Mary AMAH - Manufacturing Analyst (Manex)",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Mary Therese WIRYEN EPSE SIME - Infirmiere",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Mathilde SIMO - Chef Section Administration Rh",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Mathio IPOUA - Chef de Service Audit Interne Pole Commercial",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Maupertuis KWANSEU KAMGAING - Contremaitre Senior Conditionnement",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Maurice NITCHEU KAMENI - Chef de Service Surete Securite",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Maurice SAAH - Chef de Secteur",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Maurice YOSSA - Governance Manager",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Max Robinson KAMWA SOKOUNDJOU - Chef Service QHSE- Sites Nord",
+        "Nombre total équipements": 4,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 3,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Maximilien BIBOGA - Contremaitre Junior Maintenance Mecanique",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Merlin Blaise DJOU NBINDA - Trade And Marketing Operator",
+        "Nombre total équipements": 4,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 3
+      },
+      {
+        "Propriétaire": "Micael EHOUBE NJOUMBA - Contremaitre Principal Electricite / Instrumentation",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Michael MUSANGO NGAMO - Auditeur Interne Pole Support",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Michel ASSANGUENE BOYO - Technicien Instrumentation, Informatique Industrielle et Mantenance Bout Froid",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Michel Bertrand SIME TCHOUOPBIAP - Chef de Service Commercial Junior",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Michel KALIC - Contremaitre Mecanique et Infrastructures",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Michel KAMENI -  Packaging Team Leader",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Michel MAKON - Trade And Marketing Operator",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Michel NGANDO - Chef de Quart",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Michel Roger BION NGUIDJOE - Chef de Secteur de Remplacement",
+        "Nombre total équipements": 4,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 3,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Michel SOTCHE TCHATUE - Juriste Site Ouest",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Michel Sainclaire SANDJONG TCHIEGANG - Trade And Marketing Operator",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 0
+      },
+      {
+        "Propriétaire": "Michel TCHUENTE - Contremaitre Principal Pr",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Michel TCHUIAM KAMDEM - Directeur des Technologies et de L'innovation",
+        "Nombre total équipements": 4,
+        "Ordinateur Personnel": 1,
+        "Smartphones": 2,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Michel TJOMB NDIE - Chef de Secteur Senior",
+        "Nombre total équipements": 4,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 3,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Michelle Noelle KOUAMO TAYOU - Assistantl Budgets et Ristournes",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Mireille BEBINE - Chef d'Exploitation Commerciale Bonaberi",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Mireille Laure ANANFAH DONGMO - Trade Activity Controller",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Mispa KUM NDUM - Chef de Secteur",
+        "Nombre total équipements": 4,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Modeste NZOUDA - Responsable Surete Securite",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 1,
+        "Smartphones": 1,
+        "Équipement SABC": 0
+      },
+      {
+        "Propriétaire": "Moise Aime EBOULLE TITIL - Chef de Service Support Fonctionnel et Helpdesk",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Moise KENGNE WAFO - Contremaitre Composition",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Moise LOGMO - HR Officer (Compte de Sce)",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 3
+      },
+      {
+        "Propriétaire": "Moise TEKAM - Electricien",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 0
+      },
+      {
+        "Propriétaire": "Moses NDEP OJONG - Superviseur Animation",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 1,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Myriam Dorette NGO BASSOP - Chef Section Administration RH",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 3
+      },
+      {
+        "Propriétaire": "Myriam Raïssa PEMBOURA -  Stagiaire Fiscalité",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "NGANG MBILE - Superviseur Senior Environnement",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 3
+      },
+      {
+        "Propriétaire": "NGO POUHE Genevieve EPSE NGUELE ESSAMA - Trade And Marketing Operator",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "NGOUNOU O'VARICK DIFFO - Chef Service Senior Conditionnement",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "NGUIMBOUS NGUIMBOUS - Chef de Secteur Junior",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "NJOCK - Contremaitre Senior Materiel Roulant",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "NKOKMEGNE KAPTUE - Chef de Quart",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "NKWANHOU Ignace - Consultant DLA",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Nadege Scholast BIDIMA OSSEGUE epse ADZABA - Commercial Planning & Activation Manager",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Natalie NJANTOU - Chef de Bureau Principal PECAE (Prestataire)",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Nathalie ILOUGA WHELA - Sales Executive",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 0
+      },
+      {
+        "Propriétaire": "Nathan William ZALLI SIPEHOU - Chef de Secteur de Remplacement",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 0
+      },
+      {
+        "Propriétaire": "Native Ludovine NANA - Chef de Secteur Junior",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Nature NYOPE SEE - Superviseur Logistique",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Nelly BOWEN NKOUNDJI - Directeur des Ressources Humaines",
+        "Nombre total équipements": 4,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Nelly Gladys TCHUENTE SILA - Chef Secteur",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Nico NWETBEGWET ACHANKENG - Sales Executive",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Nicolas Cyrille YEBGA NYOBE - Chef Service QHSE - Sites Ouest",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 3
+      },
+      {
+        "Propriétaire": "Nicole Josiane YANMO PALO EPSE GOUIFE - Chef Service Senior Ressources Humaines",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Nicole NGO MBEI - Sales Executive",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 0
+      },
+      {
+        "Propriétaire": "Nicole TAKAM NZUKOU - Chef Service Senior Maintenance des Infrastructures Commerciales et Froid",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Noe Joel TAFO FOTSO - Senior Business Analyst Distributeurs",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Norbert ACHONGWA MANJONG - Chef de Secteur",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 3,
+        "Équipement SABC": 0
+      },
+      {
+        "Propriétaire": "Nordin TIWA NOUBISSIE - Controleur de Gestion Junior",
+        "Nombre total équipements": 4,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 3
+      },
+      {
+        "Propriétaire": "Ntoogue MAYACK - Senior Divisional Sales Manager",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "OFFICE06-Developpement Workflow Sharepoint Office 365",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 3
+      },
+      {
+        "Propriétaire": "Olivier ESSO PIERRE - Chef Service Magasin Usine",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Olivier FIDESSOU - Chef de Quart Mu",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Oriane CHAMKO KAMGA - Ingenieur Methodes Travaux Neufs",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Orianne Sonia NGANSEU FANDIO - Senior Decision Support - Premium Trade & RTC",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Orlin CHUIMEN - Mecanicien",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Oscar NSEKE NSEKE - Trésorier Général (Prestataire)",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Pamela NKOUE NGAKO - Assistant Senior Stages et Relations Ecoles",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 3
+      },
+      {
+        "Propriétaire": "Paoline Ingrid NDOUMBE EPSE LOGMO - Responsable Junior Surete et Securite",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Pascal Desire FOKO NOTOUOM - Chef Service Fusion",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Patricia DINA ELOKO EPSE TOUTOU - Chef Service Senior Achats Pieces de Rechanges",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Patrick Aime KOIMKAM MAMBOU - Magasinier Pr",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 0
+      },
+      {
+        "Propriétaire": "Patrick DJAKOU MOUOFO - Coordinateur des Projets",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Patrick Eclador MOMO - Superviseur National Senior Programme Ambassadeur",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Patrick FEUTI - Packaging Team Leader",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Patrick KOME MBENDE - Chef de Secteur Junior",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Patrick Magloire IPOUA - Ingenieur Travaux Neufs",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Patrick TEKU MULUH - Superviseur Gestion / Pilotage des Zones",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Patrick Willy MBAKOP - Chef Service Operations et Declarations Fiscales",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Patrick ZAMBOU - Superviseur Animation On Trade",
+        "Nombre total équipements": 7,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 4,
+        "Équipement SABC": 3
+      },
+      {
+        "Propriétaire": "Paul - Directeur Industriel",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Paul Alain MEYEME MEYEME - Responsable Formation",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Paul Auguste NGAKO NGAKO - Animateur du Controle Interne",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Paul BIDIAS - Chef de Secteur",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 0
+      },
+      {
+        "Propriétaire": "Paul Bayard KONON - Chef de Secteur Junior",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Paul GWET - Magasinier Hydrocarbures",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Paul Gaetan DONGO AKONO - Chef d'Atelir Supply Chain",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Paul NTOLLA - Superviseur Regional Evenementiel, Negoce et Biere Pression",
+        "Nombre total équipements": 4,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 3,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Paul Valery BIKOUN NGOA - Pilote d'Exploitation Systemes d'Informations",
+        "Nombre total équipements": 4,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 3
+      },
+      {
+        "Propriétaire": "Paule Jocelyne TINA - Magasinier PR",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Paulin YOUBI DEFO - Contremaitre Qualite",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Pauline Blandine MOUELLE KWIN - Superviseur Senior Sutete",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Pauline Georgette ZOUA - Chef de Secteur Senior Off Trade 1",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Pauline Nathalie DIBATCHOU - Superviseur des Magasins Produits Finis",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Peter Bolo BUNDU - Chef Secteur",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 0
+      },
+      {
+        "Propriétaire": "Philibert KOUTAP WEDJILE - Chef de Secteur Junior",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Philibert NGO - Contremaitre Junior Service Generaux",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Philomene  BOB OBI Epse ARREY - Chef Service Commercial",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Pierre Alain ETOUNDI - Chef de Service Audit Inspection Generale",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Pierre BATEKI BATEKI - Sales Executive",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 0
+      },
+      {
+        "Propriétaire": "Pierre DJAMKEBA DJONGOUE - Contremaitre Principal Fabrication",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Pierre Gerard FOSSE - Process Owner Processus Pilotage et Amelioration Continue",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Pierre MBALLA MBARGA - Agent de Maitrise de Remplacement",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Pierre Robert KENFACK - Contremaitre Electricite",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Pierre Romeo SADO CHATUE - Chef de Secteur",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 0
+      },
+      {
+        "Propriétaire": "Pierrette NGWANA MAYOU - Sales Executive",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 0
+      },
+      {
+        "Propriétaire": "Pierrine Eliane MVENG ELOUNDOU - Assistant Senior Developpement et Innovation",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Prince Brice EYOUM EYOUM - Assistant Senior Data Analyst",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Priscile Celine BATEKY - Chef de Secteur Off Trade 2",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Prisilla CHIMEWAH NYOH - Trade And Marketing Operator",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Prudence DETSI TCHOMTCHE - Chef de Secteur",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 0
+      },
+      {
+        "Propriétaire": "Qualite et Certificats d Analyse-Contr?les ? Avant Exp?dition ?",
+        "Nombre total équipements": 5,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 5
+      },
+      {
+        "Propriétaire": "Rachel Audrey TSIMI - Assistant Junior RH - Developpement",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Raoul NONO NONO - Ingenieur Food Safety et Nettoyage Desinfection",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Raymond Florent TCHATCHOUA POUNGOUE - Chef d'Atelier Electricite",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Regis Lionel MPONDO MBOKA - Directeur Qualite, Hygiene, Securite et Environnement",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Relevan NJUMENEH - Assistante RH",
+        "Nombre total équipements": 4,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 3
+      },
+      {
+        "Propriétaire": "Rene Guy NDOM DIM - Chef de Secteur",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 0
+      },
+      {
+        "Propriétaire": "Rene MEYEM MEYON - Chef d'Atelier Fabrication",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 3
+      },
+      {
+        "Propriétaire": "Rene Remy SAMNICK SAMNICK - Chef de Departement Electricite, Automatisme et Instrumentation",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Rialland - Responsable Junior Securite Siege et Villas",
+        "Nombre total équipements": 4,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Richard DE MBALLE - Contremaitre Conditionnement",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Richard MBACHAN - Chef Atelier Fabrication",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 3
+      },
+      {
+        "Propriétaire": "Robinson WAFO - Directeur du contrôle de gestion",
+        "Nombre total équipements": 5,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 3
+      },
+      {
+        "Propriétaire": "Roddy AKAM -  Warehouse Officer",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 3
+      },
+      {
+        "Propriétaire": "Rodolphe AMBASSA - Sales Manager Senior TT On Trade",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Rodrigue FOTSO NZUDJOU - Chef de Secteur Senior Support Fonctionnel & Helpdesk",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 3
+      },
+      {
+        "Propriétaire": "Rodrigue KENGNE TAKTSING - Mecanicien",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 0
+      },
+      {
+        "Propriétaire": "Rodrigue TINGUEM - Assistant Senior Rh - Paie",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Roger Ducadeau SOP TITCHO - Directeur de la Coordination Strategique",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Roger WANKO - Magasinier Pieces de Rechange",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 3
+      },
+      {
+        "Propriétaire": "Roland SAMA TAMON - Chef de Secteur Junior",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 3,
+        "Équipement SABC": 0
+      },
+      {
+        "Propriétaire": "Romeo Aime TAMEGHE TENE - Contremaitre Junior Materiel Roulant",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Romuald ELOGO - Operateur de Saisie",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Rosemary ANYAKEM NJEH EPSE NFORMI - Chef de Secteur",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 0
+      },
+      {
+        "Propriétaire": "Rosine KATI - Chef de Bureau Principal Achat Pr",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Rosine Palmeira NGO NEMB epse AHANDA - Responsable Conformite Ethique",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Rosita Louise UM - Chef Service Senior Ressources Humaines",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Rostand KAMHOUA FOSSI - Contremaitre Electricite",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 3
+      },
+      {
+        "Propriétaire": "Rostant MBODA MIPO - Magasinier MPC",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Ruth EKEDI - Attachee de Direction",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Sali MOHAMADOU - Prestataire Ets Global Art 5",
+        "Nombre total équipements": 14,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 13
+      },
+      {
+        "Propriétaire": "Saliou KODIA ABEKA - Assistant Sponsoring et Evenements",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Salomon LOBE MBAPPE - Chef de Groupe MPC",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Samory FOTSO TATCHIM - Ingenieur Methodes et Projets",
+        "Nombre total équipements": 4,
+        "Ordinateur Personnel": 1,
+        "Smartphones": 2,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Samuel  franck TCHAPTSA - Chef de Secteur Senior",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 0
+      },
+      {
+        "Propriétaire": "Samuel Bertrand EYONDO EWANE - Chef Service Projets et Cycle de Vie MPC",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Samuel Guillaume DOOH NDEDI - Chef de Centre de Distribution",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Samuel KAGE SIMO - Magasinier Produits / Emballages",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Samuel Limosin DIN - Superviseur National Senior Evenementiel et Biere A Pression",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Samuel NEBA SUH - Ingenieur Efficacite Energie",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Samuel NSOA - Assistant Administratif Supply Chain (Temporaire)",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Samuel Pascal FOTSO - Contremaitre Principal Traitement des Eaux",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Samuel Patrick NACK - Chef d'Atelier Conditionnement",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Samuel Stéphane BIKES - Responsable Archives Nationales",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Sandrine Emmanuelle ESSEBE NJOME - Superviseur Economie Circulaire",
+        "Nombre total équipements": 4,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 4
+      },
+      {
+        "Propriétaire": "Sandrine Josiane MBALLA - Chef de Secteur",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 3,
+        "Équipement SABC": 0
+      },
+      {
+        "Propriétaire": "Sandrine POUTA - Sales Executive",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 0
+      },
+      {
+        "Propriétaire": "Sani MOHAMADOU - Responsable Environnement",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Sarah BAKANE EPSE SIMO - Corporate Relations Director",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Sariette Audey BOUMSONG - Comptable Ca / Clients",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Serge Fabrice PEZOCK FOSSOUO - Chef de Service Transport",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Serge Gauthier ISSIE - Contremaitre Principal Fabrication",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Serge LOBE MANGA - Coordinateur des activités de vente",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 3
+      },
+      {
+        "Propriétaire": "Serge Landry BABOHEGUE - Chef de Service Audit Interne Pole Support",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Serge Martial FOHOM KAMOGNE - Instrumentiste",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 0
+      },
+      {
+        "Propriétaire": "Serge PAMEN-Opérateur sécurité Pont(Temporaire)",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Serge Raoul FOTUE - Sales Executive",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Serges Bruno WELLAN EDIMBO - Chef d'Atelier Support Maintenance",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Severin BESSOKO A NWOMBO - Cariste",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Simon Pierre Didier NACK - Contremaitre Materiel Roulant",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Simon ZE - Directeur Regional Senior",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Simplice EBOUE ELIME - Contremaitre Production des Fluides",
+        "Nombre total équipements": 4,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Sir Franklin NKWABOU NGUEMBOU - Ingenieur Gestion des Donnees Industrielles",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Socaver LABORATOIRE- Operateurs Laboratoire",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Solange Clarisse MPASSI TOOH EPSE BWANGA - Attachee de Direction",
+        "Nombre total équipements": 4,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 3
+      },
+      {
+        "Propriétaire": "Solange METIEDJIE EPSE YEFOUE - Chef de Secteur",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Steeve Ange TAMBOKO WOUMFO - Développeur M3  (Stagiaire)",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Stella NKEMBATAAH MATITEM - Charge du Courrier",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Stephan DIKONI MAHEND - Chef Section Paie",
+        "Nombre total équipements": 4,
+        "Ordinateur Personnel": 1,
+        "Smartphones": 2,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Stephan KAPING KUEKEM - Chef de Departement Production",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Stephane BAYAB - Chef de Division Technico-Commercial",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Stephane Gael NLEND - Technicien de Laboratoire Junior",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 0
+      },
+      {
+        "Propriétaire": "Stephane NFONMEBEMOUN - Packaging Operator",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Stephane NGNIE KUATE - Contremaitre Principal Services Generaux",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 1,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Stephane TANKO - Responsable Audit Systeme",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Stephane Valery KWETCHE - Chef de Secteur Junior",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Stephanie AMBE - Chef de Secteur",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 0
+      },
+      {
+        "Propriétaire": "Stephanie Laure BIANOU TCHOFOUT EPSE MAHOP - Chef de Service Assurances et Baux",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Stephanie NYA MOULLAH - Sales Executive ( Prestataire )",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Stephen NOUMO TCHATCHIM - Support Helpdesk (Prestataire)",
+        "Nombre total équipements": 8,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 3,
+        "Équipement SABC": 5
+      },
+      {
+        "Propriétaire": "Steve Arthur Dimitri FOUTH MOUTIMBE - ACHETEUR JUNIOR (Prestataire)",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Steve Landry TCHOCKSI MFALE -  Stagiaire FNE Fabrication",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Stheve NGAPE LONTE - Chef Section Achats Imports Pieces de Recehange -Conditionnement",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Stéphane DESCAZEAUD - Directeur General",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Suzanne MOUSSIMA NSAME - Chef de Secteur Senior",
+        "Nombre total équipements": 4,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 3,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Sylvester MESUE MAMBE - Senior BPM Analyst",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Sylvie Laure NOUBISSI - Chef Service Commercial Senior Modern Trade",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Symplice Rodrigue NGANANA MVOGO - Chef de Secteur Junior",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 0
+      },
+      {
+        "Propriétaire": "TALTENG MBIANDOU Olivier - Chef Service Maintenance Services Generaux et Fabrication Tc/Cp",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "TAPTOUSIA TOUFA - Chef d'Atelier Maintenance Ubg",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Tatiana EBINEMBENIE - Chef Bureau Principal Cout Transit",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Terlin NGAMI FABO - Technicien Metrologie",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Therese TAKENDO - Contremaitre Food Safety",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Thierry NANMEGNI -  Material Reconciliation supervisor",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 3
+      },
+      {
+        "Propriétaire": "Thierry NJOME EBOUELE - Chef de Division Business Intelligence et Applications Commerciales",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Thierry TCHIEGANG TCHIEGANG - Sales Executive",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 3,
+        "Équipement SABC": 0
+      },
+      {
+        "Propriétaire": "Thomas EBOLA EKANGO - Operateur de Saisie",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Tize FAMA - Responsable Infrastructures Commerciales",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Triomphe Eloi BILIKOTE MAKAN - Chef de Departement Audit Interne",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Valentin Achille CHOUNGOU MOUASSIE - Controleur Qualite MPC",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Valeri NGAMENI -  Transport Manager",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Valery MUA -  Packaging Team Leader",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Variette SIMEU EPSE MBAKOP - Chef Service Senior Fabrication",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Venant Frank KOMBOU NOUPA - Chef de Secteur Senior",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 0
+      },
+      {
+        "Propriétaire": "Vera KAMENI - CAPEX (Prestataire)",
+        "Nombre total équipements": 4,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Verlain NKONLACK KOUETE - Contremaitre Principal Electricite",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Veronique LOBE EBELLE MONY - Technicien Step",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Veronique SIANI - Contremaitre Principal Food Safety et Nettoyage Desinfection",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Vichie MAYIENLI NUELLA - Assistant Comptable (Temporaire)",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Vicky TSAFACK -  Warehouse Officer",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Victor Hugo CHOUANSI TOUTCHUI - Chef de Secteur Senior",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 3,
+        "Équipement SABC": 0
+      },
+      {
+        "Propriétaire": "Victor Junior MINYEM NYECK - Consultant SSI (Prestataire)",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Victor MESSI - Chef de Secteur de Remplacement",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Vince DJEUKOUAN - Chef de Secteur de Remplacement",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 0
+      },
+      {
+        "Propriétaire": "Vincent De Paul POUOKAM - Distribution Development Manager - Beer",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Vincent De Paule SIEYAPDJIE A IROUME - Infirmier Chef",
+        "Nombre total équipements": 4,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 3,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Vincent Parfait NDESSIDJI KAMANI - Chef de Secteur Senior Support Fonctionnel & Helpdesk",
+        "Nombre total équipements": 12,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 12
+      },
+      {
+        "Propriétaire": "Virgil Duclair NGOUATOU MOUMENI - Contremaitre Principal Entretien des Infrastructures",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Virginie GNYAM - Chef Section Gestion / Pilotage de Zones",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Vivi Blando TCHATCHOUA NJIKI - Chef Service Commercial Junior Ngaoundere",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Viviane Adrienne OVAGA - Assistant Junior Logistique",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Vivien FEWOUO - Chef Secteur",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 0
+      },
+      {
+        "Propriétaire": "Vivien JOUNKAM LEMJOK - Contremaitre Senior Conditionnement",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Vivien MEZOUASS ENYEGUE - Contrôleur/Analyste Frais Fixes",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Voltaire TCHOTCHOU - Contremaitre Senior Maintenance Electricite/ Instrumentation Embouteillage",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Walter DEFO TENIMKO - Chef Service Logistique",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Wilfrid TAMAH SANDIO - Assistant Senior Master Data",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Wilfried BEMENE - Contremaitre Food Safety et Nettoyage Desinfection",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Wilfried TAPCHE TAKOU - Chef Service Controle de Gestion Filiales",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "William TAMBIA MBIANGA - Contremaitre Principal Fabrication",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Williams WAKAM NDJANMO - Chef d'Atelier Maintenance Mecanique Conditionnement",
+        "Nombre total équipements": 4,
+        "Ordinateur Personnel": 1,
+        "Smartphones": 2,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Willie Joel MOYAP KWEKEU - Auditeur Processus",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Williem Bruno FOFOU TCHIO - Technicien de Laboratoire",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 0
+      },
+      {
+        "Propriétaire": "YOMBI SEKE - Ingenieur Electricien/Automaticien",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Yakoua SOUAIBOU - Contremaitre Principal Embouteillage",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Yanick Carlift YIMKAM TCIMEBE - Contremaitre Junior Materiel Roulant",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Yann Daniel Francois LE GAL - Directeur du Materiel Roulant",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Yannick BIAMOU KEUTCHATE - Responsable Junior Surete",
+        "Nombre total équipements": 4,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 3,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Yannick EKO - Day electrician",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Yannick Frank YAMDJEU TCHADA - Technicien de Laboratoire Ettte",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Yannick GUEKO TCHIENKOUA - Responsable Materiel Electrique Froid",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Yannick NTCHETGNIA VAUMI - Responsable Surete Securite",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Yannick Rostand TCHABASSI - Chef de Groupe Entretien Bout Froid",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 3
+      },
+      {
+        "Propriétaire": "Yannick Steve FAUSSI TAKAM - Chef Service Senior Ressources Humaines",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Yannick William DJOUKOU - Employe Ouvrier Polyvalent",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Yedna MOUELAS - Chef Service Senior Methodes et Engineering de la Performance",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Yohann NIAKA NIAKA - Contremaitre Senior Support Maintenance Conditionnement",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Yolande FANBOU KENMEY - Chef Section Gestion Pilotage des Zones",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Yolande Leticia AVOULA ADIBONE EPSE  ANGO - Chef Service Achats Centralises de Biens et Equipements Hors Production",
+        "Nombre total équipements": 4,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 3,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Yolande NYEMBA EPSE NGAYIHI ABBE - Chief Data Officer",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Yvan MENDOUGA NLATTE - Stagiaire",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 0,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Yvan MOMENI YAMENI - Assistant Junior Emballages / Socaver",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Yves Aurelien BOLOMIKI - Responsable Materiel Roulant",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Yves DJIMKOUO - Directeur d'Exploitation des Usines",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Yves Mathieu MANGA NGUELE - Chef Service Fabrication",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Yves Merlin AJOUMESSI DONGMO - Contremaitre Principal Electricite/Instrumentation",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 1
+      },
+      {
+        "Propriétaire": "Yves NJEUKAM NKWANGUE - Mecanicien",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 0
+      },
+      {
+        "Propriétaire": "Yves Prosper MBELLA EPEE - Chef de Secteur de Remplacement",
+        "Nombre total équipements": 6,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 4,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Yvette Michele MENDO'O - Chef de Departement Conformite",
+        "Nombre total équipements": 3,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 1,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "Yvette Sidonie NGO HONLA EPSE MAMBA GUILING - Chef Service Senior Ressources Humaines",
+        "Nombre total équipements": 4,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 2
+      },
+      {
+        "Propriétaire": "jean Michel BI NSIMA BILLONG - Chef de Secteur Senior",
+        "Nombre total équipements": 2,
+        "Ordinateur Personnel": 0,
+        "Smartphones": 2,
+        "Équipement SABC": 0
+      }
+    ]
+  }
+]

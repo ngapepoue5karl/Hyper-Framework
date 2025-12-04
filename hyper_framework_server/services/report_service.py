@@ -427,6 +427,153 @@ class ReportGenerator:
         tblBorders_bottom.append(border_insideH)
         tblPr_bottom.append(tblBorders_bottom)
     
+    def _add_signature_table(self, document):
+        """
+        Ajoute le tableau de signatures à la fin du rapport.
+        
+        Tableau avec 5 colonnes et 4 lignes :
+        - Ligne 0 : [vide] | Rédaction | Révision | Révision | Approbation
+        - Ligne 1 : Nom | Berry Anwi EKWA | Edward NANDA | Armel NGATCHUI | Blaise NDANGANG
+        - Ligne 2 : Fonction | [vide] | POGR | RSSI | DSI
+        - Ligne 3 : Date & Signature | [vide] | [vide] | [vide] | [vide]
+        """
+        # Ajouter un espace avant le tableau
+        document.add_paragraph()
+        
+        # Créer le tableau 4 lignes x 5 colonnes
+        table = document.add_table(rows=4, cols=5)
+        table.style = 'Table Grid'
+        table.autofit = False
+        
+        table.rows[0].cells[0].text = ''
+        # Rédaction
+        cell_redaction = table.rows[0].cells[1]
+        p = cell_redaction.paragraphs[0]
+        run = p.add_run('Rédaction')
+        run.bold = True
+        run.font.name = 'Arial'
+        run.font.size = Pt(8)
+        p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+        tc = cell_redaction._element
+        tcPr = tc.get_or_add_tcPr()
+        tcVAlign = OxmlElement('w:vAlign')
+        tcVAlign.set(qn('w:val'), 'center')
+        tcPr.append(tcVAlign)
+        # Révision (fusionner colonnes 2 et 3)
+        cell_revision = table.rows[0].cells[2]
+        cell_revision_next = table.rows[0].cells[3]
+        cell_revision.merge(cell_revision_next)
+        p = cell_revision.paragraphs[0]
+        run = p.add_run('Révision')
+        run.bold = True
+        run.font.name = 'Arial'
+        run.font.size = Pt(8)
+        p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+        tc = cell_revision._element
+        tcPr = tc.get_or_add_tcPr()
+        tcVAlign = OxmlElement('w:val'), 'center'
+        tcVAlign = OxmlElement('w:vAlign')
+        tcVAlign.set(qn('w:val'), 'center')
+        tcPr.append(tcVAlign)
+        # Approbation
+        cell_approbation = table.rows[0].cells[4]
+        p = cell_approbation.paragraphs[0]
+        run = p.add_run('Approbation')
+        run.bold = True
+        run.font.name = 'Arial'
+        run.font.size = Pt(8)
+        p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+        tc = cell_approbation._element
+        tcPr = tc.get_or_add_tcPr()
+        tcVAlign = OxmlElement('w:vAlign')
+        tcVAlign.set(qn('w:val'), 'center')
+        tcPr.append(tcVAlign)
+        
+        # --- Ligne 1 : Noms ---
+        # Label
+        nom_label = table.rows[1].cells[0]
+        nom_label.text = 'Nom'
+        if nom_label.paragraphs and nom_label.paragraphs[0].runs:
+            nom_label.paragraphs[0].runs[0].bold = True
+            nom_label.paragraphs[0].runs[0].font.name = 'Arial'
+            nom_label.paragraphs[0].runs[0].font.size = Pt(8)
+        tc = nom_label._element
+        tcPr = tc.get_or_add_tcPr()
+        tcVAlign = OxmlElement('w:vAlign')
+        tcVAlign.set(qn('w:val'), 'center')
+        tcPr.append(tcVAlign)
+        # Noms - Première cellule (Rédaction) vide pour remplissage manuel
+        noms = ['', 'Edward NANDA', 'Armel NGATCHUI', 'Blaise NDANGANG']
+        for i, nom in enumerate(noms, start=1):
+            cell = table.rows[1].cells[i]
+            cell.text = nom
+            para = cell.paragraphs[0]
+            for run in para.runs:
+                run.font.name = 'Arial'
+                run.font.size = Pt(8)
+            para.alignment = WD_ALIGN_PARAGRAPH.CENTER
+            tc = cell._element
+            tcPr = tc.get_or_add_tcPr()
+            tcVAlign = OxmlElement('w:vAlign')
+            tcVAlign.set(qn('w:val'), 'center')
+            tcPr.append(tcVAlign)
+        
+        # --- Ligne 2 : Fonctions ---
+        # Label
+        fonction_label = table.rows[2].cells[0]
+        fonction_label.text = 'Fonction'
+        if fonction_label.paragraphs and fonction_label.paragraphs[0].runs:
+            fonction_label.paragraphs[0].runs[0].bold = True
+            fonction_label.paragraphs[0].runs[0].font.name = 'Arial'
+            fonction_label.paragraphs[0].runs[0].font.size = Pt(8)
+        tc = fonction_label._element
+        tcPr = tc.get_or_add_tcPr()
+        tcVAlign = OxmlElement('w:vAlign')
+        tcVAlign.set(qn('w:val'), 'center')
+        tcPr.append(tcVAlign)
+        # Fonctions - Première cellule (Rédaction) vide pour remplissage manuel
+        fonctions = ['', 'POGR', 'RSSI', 'DSI']
+        for i, fonction in enumerate(fonctions, start=1):
+            cell = table.rows[2].cells[i]
+            cell.text = fonction
+            para = cell.paragraphs[0]
+            for run in para.runs:
+                run.font.name = 'Arial'
+                run.font.size = Pt(8)
+            para.alignment = WD_ALIGN_PARAGRAPH.CENTER
+            tc = cell._element
+            tcPr = tc.get_or_add_tcPr()
+            tcVAlign = OxmlElement('w:vAlign')
+            tcVAlign.set(qn('w:val'), 'center')
+            tcPr.append(tcVAlign)
+        
+        # --- Ligne 3 : Date & Signature ---
+        # Label
+        date_label = table.rows[3].cells[0]
+        date_label.text = 'Date & Signature'
+        if date_label.paragraphs and date_label.paragraphs[0].runs:
+            date_label.paragraphs[0].runs[0].bold = True
+            date_label.paragraphs[0].runs[0].font.name = 'Arial'
+            date_label.paragraphs[0].runs[0].font.size = Pt(8)
+        tc = date_label._element
+        tcPr = tc.get_or_add_tcPr()
+        tcVAlign = OxmlElement('w:vAlign')
+        tcVAlign.set(qn('w:val'), 'center')
+        tcPr.append(tcVAlign)
+        # Toutes les cellules Date & Signature restent vides pour remplissage manuel
+        for i in range(1, 5):
+            cell = table.rows[3].cells[i]
+            cell.text = '\n\n\n'  # Espace pour la signature
+            para = cell.paragraphs[0]
+            for run in para.runs:
+                run.font.name = 'Arial'
+                run.font.size = Pt(8)
+            tc = cell._element
+            tcPr = tc.get_or_add_tcPr()
+            tcVAlign = OxmlElement('w:vAlign')
+            tcVAlign.set(qn('w:val'), 'center')
+            tcPr.append(tcVAlign)
+    
     def _add_footer_with_page_numbers(self, document):
         """
         Ajoute un bas de page avec un tableau à 3 colonnes et 2 lignes :
@@ -737,35 +884,41 @@ class ReportGenerator:
             # --- Ajouter le bas de page ---
             self._add_footer_with_page_numbers(document)
 
-            # --- En-tête du document ---
-            document.add_heading("Rapport d'Analyse de Controle", level=0)
+            # --- NOUVELLE STRUCTURE DU CORPS DU RAPPORT ---
             
-            p_date = document.add_paragraph()
-            p_date.add_run('Date de generation : ').bold = True
-            p_date.add_run(datetime.now().strftime('%d/%m/%Y a %H:%M:%S'))
-
-            p_control = document.add_paragraph()
-            p_control.add_run('Controle execute : ').bold = True
-            p_control.add_run(control_name)
+            # 1. Description du contrôle
+            document.add_heading('Description du contrôle :', level=1)
+            description_text = "N/A"
+            if control_metadata and 'description' in control_metadata:
+                description_text = control_metadata['description']
+            p_desc = document.add_paragraph(description_text)
+            p_desc.alignment = WD_ALIGN_PARAGRAPH.LEFT
+            document.add_paragraph()  # Espace
             
-            p_period = document.add_paragraph()
-            p_period.add_run('Periode : ').bold = True
-            p_period.add_run(period_label)
+            # 2. Analyse
+            document.add_heading('Analyse :', level=1)
+            analyse_text = "N/A"
+            if control_metadata and 'analyse' in control_metadata:
+                analyse_text = control_metadata['analyse']
+            p_analyse = document.add_paragraph(analyse_text)
+            p_analyse.alignment = WD_ALIGN_PARAGRAPH.LEFT
+            document.add_paragraph()  # Espace
             
-            document.add_page_break()
-
+            # 3. Résultats
+            document.add_heading('Résultats :', level=1)
+            
             # --- Corps du rapport (boucle sur les résultats d'analyse) ---
             if not analysis_results:
                  document.add_paragraph("L'analyse n'a produit aucun resultat a afficher.")
             
             for section in analysis_results:
-                # Titre de la section
-                document.add_heading(section.get('title', 'Section de resultat'), level=1)
+                # Titre de la section (niveau 2 car sous "Résultats")
+                document.add_heading(section.get('title', 'Section de resultat'), level=2)
 
                 # Statistiques résumées
                 summary_stats = section.get('summary_stats', {})
                 if summary_stats:
-                    document.add_heading('Statistiques Cles', level=2)
+                    document.add_heading('Statistiques Cles', level=3)
                     for key, value in summary_stats.items():
                         p_stat = document.add_paragraph(style='List Bullet')
                         p_stat.add_run(f"{key}: ").bold = True
@@ -774,7 +927,7 @@ class ReportGenerator:
                 # Graphiques (si présents)
                 chart_configs = section.get('chart_configs', [])
                 if chart_configs and summary_stats:
-                    document.add_heading('Graphiques', level=2)
+                    document.add_heading('Graphiques', level=3)
                     
                     for chart_config in chart_configs:
                         chart_path = self._generate_chart_image(chart_config, summary_stats)
@@ -802,7 +955,7 @@ class ReportGenerator:
                 display_columns = section.get('display_columns', {})
                 
                 if items and display_columns:
-                    document.add_heading('Donnees Detaillees', level=2)
+                    document.add_heading('Donnees Detaillees', level=3)
                     
                     # Création du tableau
                     if isinstance(display_columns, dict):
@@ -838,6 +991,24 @@ class ReportGenerator:
                         p_note.add_run(f"Total de {len(items)} lignes dans le fichier Excel complet.").italic = True
                 
                 document.add_paragraph()  # Ajoute un espace après la section
+            
+            # 4. Recommandations (vide - à remplir manuellement)
+            document.add_paragraph()  # Espace supplémentaire
+            document.add_heading('Recommandations :', level=1)
+            document.add_paragraph()  # Espace vide pour remplissage manuel
+            document.add_paragraph()  # Espace vide pour remplissage manuel
+            document.add_paragraph()  # Espace vide pour remplissage manuel
+            
+            # 5. Évidence de suivi des exceptions (vide - à remplir manuellement)
+            document.add_paragraph()  # Espace supplémentaire
+            document.add_heading('Évidence de suivi des exceptions :', level=1)
+            document.add_paragraph()  # Espace vide pour remplissage manuel
+            document.add_paragraph()  # Espace vide pour remplissage manuel
+            document.add_paragraph()  # Espace vide pour remplissage manuel
+            
+            # 6. Tableau de signatures
+            document.add_page_break()  # Nouvelle page pour le tableau de signatures
+            self._add_signature_table(document)
 
             # --- Sauvegarde du document final ---
             document.save(save_path)

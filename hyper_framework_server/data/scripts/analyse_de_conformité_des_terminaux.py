@@ -22,7 +22,15 @@ __hyper_control_metadata__ = {
     "risk_reference": "R24",
     "risk_name": "Absence de contrôle efficace de modification de configuration",
     "control_name": "Conformité des terminaux",
-    "ref_description": "CTL_SSI_PHY_TMO_1"
+    "ref_description": "CTL_SSI_PHY_TMO_1",
+    "description": "Ce contrôle a pour but d'assurer le suivi de la conformité des terminaux mis à la disposition du personnel du Groupe SABC.",
+    "analyse": """• Ressortir les équipements Windows non-conformes sur Intune (compliance ≠ compliant) ;
+• Ressortir les équipements de l'AD qui ne sont pas enrôlés sur Intune ;
+• Ressortir les ordinateurs personnels qui sont enrôlés sur Intune ;
+• Ressortir les équipements de l'AD qui n'apparaissent pas sur CrowdStrike ;
+• Ressortir les équipements de l'AD qui n'apparaissent pas sur Tanium ;
+• Ressortir les équipements de l'AD qui ne remontent pas LAPS ;
+• Ressortir les équipements de l'AD dont la version de Windows < 10.0 (19045)."""
 }
 
 # --- Import des bibliothèques nécessaires ---

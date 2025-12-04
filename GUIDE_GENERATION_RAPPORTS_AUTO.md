@@ -38,23 +38,43 @@ save/Sauvegarde PCs/Sauvegarde PCs S47/Outputs/
 
 ## Structure du Rapport Word
 
-### 1. Page de Garde
+### 1. En-tête du Rapport
 
-Le rapport commence avec les informations suivantes :
+Le rapport commence avec un en-tête structuré contenant :
+- Logo de l'entreprise
+- Titre du contrôle (centré)
+- Code du contrôle avec date d'exécution
+- Tableau d'informations détaillées (application, couche, risque, conclusion avec hexagone)
 
+### 2. Corps du Rapport
+
+Le corps du rapport suit une structure standardisée :
+
+#### a. Description du contrôle
+Texte descriptif provenant de `__hyper_control_metadata__['description']`
+
+**Exemple :**
 ```
-Rapport d'Analyse de Controle
-─────────────────────────────
-
-Date de generation : 27/11/2025 a 10:38:24
-Controle execute : Sauvegarde PCs
-Periode : S47
-Analyste : john.doe
+Description du contrôle :
+Vérifier que la synchronisation des données des utilisateurs de SABC est activée sur OneDrive.
 ```
 
-### 2. Pour Chaque Section du JSON
+#### b. Analyse
+Liste des points d'analyse provenant de `__hyper_control_metadata__['analyse']`
 
-Le rapport traite **automatiquement** toutes les sections retournées par le script d'analyse :
+**Exemple :**
+```
+Analyse :
+• Ressortir les utilisateurs dont les données n'ont pas été synchronisées sur OneDrive au cours des 30 derniers jours.
+```
+
+#### c. Résultats
+
+Cette section contient les résultats détaillés de l'analyse avec :
+
+### 3. Pour Chaque Section du JSON
+
+Dans la section "Résultats", le rapport traite **automatiquement** toutes les sections retournées par le script d'analyse :
 
 #### a. Titre de la Section
 - Correspond au `title` du JSON
@@ -112,6 +132,44 @@ Note : Seules les 50 premieres lignes sont affichees.
 Total de XXX lignes dans le fichier Excel complet.
 ```
 
+### 4. Sections Complémentaires
+
+#### d. Recommandations
+Section vide laissée pour remplissage manuel par l'analyste.
+
+```
+Recommandations :
+
+[Espace vide pour remplissage manuel]
+```
+
+#### e. Évidence de suivi des exceptions
+Section vide laissée pour remplissage manuel par l'analyste.
+
+```
+Évidence de suivi des exceptions :
+
+[Espace vide pour remplissage manuel]
+```
+
+### 5. Tableau de Signatures
+
+Le rapport se termine avec un tableau de signatures sur une page dédiée :
+
+```
+┌─────────────────┬──────────────┬──────────────┬──────────────┐
+│                 │ Rédaction    │ Révision     │ Approbation  │
+├─────────────────┼──────────────┼──────────────┼──────────────┤
+│ Nom             │ Edward NANDA │ Armel NGAT.. │ Blaise NDAN..│
+├─────────────────┼──────────────┼──────────────┼──────────────┤
+│ Fonction        │ POGR         │ RSSI         │ DSI          │
+├─────────────────┼──────────────┼──────────────┼──────────────┤
+│ Date & Signature│              │              │              │
+└─────────────────┴──────────────┴──────────────┴──────────────┘
+```
+
+**Les cellules "Date & Signature" sont laissées vides pour signature manuelle.**
+
 ---
 
 ## Exemple de JSON Traité
@@ -149,8 +207,18 @@ Voici comment un JSON est converti en rapport :
 ### Rapport Word généré :
 
 ```
+[EN-TÊTE AVEC LOGO ET TABLEAU D'INFORMATIONS]
+
+Description du contrôle :
+Vérifier que la synchronisation des données des utilisateurs de SABC est activée sur OneDrive.
+
+Analyse :
+Ressortir les utilisateurs dont les données n'ont pas été synchronisées sur OneDrive au cours des 30 derniers jours.
+
+Résultats :
+
 Sauvegardes des données PCs
-════════════════════════════
+────────────────────────────
 
 Statistiques Cles
 ─────────────────
@@ -171,6 +239,18 @@ Donnees Detaillees
 │ John Doe        │ john@example.com   │
 │ Jane Smith      │ jane@example.com   │
 └─────────────────┴────────────────────┘
+
+Recommandations :
+
+[Espace vide]
+
+Évidence de suivi des exceptions :
+
+[Espace vide]
+
+[NOUVELLE PAGE]
+
+[TABLEAU DE SIGNATURES]
 ```
 
 ---

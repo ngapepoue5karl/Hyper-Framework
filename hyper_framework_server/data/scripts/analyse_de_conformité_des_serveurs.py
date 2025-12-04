@@ -17,7 +17,11 @@ __hyper_control_metadata__ = {
     "risk_reference": "R24",
     "risk_name": "Absence de contrôle efficace de modification de configuration",
     "control_name": "Conformité des serveurs",
-    "ref_description": "CTL_SSI_PHY_SRV_1"
+    "ref_description": "CTL_SSI_PHY_SRV_1",
+    "description": "Ce contrôle a pour but d'assurer le suivi de la conformité des serveurs du Groupe SABC.",
+    "analyse": """• Ressortir les serveurs de l'AD qui n'apparaissent pas sur CrowdStrike ;
+• Ressortir les serveurs de l'AD qui n'apparaissent pas sur Tanium ;
+• Ressortir les serveurs de l'AD dont l'OS est antérieur à Windows Server 2016."""
 }
 
 # -------------------------------------------------------------------
