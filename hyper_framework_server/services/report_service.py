@@ -433,7 +433,7 @@ class ReportGenerator:
         
         Tableau avec 5 colonnes et 4 lignes :
         - Ligne 0 : [vide] | Rédaction | Révision | Révision | Approbation
-        - Ligne 1 : Nom | Berry Anwi EKWA | Edward NANDA | Armel NGATCHUI | Blaise NDANGANG
+        - Ligne 1 : Nom | [vide]  | Edward NANDA | Armel NGATCHUI | Blaise NDANGANG
         - Ligne 2 : Fonction | [vide] | POGR | RSSI | DSI
         - Ligne 3 : Date & Signature | [vide] | [vide] | [vide] | [vide]
         """

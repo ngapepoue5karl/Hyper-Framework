@@ -1,3 +1,20 @@
 {"timestamp": "2025-12-08T07:08:55.371367", "username": "superadmin", "user_role": "SUPER_ADMIN", "ip_address": "10.100.0.24", "action": "USER_LOGIN", "status": "SUCCESS", "details": {"message": "Login successful"}}
 {"timestamp": "2025-12-08T07:08:55.479261", "username": "superadmin", "user_role": "SUPER_ADMIN", "ip_address": "10.100.0.24", "action": "VIEW_CONTROLS_LIST", "status": "SUCCESS", "details": {"count": 4}}
 {"timestamp": "2025-12-08T07:08:59.519225", "username": "superadmin", "user_role": "SUPER_ADMIN", "ip_address": "10.100.0.24", "action": "VIEW_CONTROLS_LIST", "status": "SUCCESS", "details": {"count": 4}}
+{"timestamp": "2025-12-08T08:37:13.526531", "username": "superadmin", "user_role": "SUPER_ADMIN", "ip_address": "10.100.0.24", "action": "USER_LOGIN", "status": "SUCCESS", "details": {"message": "Login successful"}}
+{"timestamp": "2025-12-08T08:37:13.627813", "username": "superadmin", "user_role": "SUPER_ADMIN", "ip_address": "10.100.0.24", "action": "VIEW_CONTROLS_LIST", "status": "SUCCESS", "details": {"count": 4}}
+{"timestamp": "2025-12-08T08:37:15.988107", "username": "superadmin", "user_role": "SUPER_ADMIN", "ip_address": "10.100.0.24", "action": "AUDIT_VIEW_LOGS", "status": "SUCCESS", "details": {}}
+{"timestamp": "2025-12-08T08:37:23.482782", "username": "superadmin", "user_role": "SUPER_ADMIN", "ip_address": "10.100.0.24", "action": "AUDIT_EXPORT_LOGS", "status": "SUCCESS", "details": {}}
+{"timestamp": "2025-12-08T08:37:50.739230", "username": "superadmin", "user_role": "SUPER_ADMIN", "ip_address": "10.100.0.24", "action": "AUDIT_VIEW_LOGS", "status": "SUCCESS", "details": {}}
+{"timestamp": "2025-12-08T08:37:51.161526", "username": "superadmin", "user_role": "SUPER_ADMIN", "ip_address": "10.100.0.24", "action": "AUDIT_VIEW_LOGS", "status": "SUCCESS", "details": {}}
+{"timestamp": "2025-12-08T08:37:52.343927", "username": "superadmin", "user_role": "SUPER_ADMIN", "ip_address": "10.100.0.24", "action": "AUDIT_VIEW_LOGS", "status": "SUCCESS", "details": {}}
+{"timestamp": "2025-12-08T08:37:52.548577", "username": "superadmin", "user_role": "SUPER_ADMIN", "ip_address": "10.100.0.24", "action": "AUDIT_VIEW_LOGS", "status": "SUCCESS", "details": {}}
+{"timestamp": "2025-12-08T08:37:52.749943", "username": "superadmin", "user_role": "SUPER_ADMIN", "ip_address": "10.100.0.24", "action": "AUDIT_VIEW_LOGS", "status": "SUCCESS", "details": {}}
+{"timestamp": "2025-12-08T08:37:58.727189", "username": "superadmin", "user_role": "SUPER_ADMIN", "ip_address": "10.100.0.24", "action": "AUDIT_VIEW_LOGS", "status": "SUCCESS", "details": {}}
+{"timestamp": "2025-12-08T08:43:41.125547", "username": "superadmin", "user_role": "SUPER_ADMIN", "ip_address": "10.100.0.24", "action": "VIEW_USERS_LIST", "status": "SUCCESS", "details": {"user_count": 5}}
+{"timestamp": "2025-12-08T08:43:46.579556", "username": "superadmin", "user_role": "SUPER_ADMIN", "ip_address": "10.100.0.24", "action": "AUDIT_VIEW_LOGS", "status": "SUCCESS", "details": {}}
+{"timestamp": "2025-12-08T08:44:18.468440", "username": "superadmin", "user_role": "SUPER_ADMIN", "ip_address": "10.100.0.24", "action": "USER_LOGIN", "status": "SUCCESS", "details": {"message": "Login successful"}}
+{"timestamp": "2025-12-08T08:44:18.569276", "username": "superadmin", "user_role": "SUPER_ADMIN", "ip_address": "10.100.0.24", "action": "VIEW_CONTROLS_LIST", "status": "SUCCESS", "details": {"count": 4}}
+{"timestamp": "2025-12-08T08:44:21.575390", "username": "superadmin", "user_role": "SUPER_ADMIN", "ip_address": "10.100.0.24", "action": "AUDIT_VIEW_LOGS", "status": "SUCCESS", "details": {}}
+{"timestamp": "2025-12-08T09:13:59.287717", "username": "superadmin", "user_role": "SUPER_ADMIN", "ip_address": "10.100.0.24", "action": "USER_LOGIN", "status": "SUCCESS", "details": {"message": "Login successful"}}
+{"timestamp": "2025-12-08T09:13:59.384934", "username": "superadmin", "user_role": "SUPER_ADMIN", "ip_address": "10.100.0.24", "action": "VIEW_CONTROLS_LIST", "status": "SUCCESS", "details": {"count": 4}}

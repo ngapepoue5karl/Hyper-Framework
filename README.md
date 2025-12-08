@@ -76,7 +76,9 @@ distributable_v4/
 │   │   ├── hyper_framework_server.db
 │   │   ├── scripts/
 │   │   ├── logs/
-│   │   └── reports/
+│   │   └── save/
+|   |   
+|   |
 │   ├── app.py                      # Création de l'application Flask
 │   └── run_server.py               # Script pour lancer le serveur Waitress
 │

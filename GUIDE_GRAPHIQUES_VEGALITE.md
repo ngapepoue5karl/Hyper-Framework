@@ -311,3 +311,5 @@ Pour des graphiques plus complexes, vous pouvez :
 
 ---
 
+**Date de création :** 5 décembre 2025  
+**Version :** 1.0
