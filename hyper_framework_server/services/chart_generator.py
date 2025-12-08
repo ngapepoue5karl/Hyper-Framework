@@ -140,6 +140,7 @@ def _generate_pie_chart(summary_stats: Dict[str, Any], config: Dict[str, Any]) -
     
     # Préparer les données
     data_values = []
+    total = 0
     for key in keys:
         value = summary_stats.get(key)
         if value is not None:
@@ -147,28 +148,56 @@ def _generate_pie_chart(summary_stats: Dict[str, Any], config: Dict[str, Any]) -
             if isinstance(value, str) and '%' in value:
                 value = float(value.replace('%', ''))
             data_values.append({"category": key, "value": value})
+            total += value
     
     if not data_values:
         return None
+    
+    # Ajouter les pourcentages aux données
+    for item in data_values:
+        percentage = (item["value"] / total * 100) if total > 0 else 0
+        item["percentage"] = f"{percentage:.2f}%"
+        item["label"] = f"{item['category']}={int(item['value'])}"
     
     spec = {
         "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
         "title": title,
         "data": {"values": data_values},
-        "mark": {"type": "arc", "innerRadius": 50},
-        "encoding": {
-            "theta": {"field": "value", "type": "quantitative"},
-            "color": {
-                "field": "category",
-                "type": "nominal",
-                "legend": {"title": None},
-                "scale": {"range": colors} if colors else {}
+        "layer": [
+            {
+                "mark": {"type": "arc", "innerRadius": 0, "outerRadius": 120},
+                "encoding": {
+                    "theta": {"field": "value", "type": "quantitative"},
+                    "color": {
+                        "field": "category",
+                        "type": "nominal",
+                        "legend": {"title": None, "orient": "bottom"},
+                        "scale": {"range": colors} if colors else {}
+                    },
+                    "tooltip": [
+                        {"field": "category", "type": "nominal", "title": "Catégorie"},
+                        {"field": "value", "type": "quantitative", "title": "Valeur"},
+                        {"field": "percentage", "type": "nominal", "title": "Pourcentage"}
+                    ]
+                }
             },
-            "tooltip": [
-                {"field": "category", "type": "nominal", "title": "Catégorie"},
-                {"field": "value", "type": "quantitative", "title": "Valeur"}
-            ]
-        },
+            {
+                "mark": {"type": "text", "radiusOffset": 80, "fontSize": 14, "fontWeight": "bold"},
+                "encoding": {
+                    "text": {"field": "label", "type": "nominal"},
+                    "theta": {"field": "value", "type": "quantitative", "stack": True},
+                    "color": {"value": "black"}
+                }
+            },
+            {
+                "mark": {"type": "text", "radiusOffset": 100, "fontSize": 12},
+                "encoding": {
+                    "text": {"field": "percentage", "type": "nominal"},
+                    "theta": {"field": "value", "type": "quantitative", "stack": True},
+                    "color": {"value": "black"}
+                }
+            }
+        ],
         "view": {"stroke": None},
         "width": 400,
         "height": 400

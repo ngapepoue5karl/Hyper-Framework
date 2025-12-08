@@ -9,6 +9,33 @@ __hyper_inputs__ = [
 # Périodicité du contrôle (analyse hebdomadaire)
 __hyper_periodicity__ = 'WEEK'
 
+# Configuration des graphiques à afficher
+# Cette section définit les graphiques Vega-Lite qui seront générés automatiquement
+# Chaque graphique sera lié à une section spécifique (par index : 0, 1, 2)
+__hyper_charts__ = [
+    {
+        "type": "pie",
+        "title": "Conformité OS",
+        "keys": ["OK", "NOK"],
+        "colors": ["#22B14C", "#F5473B"],
+        "section_index": 0  # Lié à la première section (OS)
+    },
+    {
+        "type": "pie",
+        "title": "Conformité CrowdStrike",
+        "keys": ["OK", "NOK"],
+        "colors": ["#22B14C", "#F5473B"],
+        "section_index": 1  # Lié à la deuxième section (CrowdStrike)
+    },
+    {
+        "type": "pie",
+        "title": "Conformité Tanium",
+        "keys": ["OK", "NOK"],
+        "colors": ["#22B14C", "#F5473B"],
+        "section_index": 2  # Lié à la troisième section (Tanium)
+    }
+]
+
 # Métadonnées du contrôle pour l'en-tête du rapport
 __hyper_control_metadata__ = {
     "control_code_prefix": "CTL_SSI_01_SRV",  # La date sera ajoutée automatiquement
@@ -152,16 +179,30 @@ def run(input_file_paths, output_dir_path):
         
         # --- 4. Construction des sections de résultat ---
 
-        # Analyse 1: OS (inchangée)
+        # Analyse 1: OS
+        os_ok_count = int((ad_df_enriched['Status_OS'] == 'OK').sum())
+        os_nok_count = int((ad_df_enriched['Status_OS'] == 'NOK').sum())
+        os_percentage = (os_ok_count / len(ad_df_enriched) * 100) if len(ad_df_enriched) > 0 else 0
+        
         results.append({
             'title': "1. Conformité des OS Serveurs",
             'dataframe': ad_df_enriched[ad_df_enriched['Status_OS'] == 'NOK'],
             'display_columns': [{'key': 'Name', 'label': "Nom du Serveur"}, {'key': 'OperatingSystem', 'label': "Système d'Exploitation"}, {'key': 'Status_OS', 'label': "Résultat"}],
-            'summary_stats': {'Total serveurs analysés': len(ad_df_enriched), 'Serveurs non conformes': int((ad_df_enriched['Status_OS'] == 'NOK').sum()), 'Pourcentage de conformité': f"{(len(ad_df_enriched[ad_df_enriched['Status_OS'] == 'OK']) / len(ad_df_enriched)):.2%}" if len(ad_df_enriched) > 0 else "N/A"}
+            'summary_stats': {
+                'Total serveurs analysés': len(ad_df_enriched), 
+                'Serveurs non conformes': os_nok_count, 
+                'Pourcentage de conformité': f"{os_percentage:.2f}%",
+                'OK': os_ok_count,
+                'NOK': os_nok_count
+            }
         })
 
-        # Analyse 2: CrowdStrike (mise à jour)
+        # Analyse 2: CrowdStrike
         df_cs_nok = ad_df_enriched[ad_df_enriched['Resultat_final_CS'] == 'NOK']
+        cs_ok_count = int((ad_df_enriched['Resultat_final_CS'] == 'OK').sum())
+        cs_nok_count = len(df_cs_nok)
+        cs_percentage = (cs_ok_count / len(ad_df_enriched) * 100) if len(ad_df_enriched) > 0 else 0
+        
         results.append({
             'title': "2. Couverture par l'agent CrowdStrike",
             'dataframe': df_cs_nok,
@@ -171,11 +212,21 @@ def run(input_file_paths, output_dir_path):
                 {'key': 'Suivi_CS', 'label': "Observations Suivi"},
                 {'key': 'Resultat_final_CS', 'label': "Résultat Final"}
             ],
-            'summary_stats': {'Total serveurs analysés': len(ad_df_enriched), 'Serveurs non couverts (final)': len(df_cs_nok), 'Pourcentage de couverture (final)': f"{(len(ad_df_enriched[ad_df_enriched['Resultat_final_CS'] == 'OK']) / len(ad_df_enriched)):.2%}" if len(ad_df_enriched) > 0 else "N/A"}
+            'summary_stats': {
+                'Total serveurs analysés': len(ad_df_enriched), 
+                'Serveurs non couverts (final)': cs_nok_count, 
+                'Pourcentage de couverture (final)': f"{cs_percentage:.2f}%",
+                'OK': cs_ok_count,
+                'NOK': cs_nok_count
+            }
         })
             
-        # Analyse 3: Tanium (mise à jour)
+        # Analyse 3: Tanium
         df_tn_nok = ad_df_enriched[ad_df_enriched['Resultat_final_TN'] == 'NOK']
+        tn_ok_count = int((ad_df_enriched['Resultat_final_TN'] == 'OK').sum())
+        tn_nok_count = len(df_tn_nok)
+        tn_percentage = (tn_ok_count / len(ad_df_enriched) * 100) if len(ad_df_enriched) > 0 else 0
+        
         results.append({
             'title': "3. Couverture par l'agent Tanium",
             'dataframe': df_tn_nok,
@@ -185,7 +236,13 @@ def run(input_file_paths, output_dir_path):
                 {'key': 'Suivi_TN', 'label': "Observations Suivi"},
                 {'key': 'Resultat_final_TN', 'label': "Résultat Final"}
             ],
-            'summary_stats': {'Total serveurs analysés': len(ad_df_enriched), 'Serveurs non couverts (final)': len(df_tn_nok), 'Pourcentage de couverture (final)': f"{(len(ad_df_enriched[ad_df_enriched['Resultat_final_TN'] == 'OK']) / len(ad_df_enriched)):.2%}" if len(ad_df_enriched) > 0 else "N/A"}
+            'summary_stats': {
+                'Total serveurs analysés': len(ad_df_enriched), 
+                'Serveurs non couverts (final)': tn_nok_count, 
+                'Pourcentage de couverture (final)': f"{tn_percentage:.2f}%",
+                'OK': tn_ok_count,
+                'NOK': tn_nok_count
+            }
         })
 
     except Exception as e:

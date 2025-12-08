@@ -37,10 +37,28 @@ def execute_script_from_file(script_path: str, input_file_paths: dict, output_di
         # Ajouter les configurations de graphiques si elles existent
         if hasattr(analysis_module, '__hyper_charts__'):
             chart_configs = getattr(analysis_module, '__hyper_charts__')
-            # Ajouter les configurations de graphiques à chaque section de résultats
-            for result_section in results:
-                if 'summary_stats' in result_section and chart_configs:
-                    result_section['chart_configs'] = chart_configs
+            
+            # Traiter chaque graphique et l'assigner à la section appropriée
+            for chart_config in chart_configs:
+                section_index = chart_config.get('section_index')
+                
+                if section_index is not None and 0 <= section_index < len(results):
+                    # Ajouter ce graphique spécifique à la section désignée
+                    result_section = results[section_index]
+                    if 'summary_stats' in result_section:
+                        # Créer la liste chart_configs si elle n'existe pas
+                        if 'chart_configs' not in result_section:
+                            result_section['chart_configs'] = []
+                        # Ajouter seulement ce graphique (sans le section_index pour éviter confusion)
+                        chart_config_copy = {k: v for k, v in chart_config.items() if k != 'section_index'}
+                        result_section['chart_configs'].append(chart_config_copy)
+                else:
+                    # Si section_index n'est pas spécifié, comportement par défaut (tous les graphiques à la première section)
+                    for result_section in results:
+                        if 'summary_stats' in result_section:
+                            if 'chart_configs' not in result_section:
+                                result_section['chart_configs'] = chart_configs
+                            break
         
         # Extraire les métadonnées du contrôle si elles existent
         control_metadata = None
