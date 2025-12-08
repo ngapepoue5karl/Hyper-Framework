@@ -5,6 +5,7 @@ from .themed_treeview import style_treeview
 import datetime
 import re
 import json
+import os
 import tempfile
 import webbrowser
 
@@ -122,6 +123,16 @@ class VersioningFrame(ctk.CTkFrame):
         )
         self.export_btn.pack(side='left', padx=5, pady=5, expand=True, fill='x')
 
+        self.download_folder_btn = ctk.CTkButton(
+            action_frame, 
+            text="Télécharger Dossier Complet", 
+            command=self.download_control_folder,
+            state='disabled',
+            fg_color="#2196F3",
+            hover_color="#1976D2"
+        )
+        self.download_folder_btn.pack(side='left', padx=5, pady=5, expand=True, fill='x')
+
         # Partie basse : Détails de l'analyse sélectionnée (sur toute la largeur)
         self.results_frame = ctk.CTkScrollableFrame(
             main_frame, 
@@ -209,9 +220,11 @@ class VersioningFrame(ctk.CTkFrame):
         if self.tree.selection():
             self.view_btn.configure(state='normal')
             self.export_btn.configure(state='normal')
+            self.download_folder_btn.configure(state='normal')
         else:
             self.view_btn.configure(state='disabled')
             self.export_btn.configure(state='disabled')
+            self.download_folder_btn.configure(state='disabled')
             self.current_run_details = None
 
     def view_results(self):
@@ -283,16 +296,7 @@ class VersioningFrame(ctk.CTkFrame):
                         font=ctk.CTkFont(size=11)
                     ).pack(anchor='w', padx=20, pady=2)
                 
-                # Bouton pour télécharger tous les fichiers
-                download_btn = ctk.CTkButton(
-                    files_frame,
-                    text=" Télécharger tous les fichiers",
-                    command=self.download_all_files,
-                    fg_color="#2196F3",
-                    hover_color="#1976D2"
-                )
-                download_btn.pack(anchor='w', padx=20, pady=10)
-            
+
             # Afficher les résultats
             results_data = self.current_run_details.get('results_json', [])
             if results_data:
@@ -584,3 +588,69 @@ class VersioningFrame(ctk.CTkFrame):
             messagebox.showinfo("Succès", f"Fichier Excel exporté:\n{file_path}", parent=self)
         except Exception as e:
             messagebox.showerror("Erreur d'exportation", f"Une erreur est survenue :\n{e}", parent=self)
+
+    def download_control_folder(self):
+        """Télécharge le dossier complet du contrôle (Inputs + Outputs)"""
+        if not self.tree.selection():
+            messagebox.showwarning("Aucune sélection", "Veuillez d'abord sélectionner une analyse.", parent=self)
+            return
+        
+        run_id = self.tree.selection()[0]
+        
+        # Récupérer les informations de l'analyse sélectionnée pour avoir le nom du contrôle et la période
+        selected_run = None
+        for run in self.runs_data:
+            if str(run['id']) == str(run_id):
+                selected_run = run
+                break
+        
+        if not selected_run:
+            messagebox.showerror("Erreur", "Impossible de récupérer les informations de l'analyse.", parent=self)
+            return
+        
+        # Demander à l'utilisateur de choisir un dossier de destination
+        folder_path = filedialog.askdirectory(
+            title="Choisissez un dossier de destination",
+            parent=self
+        )
+        
+        if not folder_path:
+            return
+        
+        try:
+            # Télécharger le ZIP depuis le serveur
+            username = self.app_parent.user_data['username']
+            response = api_client.download_analysis_folder(run_id, username)
+            
+            # Créer le nom du dossier de destination (ex: "Sauvegarde PCs S01")
+            control_name = selected_run['control_name']
+            period_label = selected_run['period_label']
+            folder_name = f"{control_name} {period_label}"
+            destination_folder = os.path.join(folder_path, folder_name)
+            
+            # Créer le dossier s'il n'existe pas
+            os.makedirs(destination_folder, exist_ok=True)
+            
+            # Extraire le ZIP dans le dossier créé
+            import zipfile
+            import io
+            
+            zip_content = io.BytesIO(response.content)
+            
+            with zipfile.ZipFile(zip_content, 'r') as zip_file:
+                # Extraire tous les fichiers
+                zip_file.extractall(destination_folder)
+                files_extracted = zip_file.namelist()
+            
+            messagebox.showinfo(
+                "Téléchargement réussi",
+                f"Dossier '{folder_name}' créé avec {len(files_extracted)} fichier(s) dans :\n{folder_path}",
+                parent=self
+            )
+            
+        except Exception as e:
+            messagebox.showerror(
+                "Erreur de téléchargement",
+                f"Impossible de télécharger le dossier du contrôle :\n{e}",
+                parent=self
+            )

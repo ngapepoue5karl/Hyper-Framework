@@ -20,7 +20,8 @@ class GenericAnalysisFrame(ctk.CTkFrame):
         
         self.file_paths = {}
         self.input_widgets = {}
-        self.analysis_results_data = None 
+        self.analysis_results_data = None
+        self.current_run_id = None 
 
         try:
             # L'utilisateur courant est nécessaire pour la journalisation
@@ -71,6 +72,7 @@ class GenericAnalysisFrame(ctk.CTkFrame):
         # Désactiver les boutons pendant l'exécution
         self.export_btn.configure(state='disabled')
         self.generate_report_btn.configure(state='disabled')
+        self.download_folder_btn.configure(state='disabled')
 
         # Préparer les fichiers à envoyer
         files_to_send = {}
@@ -87,10 +89,19 @@ class GenericAnalysisFrame(ctk.CTkFrame):
         def execute_analysis_thread():
             try:
                 # Appel API qui peut prendre du temps
-                final_results_data = api_client.execute_control(self.control_id, files_to_send, data_payload)
+                response_data = api_client.execute_control(self.control_id, files_to_send, data_payload)
+                
+                # Gérer la nouvelle structure de réponse
+                if isinstance(response_data, dict) and 'results' in response_data:
+                    final_results_data = response_data['results']
+                    run_id = response_data.get('run_id')
+                else:
+                    # Compatibilité avec l'ancienne structure
+                    final_results_data = response_data
+                    run_id = None
 
                 # Mettre à jour l'interface dans le thread principal
-                self.after(0, lambda: self._on_analysis_complete(final_results_data, progress_bar, info_label, files_to_send))
+                self.after(0, lambda: self._on_analysis_complete(final_results_data, run_id, progress_bar, info_label, files_to_send))
 
             except Exception as e:
                 # Gérer les erreurs dans le thread principal
@@ -100,7 +111,7 @@ class GenericAnalysisFrame(ctk.CTkFrame):
         analysis_thread = threading.Thread(target=execute_analysis_thread, daemon=True)
         analysis_thread.start()
 
-    def _on_analysis_complete(self, final_results_data, progress_bar, info_label, files_to_send):
+    def _on_analysis_complete(self, final_results_data, run_id, progress_bar, info_label, files_to_send):
         """Appelée quand l'analyse est terminée avec succès"""
         try:
             progress_bar.stop()
@@ -108,8 +119,11 @@ class GenericAnalysisFrame(ctk.CTkFrame):
             info_label.destroy()
 
             self.analysis_results_data = final_results_data
+            self.current_run_id = run_id
             self.export_btn.configure(state='normal')
             self.generate_report_btn.configure(state='normal')
+            if run_id:
+                self.download_folder_btn.configure(state='normal')
 
             if not final_results_data:
                 ctk.CTkLabel(self.results_frame, text="L'analyse s'est terminée sans retourner de résultat.").pack(pady=20)
@@ -177,6 +191,8 @@ class GenericAnalysisFrame(ctk.CTkFrame):
         self.export_btn.pack(pady=5, fill='x', padx=10)
         self.generate_report_btn = ctk.CTkButton(action_frame, text="Générer et Télécharger (DOCX)", command=self.generate_and_download_report, state='disabled')
         self.generate_report_btn.pack(pady=5, fill='x', padx=10)
+        self.download_folder_btn = ctk.CTkButton(action_frame, text="Télécharger Dossier Complet", command=self.download_control_folder, state='disabled', fg_color="#2196F3", hover_color="#1976D2")
+        self.download_folder_btn.pack(pady=5, fill='x', padx=10)
         results_container = ctk.CTkFrame(self)
         results_container.pack(side="top", fill="both", expand=True, padx=10, pady=(0, 10))
         results_container.grid_rowconfigure(0, weight=1)
@@ -406,3 +422,55 @@ class GenericAnalysisFrame(ctk.CTkFrame):
                     df.to_excel(writer, sheet_name=title, index=False)
             messagebox.showinfo("Succès", f"Fichier Excel exporté:\n{file_path}", parent=self)
         except Exception as e: messagebox.showerror("Erreur d'exportation", f"Une erreur est survenue :\n{e}", parent=self)
+
+    def download_control_folder(self):
+        """Télécharge le dossier complet du contrôle (Inputs + Outputs)"""
+        if not self.current_run_id:
+            messagebox.showwarning("Téléchargement impossible", "Aucune analyse disponible pour téléchargement.", parent=self)
+            return
+        
+        # Demander à l'utilisateur de choisir un dossier de destination
+        folder_path = filedialog.askdirectory(
+            title="Choisissez un dossier de destination",
+            parent=self
+        )
+        
+        if not folder_path:
+            return
+        
+        try:
+            # Télécharger le ZIP depuis le serveur
+            username = self.user_data['username']
+            response = api_client.download_analysis_folder(self.current_run_id, username)
+            
+            # Créer le nom du dossier de destination (ex: "Sauvegarde PCs S01")
+            control_name = self.control_data['name']
+            folder_name = f"{control_name} {self.period_label}"
+            destination_folder = os.path.join(folder_path, folder_name)
+            
+            # Créer le dossier s'il n'existe pas
+            os.makedirs(destination_folder, exist_ok=True)
+            
+            # Extraire le ZIP dans le dossier créé
+            import zipfile
+            import io
+            
+            zip_content = io.BytesIO(response.content)
+            
+            with zipfile.ZipFile(zip_content, 'r') as zip_file:
+                # Extraire tous les fichiers
+                zip_file.extractall(destination_folder)
+                files_extracted = zip_file.namelist()
+            
+            messagebox.showinfo(
+                "Téléchargement réussi",
+                f"Dossier '{folder_name}' créé avec {len(files_extracted)} fichier(s) dans :\n{folder_path}",
+                parent=self
+            )
+            
+        except Exception as e:
+            messagebox.showerror(
+                "Erreur de téléchargement",
+                f"Impossible de télécharger le dossier du contrôle :\n{e}",
+                parent=self
+            )

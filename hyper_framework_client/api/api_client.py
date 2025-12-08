@@ -108,9 +108,10 @@ class ApiClient:
         """Récupère les détails d'une analyse exécutée"""
         return self._make_request('get', f"{API_BASE_URL}/analysis-runs/{run_id}?username={username}")
 
-    def download_analysis_input_files(self, run_id, username):
-        """Télécharge tous les fichiers d'entrée d'une analyse (retourne un ZIP)"""
-        url = f"{API_BASE_URL}/analysis-runs/{run_id}/download-files?username={username}"
+
+    def download_analysis_folder(self, run_id, username):
+        """Télécharge le répertoire complet d'un contrôle (Inputs + Outputs) sous forme de ZIP"""
+        url = f"{API_BASE_URL}/analysis-runs/{run_id}/download-folder?username={username}"
         try:
             response = requests.get(url, stream=True, timeout=120)
             if response.ok:

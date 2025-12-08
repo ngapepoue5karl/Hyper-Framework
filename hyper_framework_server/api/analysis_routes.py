@@ -217,14 +217,16 @@ def execute_control(control_id):
             relative_results_path = None
 
         # Sauvegarder l'historique de l'analyse dans la base de données
+        run_id = None
         try:
-            db.execute(
+            cursor = db.execute(
                 """INSERT INTO analysis_runs 
                    (control_id, control_name, periodicity, period_label, username, results_json, files_info) 
                    VALUES (?, ?, ?, ?, ?, ?, ?)""",
                 (control_id, control_name, periodicity, period_label, username, 
                  json.dumps(serialized_results), json.dumps(files_info))
             )
+            run_id = cursor.lastrowid
             db.commit()
         except Exception as e:
             print(f"Erreur lors de la sauvegarde de l'historique: {e}")
@@ -263,7 +265,11 @@ def execute_control(control_id):
             'period_label': period_label,
             'outputs_dir': outputs_dir
         })
-        return jsonify(serialized_results)
+        # Retourner les résultats avec le run_id pour permettre le téléchargement du dossier
+        return jsonify({
+            'results': serialized_results,
+            'run_id': run_id
+        })
         
     except Exception as e:
         import traceback; traceback.print_exc()
@@ -473,68 +479,57 @@ def get_analysis_run_details(run_id):
         return jsonify({'error': f"Erreur lors de la récupération des détails: {e}"}), 500
 
 
-@bp.route('/analysis-runs/<int:run_id>/download-files', methods=['GET'])
-def download_analysis_input_files(run_id):
-    """Télécharge tous les fichiers d'entrée d'une analyse sous forme de ZIP"""
+@bp.route('/analysis-runs/<int:run_id>/download-folder', methods=['GET'])
+def download_analysis_folder(run_id):
+    """Télécharge le répertoire complet d'un contrôle (Inputs + Outputs) sous forme de ZIP"""
     username = request.args.get('username', 'unknown')
     try:
         db = get_db()
         row = db.execute(
-            """SELECT username, control_name, week_label, files_info FROM analysis_runs WHERE id = ?""",
+            """SELECT control_name, periodicity, period_label FROM analysis_runs WHERE id = ?""",
             (run_id,)
         ).fetchone()
         
         if not row:
-            logging_service.log_action(username, 'DOWNLOAD_ANALYSIS_FILES', 'FAILURE', {'run_id': run_id, 'error': 'Not found'})
+            logging_service.log_action(username, 'DOWNLOAD_CONTROL_FOLDER', 'FAILURE', {'run_id': run_id, 'error': 'Not found'})
             return jsonify({'error': 'Analyse non trouvée.'}), 404
         
-        # Vérification de sécurité : seul l'auteur peut télécharger les fichiers
-        if row['username'] != username:
-            logging_service.log_action(username, 'DOWNLOAD_ANALYSIS_FILES', 'FAILURE', {'run_id': run_id, 'error': 'Unauthorized'})
-            return jsonify({'error': 'Vous ne pouvez télécharger que vos propres fichiers.'}), 403
+        control_name = row['control_name']
+        period_label = row['period_label']
         
-        files_info = json.loads(row['files_info']) if row['files_info'] else []
+        # Construire le chemin du dossier du contrôle
+        save_dir = current_app.config['SAVE_DIR']
+        control_folder = os.path.join(save_dir, control_name)
+        period_folder = os.path.join(control_folder, f"{control_name} {period_label}")
         
-        if not files_info:
-            return jsonify({'error': 'Aucun fichier disponible pour cette analyse.'}), 404
+        if not os.path.exists(period_folder):
+            logging_service.log_action(username, 'DOWNLOAD_CONTROL_FOLDER', 'FAILURE', {'run_id': run_id, 'error': 'Folder not found'})
+            return jsonify({'error': 'Le répertoire du contrôle n\'existe pas.'}), 404
         
-        # Créer un fichier ZIP en mémoire
+        # Créer un fichier ZIP en mémoire avec tout le contenu du dossier
         import io
         import zipfile
         
         zip_buffer = io.BytesIO()
-        inputs_dir = current_app.config['INPUTS_DIR']
         
         with zipfile.ZipFile(zip_buffer, 'w', zipfile.ZIP_DEFLATED) as zip_file:
-            for file_info in files_info:
-                saved_name = file_info.get('saved_name')
-                original_name = file_info.get('original_name')
-                
-                file_path = os.path.join(inputs_dir, saved_name)
-                
-                if os.path.exists(file_path):
-                    # Ajouter le fichier au ZIP avec son nom original
-                    zip_file.write(file_path, original_name)
-                else:
-                    # Si le fichier n'existe plus, ajouter un fichier texte d'erreur
-                    error_message = f"Le fichier '{original_name}' n'est plus disponible sur le serveur."
-                    zip_file.writestr(f"ERREUR_{original_name}.txt", error_message)
+            # Parcourir tous les fichiers et sous-dossiers
+            for root, dirs, files in os.walk(period_folder):
+                for file in files:
+                    file_path = os.path.join(root, file)
+                    # Créer un chemin relatif pour la structure dans le ZIP
+                    arcname = os.path.relpath(file_path, period_folder)
+                    zip_file.write(file_path, arcname)
         
         zip_buffer.seek(0)
         
         # Nom du fichier ZIP à télécharger
-        zip_filename = f"{row['control_name']}_{row['period_label']}_fichiers.zip"
+        zip_filename = f"{control_name}_{period_label}_complet.zip"
         zip_filename = re.sub(r'[^\w\.-]', '_', zip_filename)  # Nettoyer le nom
         
-        logging_service.log_action(username, 'DOWNLOAD_ANALYSIS_FILES', 'SUCCESS', {'run_id': run_id, 'files_count': len(files_info)})
+        logging_service.log_action(username, 'DOWNLOAD_CONTROL_FOLDER', 'SUCCESS', {'run_id': run_id, 'control_name': control_name, 'period_label': period_label})
         
-        return send_from_directory(
-            directory=os.path.dirname(zip_buffer.name) if hasattr(zip_buffer, 'name') else '.',
-            path='.',
-            as_attachment=True,
-            download_name=zip_filename,
-            mimetype='application/zip'
-        ) if False else (zip_buffer.getvalue(), 200, {
+        return (zip_buffer.getvalue(), 200, {
             'Content-Type': 'application/zip',
             'Content-Disposition': f'attachment; filename="{zip_filename}"'
         })
@@ -542,5 +537,5 @@ def download_analysis_input_files(run_id):
     except Exception as e:
         import traceback
         traceback.print_exc()
-        logging_service.log_action(username, 'DOWNLOAD_ANALYSIS_FILES', 'FAILURE', {'run_id': run_id, 'error': str(e)})
+        logging_service.log_action(username, 'DOWNLOAD_CONTROL_FOLDER', 'FAILURE', {'run_id': run_id, 'error': str(e)})
         return jsonify({'error': f"Erreur lors du téléchargement: {e}"}), 500
