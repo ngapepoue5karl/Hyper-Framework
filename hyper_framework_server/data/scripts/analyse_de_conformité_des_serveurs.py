@@ -155,8 +155,7 @@ def run(input_file_paths, output_dir_path):
         # Analyse 1: OS (inchangée)
         results.append({
             'title': "1. Conformité des OS Serveurs",
-            # 'dataframe': ad_df_enriched[ad_df_enriched['Status_OS'] == 'NOK'],
-            'dataframe': ad_df_enriched,
+            'dataframe': ad_df_enriched[ad_df_enriched['Status_OS'] == 'NOK'],
             'display_columns': [{'key': 'Name', 'label': "Nom du Serveur"}, {'key': 'OperatingSystem', 'label': "Système d'Exploitation"}, {'key': 'Status_OS', 'label': "Résultat"}],
             'summary_stats': {'Total serveurs analysés': len(ad_df_enriched), 'Serveurs non conformes': int((ad_df_enriched['Status_OS'] == 'NOK').sum()), 'Pourcentage de conformité': f"{(len(ad_df_enriched[ad_df_enriched['Status_OS'] == 'OK']) / len(ad_df_enriched)):.2%}" if len(ad_df_enriched) > 0 else "N/A"}
         })
@@ -165,8 +164,7 @@ def run(input_file_paths, output_dir_path):
         df_cs_nok = ad_df_enriched[ad_df_enriched['Resultat_final_CS'] == 'NOK']
         results.append({
             'title': "2. Couverture par l'agent CrowdStrike",
-            # 'dataframe': df_cs_nok,
-            'dataframe': ad_df_enriched,
+            'dataframe': df_cs_nok,
             'display_columns': [
                 {'key': 'Name', 'label': "Nom du Serveur"},
                 {'key': 'Status_CS', 'label': "Conformité de base"},
@@ -180,8 +178,7 @@ def run(input_file_paths, output_dir_path):
         df_tn_nok = ad_df_enriched[ad_df_enriched['Resultat_final_TN'] == 'NOK']
         results.append({
             'title': "3. Couverture par l'agent Tanium",
-            # 'dataframe': df_tn_nok,
-            'dataframe': ad_df_enriched,
+            'dataframe': df_tn_nok,
             'display_columns': [
                 {'key': 'Name', 'label': "Nom du Serveur"},
                 {'key': 'Status_TN', 'label': "Conformité de base"},

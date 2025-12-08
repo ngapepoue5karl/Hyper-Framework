@@ -97,14 +97,32 @@ class ControlEditorWindow(ctk.CTkToplevel):
 # === 1. Définition des entrées ===
 # Définissez ici les fichiers requis pour votre analyse
 __hyper_inputs__ = [
-    {"key": "input_file", "label": "Fichier d'entrée (.csv)", "format": "csv"}
+    {"key": "fichier_principal", "label": "Fichier principal (.csv)", "format": "csv"},
+    {"key": "fichier_secondaire", "label": "Fichier secondaire (.csv)", "format": "csv"}
 ]
 
 # === 2. Définition de la périodicité ===
 # Valeurs possibles : 'WEEK', 'MONTH', 'QUARTER', 'SEMESTER'
 __hyper_periodicity__ = 'WEEK'
 
-# === 3. Définition des graphiques (OPTIONNEL) ===
+# === 3. Métadonnées du contrôle (RECOMMANDÉ) ===
+# Ces métadonnées personnalisent l'en-tête du rapport PDF généré
+# Le code de contrôle inclura automatiquement la date d'exécution
+__hyper_control_metadata__ = {
+    "application": "Application(s) concernée(s)",  # Ex: "CrowdStrike, Tanium, AD, GLPI, Intune"
+    "layer": "Physique",  # "Physique", "Données", "Application", etc.
+    "risk_reference": "R24",  # Référence du risque (ex: R24, R182, R211)
+    "risk_name": "Nom du risque associé",  # Description courte du risque
+    "control_name": "Nom du contrôle",  # Titre du contrôle
+    "ref_description": "CTL_SSI_XXX_XXX_X",  # Référence description (ex: CTL_SSI_PHY_TMO_1)
+    "description": "Description détaillée du contrôle et de ses objectifs.",
+    "analyse": \"\"\"Points d'analyse réalisés :
+• Premier point d'analyse
+• Deuxième point d'analyse
+• Troisième point d'analyse\"\"\"
+}
+
+# === 4. Définition des graphiques (OPTIONNEL) ===
 # Si vous souhaitez afficher des graphiques interactifs, configurez cette section.
 # Les graphiques sont générés automatiquement à partir des 'summary_stats' de vos résultats.
 #
@@ -246,11 +264,18 @@ def run(input_file_paths, output_dir_path):
         resultat_df.to_excel(output_file, index=False, engine='openpyxl')
         print(f" Rapport sauvegardé : {output_file}")
         
-        # --- Étape 5 : Structuration du résultat pour l'affichage ---
+        # --- Étape 5 : Filtrage et structuration pour l'affichage ---
         print("\\n[5/5] Préparation des résultats pour l'interface...")
+        
+        # IMPORTANT : Filtrer uniquement les résultats NOK pour l'affichage
+        # L'interface affichera seulement les éléments non conformes
+        resultat_nok = resultat_df[resultat_df['Statut'] == 'NOK'].copy()
+        print(f" Résultats NOK à afficher : {len(resultat_nok)} sur {len(resultat_df)}")
+        
+        # Structuration du résultat
         results.append({
             'title': "Hello World - Exemple de Template",
-            'dataframe': resultat_df,  # Le framework convertira automatiquement en 'items'
+            'dataframe': resultat_nok,  # Afficher uniquement les NOK
             'display_columns': [
                 {'key': 'Colonne 1', 'label': 'Message Principal'},
                 {'key': 'Colonne 2', 'label': 'Description'},
@@ -283,27 +308,38 @@ def run(input_file_paths, output_dir_path):
 # NOTES IMPORTANTES POUR LES DÉVELOPPEURS
 # =============================================================================
 #
-# 1. GRAPHIQUES :
-#    - Définissez __hyper_charts__ au début du fichier
+# 1. MÉTADONNÉES DE CONTRÔLE (__hyper_control_metadata__) :
+#    - Personnalise l'en-tête du rapport Word généré
+#    - Un hexagone coloré affiche la conclusion (vert/jaune/rouge selon le taux)
+#    - Voir GUIDE_METADONNEES_CONTROLE.md pour plus de détails
+#
+# 2. FILTRAGE DES RÉSULTATS AFFICHÉS :
+#    - IMPORTANT : L'interface doit afficher UNIQUEMENT les éléments NOK
+#    - Filtrez votre DataFrame avant de l'ajouter aux results
+#    - Exemple : df_nok = df[df['Résultat'] == 'NOK'].copy()
+#    - Les statistiques (summary_stats) doivent porter sur tous les résultats
+
+# 3. GRAPHIQUES (__hyper_charts__) :
+#    - Définissez cette section pour activer les graphiques interactifs
 #    - Les clés dans "keys" doivent correspondre EXACTEMENT à celles de summary_stats
 #    - Les graphiques s'affichent automatiquement si summary_stats est présent
+#    - Voir GUIDE_GRAPHIQUES_VEGALITE.md pour la documentation complète
 #
-# 2. SUMMARY_STATS :
+# 4. SUMMARY_STATS :
 #    - Utilisé pour afficher les statistiques ET générer les graphiques
 #    - Les valeurs peuvent être des nombres ou des strings avec "%"
-#    - Exemple : "Taux": "99.5%" ou "Taux": 99.5
+#    - Doit calculer sur TOUTES les données (pas uniquement les NOK)
+#    - Exemple : "Taux de conformité": "99.5%" ou "Taux de conformité": 99.5
 #
-# 3. DISPLAY_COLUMNS :
+# 5. DISPLAY_COLUMNS :
 #    - Définit quelles colonnes du DataFrame afficher et leurs labels
 #    - L'ordre des colonnes dans cette liste détermine l'ordre d'affichage
+#    - Utilisez des labels clairs et descriptifs pour l'utilisateur final
 #
-# 4. EXCEL_OUTPUT :
+# 6. EXCEL_OUTPUT :
 #    - Optionnel, mais recommandé pour permettre le téléchargement
-#    - Peut contenir plusieurs feuilles si besoin
-#
-# 5. EXEMPLES DE GRAPHIQUES :
-#    Voir le script 'sauvegarde_pcs.py' pour un exemple complet
-#    Voir 'GUIDE_GRAPHIQUES_VEGALITE.md' pour la documentation complète
+#    - Peut contenir plusieurs feuilles si besoin (analyse complète)
+#    - Le fichier Excel peut inclure TOUTES les données (OK + NOK)
 #
 # =============================================================================
 """

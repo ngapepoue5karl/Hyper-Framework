@@ -978,8 +978,8 @@ class ReportGenerator:
                         run.bold = True
                         cell_paragraph.alignment = WD_ALIGN_PARAGRAPH.CENTER
 
-                    # Remplissage des données (limiter à 50 lignes pour éviter un rapport trop lourd)
-                    max_rows = min(50, len(items))
+                    # Remplissage des données (limiter à 60 lignes pour éviter un rapport trop lourd)
+                    max_rows = min(60, len(items))
                     for item in items[:max_rows]:
                         row_cells = table.add_row().cells
                         for i, key in enumerate(column_keys):

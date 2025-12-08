@@ -229,9 +229,11 @@ def run(input_file_paths, output_dir_path):
             if col not in df_resultat.columns:
                 df_resultat[col] = 0
         
+        # Filtrer pour n'afficher que les propriétaires ayant plus de 3 équipements
+        df_resultat_affichage = df_resultat[df_resultat['Nombre total équipements'] >= 3]
         results.append({
             'title': "Analyse des équipements multiples par propriétaire",
-            'dataframe': df_resultat,
+            'dataframe': df_resultat_affichage,
             'display_columns': [
                 {'key': k, 'label': v} for k, v in colonnes_finales_affichage.items()
             ],

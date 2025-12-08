@@ -2,28 +2,25 @@
 
 ## Introduction
 
-Ce guide explique comment ajouter facilement des graphiques interactifs à vos scripts de contrôle dans Hyper-Framework. Les graphiques sont générés automatiquement à partir des statistiques de résumé (`summary_stats`) que votre script retourne.
+Ce guide explique comment ajouter facilement des graphiques interactifs à vos scripts de contrôle dans Hyper-Framework. Les graphiques sont générés automatiquement à partir des statistiques (`summary_stats`) que le script de chaque controle retourne.
 
 ## Principe de Fonctionnement
 
 1. **Votre script** définit une variable `__hyper_charts__` qui configure les graphiques souhaités
 2. **Le framework** lit automatiquement cette configuration lors de l'exécution
 3. **Les graphiques** sont générés à partir des `summary_stats` de vos résultats
-4. **L'utilisateur** peut cliquer sur " Voir les Graphiques" pour les visualiser dans son navigateur
+4. **L'utilisateur** peut cliquer sur le bouton "Voir les Graphiques" pour les visualiser dans son navigateur
 
 ## Types de Graphiques Disponibles
 
 ### 1. Graphique en Barres (`bar`)
-Idéal pour comparer plusieurs valeurs côte à côte.
+Pour comparer plusieurs valeurs côte à côte.
 
 ### 2. Graphique Circulaire (`pie`)
-Parfait pour montrer des proportions ou répartitions.
+Pour montrer des proportions ou répartitions.
 
 ### 3. Jauge / Indicateur (`gauge`)
-Excellent pour afficher un taux ou pourcentage avec seuils de couleur.
-
-### 4. Graphique en Lignes (`line`)
-Utile pour montrer des tendances (évolutions futures).
+Pour afficher un taux ou pourcentage avec seuils de couleur.
 
 ---
 
@@ -50,7 +47,7 @@ __hyper_charts__ = [
 
 Les clés dans `"keys"` doivent **exactement correspondre** aux clés de votre dictionnaire `summary_stats`.
 
-Exemple dans votre fonction `run()` :
+Un exemple clair dans votre fonction `run()` :
 
 ```python
 def run(input_file_paths: dict, output_dir_path: str):
@@ -68,7 +65,7 @@ def run(input_file_paths: dict, output_dir_path: str):
     }]
 ```
 
-### Étape 3 : Tester !
+### Étape 3 : Le Test
 
 1. Lancez votre analyse dans Hyper-Framework
 2. Un bouton " Voir les Graphiques" apparaîtra automatiquement
@@ -98,8 +95,7 @@ return [{
     "display_columns": [...],
     "summary_stats": {
         "Utilisateurs actifs": 1523,
-        "Utilisateurs inactifs": 234,
-        "Utilisateurs suspendus": 12
+        "Utilisateurs inactifs": 234
     }
 }]
 ```
@@ -241,9 +237,9 @@ return [{
 {
     "type": "bar",
     "title": "Titre du graphique",
-    "keys": ["Clé1", "Clé2", "Clé3"],           # Obligatoire
-    "colors": ["#couleur1", "#couleur2", ...],   # Optionnel
-    "orientation": "vertical" ou "horizontal"    # Optionnel, défaut: "vertical"
+    "keys": ["Clé1", "Clé2", "Clé3"],          
+    "colors": ["#couleur1", "#couleur2", ...],   
+    "orientation": "vertical" ou "horizontal"    
 }
 ```
 
@@ -253,8 +249,8 @@ return [{
 {
     "type": "pie",
     "title": "Titre du graphique",
-    "keys": ["Clé1", "Clé2"],                    # Obligatoire
-    "colors": ["#couleur1", "#couleur2"]         # Optionnel
+    "keys": ["Clé1", "Clé2"],                    
+    "colors": ["#couleur1", "#couleur2"]         
 }
 ```
 
@@ -264,10 +260,10 @@ return [{
 {
     "type": "gauge",
     "title": "Titre du graphique",
-    "key": "Clé unique",                         # Obligatoire (singulier!)
-    "max_value": 100,                            # Optionnel, défaut: 100
-    "colors": ["#rouge", "#orange", "#vert"],    # Optionnel
-    "thresholds": [50, 80]                       # Optionnel, défaut: [50, 80]
+    "key": "Clé unique",                         
+    "max_value": 100,                             
+    "colors": ["#rouge", "#orange", "#vert"],    
+    "thresholds": [50, 80]                       
 }
 ```
 
@@ -276,28 +272,6 @@ return [{
 - threshold[0] ≤ valeur < threshold[1] → couleur 2 (orange)
 - valeur ≥ threshold[1] → couleur 3 (vert)
 
----
-
-## Codes Couleur Recommandés
-
-### Couleurs de Base
-- Vert (succès) : `#4CAF50`
-- Bleu (info) : `#2196F3`
-- Orange (warning) : `#FF9800` ou `#FFC107`
-- Rouge (erreur) : `#F44336`
-- Gris : `#9E9E9E`
-- Violet : `#9C27B0`
-
-### Pour la Conformité
-- Conforme : `#4CAF50` (vert)
-- Non conforme : `#F44336` (rouge)
-
-### Pour les Jauges (ordre Rouge→Orange→Vert)
-```python
-"colors": ["#F44336", "#FF9800", "#4CAF50"]
-```
-
----
 
 ## Dépannage
 
@@ -317,18 +291,18 @@ return [{
 2. Les valeurs dans `summary_stats` sont `None` ou invalides
 
 **Solution :** 
-- Assurez-vous que les noms de clés correspondent **exactement** (respectez la casse et les espaces)
+- Assurez-vous que les noms de clés correspondent **exactement** (Il faut respecter la casse et les espaces)
 - Vérifiez que les valeurs sont des nombres ou des strings avec `%`
 
 ### Les valeurs avec `%` ne s'affichent pas correctement
 
 **Solution :** Le framework gère automatiquement les strings avec `%`. Exemple :
 ```python
-"Taux": "99.63%"  # ✅ Fonctionne
-"Taux": 99.63     # ✅ Fonctionne aussi
+"Taux": "99.63%"  
+"Taux": 99.63     
 ```
 
-### Je veux plus de contrôle sur les graphiques
+### Si on veut ajouter plus de contrôle sur les graphiques
 
 Pour des graphiques plus complexes, vous pouvez :
 1. Consulter la documentation Vega-Lite : https://vega.github.io/vega-lite/
@@ -337,36 +311,3 @@ Pour des graphiques plus complexes, vous pouvez :
 
 ---
 
-## Checklist pour Ajouter des Graphiques
-
-- [ ] Définir `__hyper_charts__` au début du script
-- [ ] Vérifier que les `keys` correspondent exactement aux clés de `summary_stats`
-- [ ] Choisir des couleurs appropriées
-- [ ] Tester localement l'exécution du contrôle
-- [ ] Vérifier que le bouton "📊 Voir les Graphiques" apparaît
-- [ ] Cliquer sur le bouton pour voir les graphiques
-- [ ] Vérifier que les graphiques sont corrects et lisibles
-
----
-
-## Bonnes Pratiques
-
-1. **Nommage des clés** : Utilisez des noms explicites et cohérents
-2. **Limitation** : Ne créez pas plus de 5 graphiques par contrôle
-3. **Couleurs** : Respectez les conventions (vert = bien, rouge = problème)
-4. **Types de graphiques** : 
-   - Barres → Comparaisons
-   - Circulaire → Proportions/Répartitions
-   - Jauge → Taux/Pourcentages
-5. **Ordre des graphiques** : Mettez le plus important en premier
-
----
-
-## Support et Aide
-
-Si vous avez des questions ou besoin d'aide :
-1. Consultez les exemples dans `sauvegarde_pcs.py`
-2. Regardez le code de `chart_generator.py` pour comprendre les possibilités
-3. Testez avec des données simples d'abord
-
-**Bon développement ! 📊**

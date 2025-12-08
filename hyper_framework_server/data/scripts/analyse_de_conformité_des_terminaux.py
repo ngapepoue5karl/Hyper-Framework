@@ -157,9 +157,10 @@ def run(input_file_paths, output_dir_path):
         df1 = base_df.copy()
         df1['Résultat'] = get_os_compliance(df1['OperatingSystemVersion'])
         df1['LastLogonDate_short'] = df1['LastLogonDate'].dt.strftime('%Y-%m-%d')
+        df1_nok = df1[df1['Résultat'] == 'NOK']
         results.append({
             'title': "Conformité OS (Build >= 19045)",
-            'dataframe': df1,
+            'dataframe': df1_nok,
             'display_columns': [
                 {'key': 'LastLogonDate_short', 'label': "Dernière Connexion"},
                 {'key': 'Name', 'label': "Nom du Poste"},
@@ -170,7 +171,7 @@ def run(input_file_paths, output_dir_path):
             ],
             'summary_stats': {
                 'Total postes analysés': len(ad_df),
-                'Postes non conformes (NOK)': len(df1[df1['Résultat'] == 'NOK']),
+                'Postes non conformes (NOK)': len(df1_nok),
                 'Taux de conformité': f"{(len(df1[df1['Résultat'] == 'OK'])/len(base_df.copy())*100):.2f}%"
             }
         })
@@ -178,13 +179,11 @@ def run(input_file_paths, output_dir_path):
         # 2. Conformité service Intune
         df2 = base_df.copy()
         intune_unique_df = intune_df.drop_duplicates(subset=['Device name']).copy()
-        
         # MISE À JOUR : Fusion insensible à la casse
         df2['Name_upper'] = df2['Name'].str.upper()
         intune_unique_df['Device name_upper'] = intune_unique_df['Device name'].str.upper()
         df2 = pd.merge(df2, intune_unique_df[['Device name', 'Compliance', 'Device name_upper']], left_on='Name_upper', right_on='Device name_upper', how='left')
         df2.drop(columns=['Name_upper'], inplace=True)
-        
         df2['OS Conforme ?'] = get_os_compliance_win10_plus(df2['OperatingSystemVersion'])
         df2['Intune Déployé ?'] = np.where(df2['Device name'].notna(), df2['Name'], '#N/A')
         df2['Résultat'] = np.where((df2['Intune Déployé ?'] == '#N/A') | (df2['OS Conforme ?'] == 'NOK'), 'NOK', 'OK')
@@ -195,9 +194,10 @@ def run(input_file_paths, output_dir_path):
         choix_intune = ['INTUNE NON DEPLOYE', 'OK']
         df2['Intune déployé et conforme'] = np.select(conditions_intune, choix_intune, default='NOK')
         df2['LastLogonDate_short'] = df2['LastLogonDate'].dt.strftime('%Y-%m-%d')
+        df2_nok = df2[df2['Résultat'] == 'NOK']
         results.append({
             'title': "Conformité du service Intune",
-            'dataframe': df2,
+            'dataframe': df2_nok,
             'display_columns': [
                 {'key': 'LastLogonDate_short', 'label': "Dernière Connexion"},
                 {'key': 'Name', 'label': "Nom du Poste"},
@@ -228,7 +228,7 @@ def run(input_file_paths, output_dir_path):
         df3 = pd.merge(df3, tanium_unique_df[['Name_upper']], on='Name_upper', how='left', indicator=True)
         df3 = pd.merge(df3, ext_tanium_unique_df.rename(columns={'Observations': 'Situation fichier suivi'})[['Situation fichier suivi', 'Name_upper']], on='Name_upper', how='left')
         df3.drop(columns=['Name_upper'], inplace=True)
-        
+
         df3['Tanium déployé ?'] = np.where(df3['_merge'] == 'both', df3['Name'], '#N/A')
         df3['OS Conforme ?'] = get_os_compliance_win10_plus(df3['OperatingSystemVersion'])
         df3['Résultat'] = np.where((df3['Tanium déployé ?'] == '#N/A') | (df3['OS Conforme ?'] == 'NOK'), 'NOK', 'OK')
@@ -237,9 +237,10 @@ def run(input_file_paths, output_dir_path):
         cond_resultat_ok = (df3['Résultat'] == 'OK')
         df3['Résultat final'] = np.where(cond_suivi_ok | cond_resultat_ok, 'OK', 'NOK')
         df3['LastLogonDate_short'] = df3['LastLogonDate'].dt.strftime('%Y-%m-%d')
+        df3_nok_final = df3[df3['Résultat final'] == 'NOK']
         results.append({
             'title': "Conformité de l'agent Tanium",
-            'dataframe': df3,
+            'dataframe': df3_nok_final,
             'display_columns': [
                 {'key': 'LastLogonDate_short', 'label': "Dernière Connexion"},
                 {'key': 'Name', 'label': "Nom du Poste"},
@@ -250,7 +251,7 @@ def run(input_file_paths, output_dir_path):
             ],
             'summary_stats': {
                 'Nb total Postes': len(base_df.copy()),
-                'Non Conformes (NOK)': len(df3[df3['Résultat final'] == 'NOK']),
+                'Non Conformes (NOK)': len(df3_nok_final),
                 'Taux de conformité ': f"{ (( len(df3[df3['Résultat final'] == 'OK'])/len(base_df.copy()) ) * 100):.2f}%",
             }
         })
@@ -277,9 +278,10 @@ def run(input_file_paths, output_dir_path):
         cond_resultat_ok_cs = (df4['Résultat'] == 'OK')
         df4['Résultat final'] = np.where(cond_suivi_ok_cs | cond_resultat_ok_cs, 'OK', 'NOK')
         df4['LastLogonDate_short'] = df4['LastLogonDate'].dt.strftime('%Y-%m-%d')
+        df4_nok_final = df4[df4['Résultat final'] == 'NOK']
         results.append({
             'title': "Conformité de l'agent CrowdStrike",
-            'dataframe': df4,
+            'dataframe': df4_nok_final,
             'display_columns': [
                 {'key': 'LastLogonDate_short', 'label': "Dernière Connexion"},
                 {'key': 'Name', 'label': "Nom du Poste"},
@@ -290,7 +292,7 @@ def run(input_file_paths, output_dir_path):
             ],
             'summary_stats': {
                 'Nb total Postes': len(base_df.copy()),
-                'Non Conformes (NOK)': len(df4[df4['Résultat final'] == 'NOK']),
+                'Non Conformes (NOK)': len(df4_nok_final),
                 'Taux de conformité ': f"{ (( len(df4[df4['Résultat final'] == 'OK'])/len(base_df.copy()) ) * 100):.2f}%",
             }
         })
@@ -316,9 +318,10 @@ def run(input_file_paths, output_dir_path):
         cond_resultat_ok_laps = (df5['Résultat'] == 'OK')
         df5['Résultat final'] = np.where(cond_suivi_ok_laps | cond_resultat_ok_laps, 'OK', 'NOK')
         df5['LastLogonDate_short'] = df5['LastLogonDate'].dt.strftime('%Y-%m-%d')
+        df5_nok_final = df5[df5['Résultat final'] == 'NOK']
         results.append({
             'title': "Conformité de l'agent LAPS",
-            'dataframe': df5,
+            'dataframe': df5_nok_final,
             'display_columns': [
                 {'key': 'LastLogonDate_short', 'label': "Dernière Connexion"},
                 {'key': 'Name', 'label': "Nom du Poste"},
@@ -329,7 +332,7 @@ def run(input_file_paths, output_dir_path):
             ],
             'summary_stats': {
                 'Nb total Postes': len(base_df.copy()),
-                'Non Conformes (NOK)': len(df5[df5['Résultat final'] == 'NOK']),
+                'Non Conformes (NOK)': len(df5_nok_final),
                 'Taux de conformité ': f"{ (( len(df5[df5['Résultat final'] == 'OK'])/len(base_df.copy()) ) * 100):.2f}%",
             }
         })
