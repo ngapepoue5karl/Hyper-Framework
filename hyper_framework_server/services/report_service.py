@@ -4,6 +4,8 @@ from datetime import datetime
 import docx
 from docx.shared import Pt, Inches, RGBColor
 from docx.enum.text import WD_ALIGN_PARAGRAPH
+from docx.enum.table import WD_TABLE_ALIGNMENT
+from docx.enum.style import WD_STYLE_TYPE
 from docx.oxml.shared import OxmlElement
 from docx.oxml.ns import qn
 import matplotlib
@@ -13,6 +15,7 @@ import matplotlib.patches as mpatches
 import os
 import tempfile
 import re
+from ..config import DEFAULT_ASSETS_DIR
 
 class ReportGenerator:
     def _create_conclusion_hexagon(self, compliance_rate):
@@ -58,9 +61,7 @@ class ReportGenerator:
         return temp_file.name
     def _add_header_with_logo_and_table(self, document, control_name, control_code, analysis_results, control_metadata=None, execution_date=None):
         """
-        Ajoute un en-tête avec :
-        - Ligne 1 : Logo (gauche) | Titre centré | Code de contrôle (droite)
-        - Ligne 2 : Tableau avec les informations du contrôle
+        Ajoute un en-tête avec une structure en tableau unique de 4 lignes x 7 colonnes
         
         Args:
             control_metadata: Dictionnaire contenant les métadonnées du contrôle
@@ -73,62 +74,57 @@ class ReportGenerator:
         for paragraph in header.paragraphs:
             paragraph.clear()
         
-        # --- LIGNE 1 : Logo, Titre, Code ---
-        # Créer un tableau à 3 colonnes pour la première ligne
-        top_table = header.add_table(rows=1, cols=3, width=Inches(6.0))
-        top_table.autofit = False
-        top_table.alignment = WD_ALIGN_PARAGRAPH.CENTER
+        # Créer UN SEUL tableau de 4 lignes x 7 colonnes
+        header_table = header.add_table(rows=4, cols=7, width=Inches(7.0))
+        header_table.autofit = False
+        header_table.allow_autofit = False
         
-        # Ajuster les largeurs des colonnes
-        top_table.columns[0].width = Inches(1.0)  # Logo
-        top_table.columns[1].width = Inches(3.5)  # Titre
-        top_table.columns[2].width = Inches(1.5)  # Code
-        
+        # --- LIGNE 1 : Titre du contrôle (colonnes 2-5) et Code (colonnes 6-7) ---
         # Colonne 1 : Logo
-        logo_cell = top_table.rows[0].cells[0]
+        logo_cell = header_table.rows[0].cells[0]
         logo_para = logo_cell.paragraphs[0]
+        logo_para.paragraph_format.space_before = Pt(4)
+        logo_para.paragraph_format.space_after = Pt(4)
+        logo_para.paragraph_format.line_spacing = 1.15
+        logo_para.alignment = WD_ALIGN_PARAGRAPH.CENTER
         
-        # Chemin vers le logo
-        logo_path = os.path.join(
-            os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
-            'assets', 'images', 'logo_default.png'
-        )
-        
+        # Ajouter le logo avec les dimensions spécifiées (2,81 cm x 1,42 cm)
+        logo_path = DEFAULT_ASSETS_DIR / 'images' / 'logo_default.png'
         if os.path.exists(logo_path):
-            logo_run = logo_para.add_run()
-            logo_run.add_picture(logo_path, width=Inches(0.8))
-        else:
-            # Fallback si le logo n'existe pas
-            logo_para.add_run('LOGO')
+            run = logo_para.add_run()
+            # 2,81 cm = 1.106 pouces, 1,42 cm = 0.559 pouces
+            run.add_picture(str(logo_path), width=Inches(1.106), height=Inches(0.559))
         
-        # Centrer verticalement le logo
+        # Centrer verticalement
         tc_logo = logo_cell._element
         tcPr_logo = tc_logo.get_or_add_tcPr()
         tcVAlign_logo = OxmlElement('w:vAlign')
         tcVAlign_logo.set(qn('w:val'), 'center')
         tcPr_logo.append(tcVAlign_logo)
         
-        # Colonne 2 : Titre centré
-        title_cell = top_table.rows[0].cells[1]
+        # Fusionner colonnes 2-5 pour le titre
+        title_cell = header_table.rows[0].cells[1]
+        for i in range(2, 5):
+            title_cell.merge(header_table.rows[0].cells[i])
+        
         title_para = title_cell.paragraphs[0]
+        title_para.paragraph_format.space_before = Pt(4)
+        title_para.paragraph_format.space_after = Pt(4)
+        title_para.paragraph_format.line_spacing = 1.15
         title_run = title_para.add_run(control_name)
-        title_run.font.name = 'Arial'
-        title_run.font.size = Pt(14)
+        title_run.font.name = 'Tahoma'
+        title_run.font.size = Pt(10)
         title_run.font.bold = True
-        title_run.font.color.rgb = RGBColor(0, 0, 0)
         title_para.alignment = WD_ALIGN_PARAGRAPH.CENTER
         
-        # Centrer verticalement le titre
+        # Centrer verticalement
         tc_title = title_cell._element
         tcPr_title = tc_title.get_or_add_tcPr()
         tcVAlign_title = OxmlElement('w:vAlign')
         tcVAlign_title.set(qn('w:val'), 'center')
         tcPr_title.append(tcVAlign_title)
         
-        # Colonne 3 : Code de contrôle avec date dynamique
-        code_cell = top_table.rows[0].cells[2]
-        code_para = code_cell.paragraphs[0]
-        
+        # Fusionner colonnes 6-7 pour le code
         # Construire le code avec la date d'exécution
         if control_metadata and execution_date:
             control_code_prefix = control_metadata.get('control_code_prefix', control_code)
@@ -140,71 +136,45 @@ class ReportGenerator:
         else:
             full_control_code = control_code
         
+        code_cell = header_table.rows[0].cells[5]
+        code_cell.merge(header_table.rows[0].cells[6])
+        
+        code_para = code_cell.paragraphs[0]
+        code_para.paragraph_format.space_before = Pt(4)
+        code_para.paragraph_format.space_after = Pt(4)
+        code_para.paragraph_format.line_spacing = 1.15
         code_run = code_para.add_run(full_control_code)
-        code_run.font.name = 'Arial'
-        code_run.font.size = Pt(8)
+        code_run.font.name = 'Tahoma'
+        code_run.font.size = Pt(6)
         code_run.font.bold = True
-        code_run.font.color.rgb = RGBColor(0, 0, 0)
         code_para.alignment = WD_ALIGN_PARAGRAPH.CENTER
         
-        # Centrer verticalement le code
+        # Centrer verticalement
         tc_code = code_cell._element
         tcPr_code = tc_code.get_or_add_tcPr()
         tcVAlign_code = OxmlElement('w:vAlign')
         tcVAlign_code.set(qn('w:val'), 'center')
         tcPr_code.append(tcVAlign_code)
         
-        # Ajouter des bordures uniquement autour du tableau du haut (bordure externe)
-        tbl_top = top_table._element
-        tblPr_top = tbl_top.tblPr
-        if tblPr_top is None:
-            tblPr_top = OxmlElement('w:tblPr')
-            tbl_top.insert(0, tblPr_top)
-        
-        tblBorders_top = OxmlElement('w:tblBorders')
-        for border_name in ['top', 'left', 'right']:
-            border = OxmlElement(f'w:{border_name}')
-            border.set(qn('w:val'), 'single')
-            border.set(qn('w:sz'), '4')
-            border.set(qn('w:space'), '0')
-            border.set(qn('w:color'), '000000')
-            tblBorders_top.append(border)
-        # Pas de bordure bottom pour le tableau du haut
-        border_bottom = OxmlElement('w:bottom')
-        border_bottom.set(qn('w:val'), 'none')
-        border_bottom.set(qn('w:sz'), '0')
-        tblBorders_top.append(border_bottom)
-        # Supprimer les bordures internes verticales
-        for border_name in ['insideH', 'insideV']:
-            border = OxmlElement(f'w:{border_name}')
-            border.set(qn('w:val'), 'none')
-            border.set(qn('w:sz'), '0')
-            tblBorders_top.append(border)
-        tblPr_top.append(tblBorders_top)
-        
-        # --- LIGNE 2 : Tableau des informations (directement attaché sans espace) ---
-        info_table = header.add_table(rows=2, cols=6, width=Inches(6.0))
-        info_table.autofit = False
-        info_table.alignment = WD_ALIGN_PARAGRAPH.CENTER
-        
-        # Définir les en-têtes du tableau
+        # --- LIGNE 2 : En-têtes des colonnes ---
         headers = [
             'Application concernée',
             'Couche concernée',
             'Référence du risque',
             'Nom du risque',
-            'Conclusion',
-            'Nom du contrôle'
+            'Conclusion'
         ]
         
-        # Remplir les en-têtes
-        header_cells = info_table.rows[0].cells
+        # Remplir les 5 premières colonnes
         for i, header_text in enumerate(headers):
-            cell = header_cells[i]
+            cell = header_table.rows[1].cells[i]
             cell_para = cell.paragraphs[0]
+            cell_para.paragraph_format.space_before = Pt(4)
+            cell_para.paragraph_format.space_after = Pt(4)
+            cell_para.paragraph_format.line_spacing = 1.15
             cell_run = cell_para.add_run(header_text)
-            cell_run.font.name = 'Arial'
-            cell_run.font.size = Pt(8)
+            cell_run.font.name = 'Tahoma'
+            cell_run.font.size = Pt(6)
             cell_run.font.bold = True
             cell_para.alignment = WD_ALIGN_PARAGRAPH.CENTER
             
@@ -215,8 +185,28 @@ class ReportGenerator:
             tcVAlign.set(qn('w:val'), 'center')
             tcPr.append(tcVAlign)
         
-        data_cells = info_table.rows[1].cells
+        # Fusionner les colonnes 6 et 7 pour "Nom du contrôle"
+        control_name_cell = header_table.rows[1].cells[5]
+        control_name_cell.merge(header_table.rows[1].cells[6])
         
+        cell_para = control_name_cell.paragraphs[0]
+        cell_para.paragraph_format.space_before = Pt(4)
+        cell_para.paragraph_format.space_after = Pt(4)
+        cell_para.paragraph_format.line_spacing = 1.15
+        cell_run = cell_para.add_run('Nom du contrôle')
+        cell_run.font.name = 'Tahoma'
+        cell_run.font.size = Pt(6)
+        cell_run.font.bold = True
+        cell_para.alignment = WD_ALIGN_PARAGRAPH.CENTER
+        
+        # Centrer verticalement
+        tc = control_name_cell._element
+        tcPr = tc.get_or_add_tcPr()
+        tcVAlign = OxmlElement('w:vAlign')
+        tcVAlign.set(qn('w:val'), 'center')
+        tcPr.append(tcVAlign)
+        
+        # --- LIGNE 3 : Données du contrôle ---
         # Utiliser les métadonnées du contrôle si disponibles
         if control_metadata:
             application = control_metadata.get('application', 'N/A')
@@ -225,7 +215,6 @@ class ReportGenerator:
             risk_name = control_metadata.get('risk_name', 'N/A')
             control_name_meta = control_metadata.get('control_name', control_name)
         else:
-            # Valeurs par défaut si pas de métadonnées
             application = 'N/A'
             layer = 'N/A'
             risk_reference = 'N/A'
@@ -238,10 +227,8 @@ class ReportGenerator:
             first_section = analysis_results[0]
             summary_stats = first_section.get('summary_stats', {})
             
-            # Chercher le taux dans les statistiques
             for key, value in summary_stats.items():
                 if 'taux' in key.lower() or 'conformité' in key.lower() or 'conformite' in key.lower():
-                    # Extraire le nombre du pourcentage
                     if isinstance(value, str):
                         match = re.search(r'(\d+\.?\d*)', value)
                         if match:
@@ -251,181 +238,229 @@ class ReportGenerator:
                         compliance_rate = float(value)
                         break
         
-        data_values = [
-            application,
-            layer,
-            risk_reference,
-            risk_name,
-            None,  # Conclusion sera une image d'hexagone
-            control_name_meta
-        ]
+        # Colonne 1 : Application
+        cell = header_table.rows[2].cells[0]
+        cell.text = application
+        para = cell.paragraphs[0]
+        para.paragraph_format.space_before = Pt(4)
+        para.paragraph_format.space_after = Pt(4)
+        para.paragraph_format.line_spacing = 1.15
+        for run in para.runs:
+            run.font.name = 'Tahoma'
+            run.font.size = Pt(6)
+        para.alignment = WD_ALIGN_PARAGRAPH.CENTER
+        tc = cell._element
+        tcPr = tc.get_or_add_tcPr()
+        tcVAlign = OxmlElement('w:vAlign')
+        tcVAlign.set(qn('w:val'), 'center')
+        tcPr.append(tcVAlign)
         
-        for i, value in enumerate(data_values):
-            cell = data_cells[i]
-            cell_para = cell.paragraphs[0]
-            
-            # Colonne 4 (index 4) = Conclusion avec hexagone
-            if i == 4:
-                try:
-                    hexagon_path = self._create_conclusion_hexagon(compliance_rate)
-                    cell_run = cell_para.add_run()
-                    cell_run.add_picture(hexagon_path, width=Inches(0.25))
-                    cell_para.alignment = WD_ALIGN_PARAGRAPH.CENTER
-                    # Nettoyer le fichier temporaire
-                    try:
-                        os.unlink(hexagon_path)
-                    except:
-                        pass
-                except Exception as e:
-                    print(f"Erreur lors de la création de l'hexagone: {e}")
-                    # Fallback: afficher le taux en texte
-                    cell_run = cell_para.add_run(f"{compliance_rate:.1f}%")
-                    cell_run.font.name = 'Arial'
-                    cell_run.font.size = Pt(7)
-                    cell_para.alignment = WD_ALIGN_PARAGRAPH.CENTER
-            # Gérer les valeurs multilignes
-            elif value is not None and '\n' in str(value):
-                lines = str(value).split('\n')
-                for j, line in enumerate(lines):
-                    if j > 0:
-                        cell_para = cell.add_paragraph()
-                    cell_run = cell_para.add_run(line)
-                    cell_run.font.name = 'Arial'
-                    cell_run.font.size = Pt(7)
-                    cell_para.alignment = WD_ALIGN_PARAGRAPH.CENTER
-            else:
-                cell_run = cell_para.add_run(str(value) if value is not None else '')
-                cell_run.font.name = 'Arial'
-                cell_run.font.size = Pt(7)
-                cell_para.alignment = WD_ALIGN_PARAGRAPH.CENTER
-            
-            # Centrer verticalement
-            tc = cell._element
-            tcPr = tc.get_or_add_tcPr()
-            tcVAlign = OxmlElement('w:vAlign')
-            tcVAlign.set(qn('w:val'), 'center')
-            tcPr.append(tcVAlign)
+        # Colonne 2 : Couche
+        cell = header_table.rows[2].cells[1]
+        cell.text = layer
+        para = cell.paragraphs[0]
+        para.paragraph_format.space_before = Pt(4)
+        para.paragraph_format.space_after = Pt(4)
+        para.paragraph_format.line_spacing = 1.15
+        for run in para.runs:
+            run.font.name = 'Tahoma'
+            run.font.size = Pt(6)
+        para.alignment = WD_ALIGN_PARAGRAPH.CENTER
+        tc = cell._element
+        tcPr = tc.get_or_add_tcPr()
+        tcVAlign = OxmlElement('w:vAlign')
+        tcVAlign.set(qn('w:val'), 'center')
+        tcPr.append(tcVAlign)
         
-        # Configurer les bordures du tableau d'informations (sans bordure top car lié au tableau du haut)
-        tbl_info = info_table._element
-        tblPr_info = tbl_info.tblPr
-        if tblPr_info is None:
-            tblPr_info = OxmlElement('w:tblPr')
-            tbl_info.insert(0, tblPr_info)
+        # Colonne 3 : Référence du risque
+        cell = header_table.rows[2].cells[2]
+        cell.text = risk_reference
+        para = cell.paragraphs[0]
+        para.paragraph_format.space_before = Pt(4)
+        para.paragraph_format.space_after = Pt(4)
+        para.paragraph_format.line_spacing = 1.15
+        for run in para.runs:
+            run.font.name = 'Tahoma'
+            run.font.size = Pt(6)
+        para.alignment = WD_ALIGN_PARAGRAPH.CENTER
+        tc = cell._element
+        tcPr = tc.get_or_add_tcPr()
+        tcVAlign = OxmlElement('w:vAlign')
+        tcVAlign.set(qn('w:val'), 'center')
+        tcPr.append(tcVAlign)
         
-        tblBorders_info = OxmlElement('w:tblBorders')
-        # Pas de bordure top
-        border_top = OxmlElement('w:top')
-        border_top.set(qn('w:val'), 'none')
-        border_top.set(qn('w:sz'), '0')
-        tblBorders_info.append(border_top)
-        # Bordures left, right, bottom, insideH, insideV
-        for border_name in ['left', 'right', 'insideH', 'insideV']:
-            border = OxmlElement(f'w:{border_name}')
-            border.set(qn('w:val'), 'single')
-            border.set(qn('w:sz'), '4')
-            border.set(qn('w:space'), '0')
-            border.set(qn('w:color'), '000000')
-            tblBorders_info.append(border)
-        # Pas de bordure bottom pour ce tableau
-        border_bottom = OxmlElement('w:bottom')
-        border_bottom.set(qn('w:val'), 'none')
-        border_bottom.set(qn('w:sz'), '0')
-        tblBorders_info.append(border_bottom)
-        tblPr_info.append(tblBorders_info)
+        # Colonne 4 : Nom du risque
+        cell = header_table.rows[2].cells[3]
+        cell.text = risk_name
+        para = cell.paragraphs[0]
+        para.paragraph_format.space_before = Pt(4)
+        para.paragraph_format.space_after = Pt(4)
+        para.paragraph_format.line_spacing = 1.15
+        for run in para.runs:
+            run.font.name = 'Tahoma'
+            run.font.size = Pt(5.5)
+        para.alignment = WD_ALIGN_PARAGRAPH.CENTER
+        tc = cell._element
+        tcPr = tc.get_or_add_tcPr()
+        tcVAlign = OxmlElement('w:vAlign')
+        tcVAlign.set(qn('w:val'), 'center')
+        tcPr.append(tcVAlign)
         
-        # --- LIGNE 3 : Tableau du bas (Destinataire, Ref Description, PS3) ---
-        bottom_table = header.add_table(rows=1, cols=3, width=Inches(6.0))
-        bottom_table.autofit = False
-        bottom_table.alignment = WD_ALIGN_PARAGRAPH.CENTER
+        # Colonne 5 : Conclusion (vide pour le modèle S42)
+        cell = header_table.rows[2].cells[4]
+        cell.text = ''
         
-        bottom_table.columns[0].width = Inches(3.2)
-        bottom_table.columns[1].width = Inches(1.8)
-        bottom_table.columns[2].width = Inches(1.0)
+        # Fusionner colonnes 6-7 pour Nom du contrôle
+        control_name_data_cell = header_table.rows[2].cells[5]
+        control_name_data_cell.merge(header_table.rows[2].cells[6])
         
-        # Cellule 1 : Destinataire
-        dest_cell = bottom_table.rows[0].cells[0]
+        control_name_data_cell.text = control_name_meta
+        para = control_name_data_cell.paragraphs[0]
+        para.paragraph_format.space_before = Pt(4)
+        para.paragraph_format.space_after = Pt(4)
+        para.paragraph_format.line_spacing = 1.15
+        for run in para.runs:
+            run.font.name = 'Tahoma'
+            run.font.size = Pt(6)
+        para.alignment = WD_ALIGN_PARAGRAPH.CENTER
+        tc = control_name_data_cell._element
+        tcPr = tc.get_or_add_tcPr()
+        tcVAlign = OxmlElement('w:vAlign')
+        tcVAlign.set(qn('w:val'), 'center')
+        tcPr.append(tcVAlign)
+        
+        # --- LIGNE 4 : Destinataire, Ref Description, PS3 ---
+        # Fusionner colonnes 1-3 pour Destinataire
+        dest_cell = header_table.rows[3].cells[0]
+        dest_cell.merge(header_table.rows[3].cells[1])
+        dest_cell.merge(header_table.rows[3].cells[2])
+        
         dest_para = dest_cell.paragraphs[0]
+        dest_para.paragraph_format.space_before = Pt(4)
+        dest_para.paragraph_format.space_after = Pt(4)
+        dest_para.paragraph_format.line_spacing = 1.15
         dest_run1 = dest_para.add_run('Destinataire : ')
-        dest_run1.font.name = 'Arial'
-        dest_run1.font.size = Pt(7)
+        dest_run1.font.name = 'Tahoma'
+        dest_run1.font.size = Pt(6)
         dest_run1.font.bold = True
         dest_run2 = dest_para.add_run('Tout le personnel de la direction des systèmes d\'informations')
-        dest_run2.font.name = 'Arial'
-        dest_run2.font.size = Pt(7)
+        dest_run2.font.name = 'Tahoma'
+        dest_run2.font.size = Pt(6)
         
-        # Centrer verticalement
         tc_dest = dest_cell._element
         tcPr_dest = tc_dest.get_or_add_tcPr()
         tcVAlign_dest = OxmlElement('w:vAlign')
         tcVAlign_dest.set(qn('w:val'), 'center')
         tcPr_dest.append(tcVAlign_dest)
         
-        # Cellule 2 : Ref Description (depuis métadonnées)
-        ref_cell = bottom_table.rows[0].cells[1]
-        ref_para = ref_cell.paragraphs[0]
-        ref_run1 = ref_para.add_run('Ref Description : ')
-        ref_run1.font.name = 'Arial'
-        ref_run1.font.size = Pt(7)
-        ref_run1.font.bold = True
+        # Fusionner colonnes 4-5 pour Ref Description
+        ref_cell = header_table.rows[3].cells[3]
+        ref_cell.merge(header_table.rows[3].cells[4])
         
+        ref_para = ref_cell.paragraphs[0]
+        ref_para.paragraph_format.space_before = Pt(4)
+        ref_para.paragraph_format.space_after = Pt(4)
+        ref_para.paragraph_format.line_spacing = 1.15
+        ref_run1 = ref_para.add_run('Ref Descirption : ')  # Garder la faute comme dans le modèle
+        ref_run1.font.name = 'Tahoma'
+        ref_run1.font.size = Pt(6)
+        ref_run1.font.bold = True
+
         ref_description = 'N/A'
         if control_metadata:
             ref_description = control_metadata.get('ref_description', 'N/A')
-        
+
         ref_run2 = ref_para.add_run(ref_description)
-        ref_run2.font.name = 'Arial'
-        ref_run2.font.size = Pt(7)
+        ref_run2.font.name = 'Tahoma'
+        ref_run2.font.size = Pt(6)
         
-        # Centrer verticalement
         tc_ref = ref_cell._element
         tcPr_ref = tc_ref.get_or_add_tcPr()
         tcVAlign_ref = OxmlElement('w:vAlign')
         tcVAlign_ref.set(qn('w:val'), 'center')
         tcPr_ref.append(tcVAlign_ref)
         
-        # Cellule 3 : Code supplémentaire
-        ps_cell = bottom_table.rows[0].cells[2]
+        # Fusionner colonnes 6-7 pour PS3
+        ps_cell = header_table.rows[3].cells[5]
+        ps_cell.merge(header_table.rows[3].cells[6])
+        
         ps_para = ps_cell.paragraphs[0]
+        ps_para.paragraph_format.space_before = Pt(4)
+        ps_para.paragraph_format.space_after = Pt(4)
+        ps_para.paragraph_format.line_spacing = 1.15
         ps_run = ps_para.add_run('PS3_BC_SSI_FEN_3')
-        ps_run.font.name = 'Arial'
-        ps_run.font.size = Pt(7)
+        ps_run.font.name = 'Tahoma'
+        ps_run.font.size = Pt(6)
         ps_para.alignment = WD_ALIGN_PARAGRAPH.CENTER
         
-        # Centrer verticalement
         tc_ps = ps_cell._element
         tcPr_ps = tc_ps.get_or_add_tcPr()
         tcVAlign_ps = OxmlElement('w:vAlign')
         tcVAlign_ps.set(qn('w:val'), 'center')
         tcPr_ps.append(tcVAlign_ps)
         
-        # Configurer les bordures du tableau du bas (ferme le tableau complet)
-        tbl_bottom = bottom_table._element
-        tblPr_bottom = tbl_bottom.tblPr
-        if tblPr_bottom is None:
-            tblPr_bottom = OxmlElement('w:tblPr')
-            tbl_bottom.insert(0, tblPr_bottom)
+        # --- Configurer les bordures et dimensions du tableau ---
+        tbl = header_table._element
+        tblPr = tbl.tblPr
+        if tblPr is None:
+            tblPr = OxmlElement('w:tblPr')
+            tbl.insert(0, tblPr)
         
-        tblBorders_bottom = OxmlElement('w:tblBorders')
-        # Pas de bordure top car lié au tableau info
-        border_top = OxmlElement('w:top')
-        border_top.set(qn('w:val'), 'none')
-        border_top.set(qn('w:sz'), '0')
-        tblBorders_bottom.append(border_top)
-        # Bordures left, right, bottom, insideV
-        for border_name in ['left', 'right', 'bottom', 'insideV']:
+        # Centrer le tableau
+        jc = OxmlElement('w:jc')
+        jc.set(qn('w:val'), 'center')
+        tblPr.append(jc)
+        
+        # Définir la largeur totale du tableau 
+        tblW = OxmlElement('w:tblW')
+        tblW.set(qn('w:w'), '10195')
+        tblW.set(qn('w:type'), 'dxa')
+        tblPr.append(tblW)
+        
+        # Layout fixe pour empêcher l'auto-ajustement
+        tblLayout = OxmlElement('w:tblLayout')
+        tblLayout.set(qn('w:type'), 'fixed')
+        tblPr.append(tblLayout)
+        
+        tblBorders = OxmlElement('w:tblBorders')
+        for border_name in ['top', 'left', 'bottom', 'right', 'insideH', 'insideV']:
             border = OxmlElement(f'w:{border_name}')
             border.set(qn('w:val'), 'single')
             border.set(qn('w:sz'), '4')
             border.set(qn('w:space'), '0')
             border.set(qn('w:color'), '000000')
-            tblBorders_bottom.append(border)
-        # Pas de insideH car une seule ligne
-        border_insideH = OxmlElement('w:insideH')
-        border_insideH.set(qn('w:val'), 'none')
-        border_insideH.set(qn('w:sz'), '0')
-        tblBorders_bottom.append(border_insideH)
-        tblPr_bottom.append(tblBorders_bottom)
+            tblBorders.append(border)
+        tblPr.append(tblBorders)
+        
+        # --- Définiton des largeurs des colonnes via la grille ET les cellules ---
+        # 1 cm = 567 twips
+
+        # Définition de la grille
+        tblGrid = tbl.find(qn('w:tblGrid'))
+        if tblGrid is not None:
+            gridCols = tblGrid.findall(qn('w:gridCol'))
+            if len(gridCols) >= 7:
+                gridCols[0].set(qn('w:w'), '2138')  # 3,77 cm
+                gridCols[1].set(qn('w:w'), '1418')  # 2,5 cm
+                gridCols[2].set(qn('w:w'), '1530')  # 2,7 cm
+                gridCols[3].set(qn('w:w'), '1418')  # 2,5 cm
+                gridCols[4].set(qn('w:w'), '1417')  # 2,5 cm
+                gridCols[5].set(qn('w:w'), '1137')  # 2,005 cm
+                gridCols[6].set(qn('w:w'), '1137')  # 2,005 cm
+        
+        # Respect des dimensions sur Word
+        col_widths = [2138, 1418, 1530, 1418, 1417, 1137, 1137]
+        for idx, cell in enumerate(header_table.rows[1].cells[:7]):
+            tc = cell._element
+            tcPr = tc.get_or_add_tcPr()
+            tcW = OxmlElement('w:tcW')
+            tcW.set(qn('w:w'), str(col_widths[idx]))
+            tcW.set(qn('w:type'), 'dxa')
+            # Supprimer l'ancien tcW s'il existe
+            old_tcW = tcPr.find(qn('w:tcW'))
+            if old_tcW is not None:
+                tcPr.remove(old_tcW)
+            tcPr.append(tcW)
     
     def _add_signature_table(self, document):
         """
@@ -587,18 +622,75 @@ class ReportGenerator:
         # Créer un tableau à 3 colonnes et 2 lignes
         footer_table = footer.add_table(rows=2, cols=3, width=Inches(6.5))
         footer_table.autofit = False
+        footer_table.alignment = WD_TABLE_ALIGNMENT.CENTER
         
-        # Ajuster les largeurs des colonnes
-        footer_table.columns[0].width = Inches(1.5)
-        footer_table.columns[1].width = Inches(3.7)
-        footer_table.columns[2].width = Inches(1.3)
+        # --- Configurer les propriétés du tableau pour largeur fixe ---
+        tbl = footer_table._element
+        tblPr = tbl.tblPr
+        if tblPr is None:
+            tblPr = OxmlElement('w:tblPr')
+            tbl.insert(0, tblPr)
+        
+        # Centrer le tableau
+        jc = OxmlElement('w:jc')
+        jc.set(qn('w:val'), 'center')
+        tblPr.append(jc)
+        
+        # Définir la largeur totale du tableau (somme des largeurs préférées)
+        tblW = OxmlElement('w:tblW')
+        tblW.set(qn('w:w'), '10340')
+        tblW.set(qn('w:type'), 'dxa')
+        tblPr.append(tblW)
+        
+        # Layout fixe pour empêcher l'auto-ajustement
+        tblLayout = OxmlElement('w:tblLayout')
+        tblLayout.set(qn('w:type'), 'fixed')
+        tblPr.append(tblLayout)
+        
+        # Définition de la grille des colonnes
+        tblGrid = tbl.find(qn('w:tblGrid'))
+        if tblGrid is not None:
+            gridCols = tblGrid.findall(qn('w:gridCol'))
+            if len(gridCols) >= 3:
+                gridCols[0].set(qn('w:w'), '2193')  # 3,87 cm
+                gridCols[1].set(qn('w:w'), '5954')  # 10,5 cm
+                gridCols[2].set(qn('w:w'), '2193')  # 3,87 cm
+        
+        # Respect des dimensions sur Word pour le footer
+        col_widths_footer = [2193, 5954, 2193]
+        for idx, cell in enumerate(footer_table.rows[0].cells[:3]):
+            tc = cell._element
+            tcPr = tc.get_or_add_tcPr()
+            tcW = OxmlElement('w:tcW')
+            tcW.set(qn('w:w'), str(col_widths_footer[idx]))
+            tcW.set(qn('w:type'), 'dxa')
+            # Supprimer l'ancien tcW s'il existe
+            old_tcW = tcPr.find(qn('w:tcW'))
+            if old_tcW is not None:
+                tcPr.remove(old_tcW)
+            tcPr.append(tcW)
+        
+        # Aussi pour la ligne 1
+        for idx, cell in enumerate(footer_table.rows[1].cells[:3]):
+            tc = cell._element
+            tcPr = tc.get_or_add_tcPr()
+            tcW = OxmlElement('w:tcW')
+            tcW.set(qn('w:w'), str(col_widths_footer[idx]))
+            tcW.set(qn('w:type'), 'dxa')
+            old_tcW = tcPr.find(qn('w:tcW'))
+            if old_tcW is not None:
+                tcPr.remove(old_tcW)
+            tcPr.append(tcW)
         
         # --- COLONNE 1 : Version 1.4 et RESTREINT (2 cellules séparées) ---
         version_cell = footer_table.rows[0].cells[0]
         version_para = version_cell.paragraphs[0]
+        version_para.paragraph_format.space_before = Pt(4)
+        version_para.paragraph_format.space_after = Pt(4)
+        version_para.paragraph_format.line_spacing = 1.15
         version_run = version_para.add_run('Version 1.4')
         version_run.font.name = 'Arial'
-        version_run.font.size = Pt(8)
+        version_run.font.size = Pt(7)
         version_run.font.bold = True
         version_run.font.color.rgb = RGBColor(0, 0, 0)  # Noir
         version_para.alignment = WD_ALIGN_PARAGRAPH.CENTER
@@ -612,9 +704,12 @@ class ReportGenerator:
         
         restreint_cell = footer_table.rows[1].cells[0]
         restreint_para = restreint_cell.paragraphs[0]
+        restreint_para.paragraph_format.space_before = Pt(4)
+        restreint_para.paragraph_format.space_after = Pt(4)
+        restreint_para.paragraph_format.line_spacing = 1.15
         restreint_run = restreint_para.add_run('RESTREINT')
         restreint_run.font.name = 'Arial'
-        restreint_run.font.size = Pt(8)
+        restreint_run.font.size = Pt(7)
         restreint_run.font.bold = True
         restreint_run.font.color.rgb = RGBColor(0, 0, 0)  # Noir
         restreint_para.alignment = WD_ALIGN_PARAGRAPH.CENTER
@@ -632,9 +727,12 @@ class ReportGenerator:
         center_cell_top.merge(center_cell_bottom)
         
         center_para = center_cell_top.paragraphs[0]
+        center_para.paragraph_format.space_before = Pt(4)
+        center_para.paragraph_format.space_after = Pt(4)
+        center_para.paragraph_format.line_spacing = 1.15
         center_run = center_para.add_run('Ce document est la propriété de Boissons du Cameroun')
         center_run.font.name = 'Arial'
-        center_run.font.size = Pt(8)
+        center_run.font.size = Pt(7)
         center_run.font.color.rgb = RGBColor(255, 0, 0)  # Rouge
         center_run.font.bold = False
         center_para.alignment = WD_ALIGN_PARAGRAPH.CENTER
@@ -652,12 +750,15 @@ class ReportGenerator:
         right_cell_top.merge(right_cell_bottom)
         
         right_para = right_cell_top.paragraphs[0]
+        right_para.paragraph_format.space_before = Pt(4)
+        right_para.paragraph_format.space_after = Pt(4)
+        right_para.paragraph_format.line_spacing = 1.15
         right_para.alignment = WD_ALIGN_PARAGRAPH.CENTER
         
         # Ajouter "P a g e "
         page_text_run = right_para.add_run('P a g e ')
         page_text_run.font.name = 'Arial'
-        page_text_run.font.size = Pt(8)
+        page_text_run.font.size = Pt(7)
         page_text_run.font.bold = True
         page_text_run.font.color.rgb = RGBColor(128, 128, 128)  # Gris
         
@@ -676,14 +777,14 @@ class ReportGenerator:
         fldChar2.set(qn('w:fldCharType'), 'end')
         page_num_run._r.append(fldChar2)
         page_num_run.font.name = 'Arial'
-        page_num_run.font.size = Pt(8)
+        page_num_run.font.size = Pt(7)
         page_num_run.font.bold = True
         page_num_run.font.color.rgb = RGBColor(255, 0, 0)  # Rouge
         
         # Ajouter " sur "
         sur_run = right_para.add_run(' sur ')
         sur_run.font.name = 'Arial'
-        sur_run.font.size = Pt(8)
+        sur_run.font.size = Pt(7)
         sur_run.font.bold = True
         sur_run.font.color.rgb = RGBColor(128, 128, 128)  # Gris
         
@@ -702,7 +803,7 @@ class ReportGenerator:
         fldChar4.set(qn('w:fldCharType'), 'end')
         total_pages_run._r.append(fldChar4)
         total_pages_run.font.name = 'Arial'
-        total_pages_run.font.size = Pt(8)
+        total_pages_run.font.size = Pt(7)
         total_pages_run.font.bold = True
         total_pages_run.font.color.rgb = RGBColor(255, 0, 0)  # Rouge
         
@@ -866,8 +967,24 @@ class ReportGenerator:
             # --- Définir le style de base du document ---
             style = document.styles['Normal']
             font = style.font
-            font.name = 'Calibri'
+            font.name = 'Arial'
             font.size = Pt(11)
+
+            # Contenue du document en Arial 8pt noir
+            content_style = document.styles.add_style('Content8pt', WD_STYLE_TYPE.PARAGRAPH)
+            content_style.font.name = 'Arial'
+            content_style.font.size = Pt(8)
+            content_style.font.color.rgb = RGBColor(0, 0, 0)
+
+            # Titres en Arial 8pt, gras, souligné, noir
+            for level in range(1, 4):
+                heading_style = document.styles[f'Heading {level}']
+                heading_style.font.name = 'Arial'
+                heading_style.font.size = Pt(8)
+                heading_style.font.color.rgb = RGBColor(0, 0, 0)
+                if level == 1:
+                    heading_style.font.bold = True
+                    heading_style.font.underline = True
 
             # --- Ajouter l'en-tête avec logo et tableau ---
             control_name = control_data.get('name', 'N/A')
@@ -888,24 +1005,52 @@ class ReportGenerator:
             
             # 1. Description du contrôle
             document.add_heading('Description du contrôle :', level=1)
+            # Appliquer Arial 8pt, gras, souligné, noir
+            heading_para = document.paragraphs[-1]
+            for run in heading_para.runs:
+                run.font.name = 'Arial'
+                run.font.size = Pt(8)
+                run.font.bold = True
+                run.font.underline = True
+                run.font.color.rgb = RGBColor(0, 0, 0)
             description_text = "N/A"
             if control_metadata and 'description' in control_metadata:
                 description_text = control_metadata['description']
             p_desc = document.add_paragraph(description_text)
             p_desc.alignment = WD_ALIGN_PARAGRAPH.LEFT
-            document.add_paragraph()  # Espace
+            for run in p_desc.runs:
+                run.font.size = Pt(8)
+                run.font.color.rgb = RGBColor(0, 0, 0)
             
             # 2. Analyse
             document.add_heading('Analyse :', level=1)
+            # Appliquer Arial 8pt, gras, souligné, noir
+            heading_para = document.paragraphs[-1]
+            for run in heading_para.runs:
+                run.font.name = 'Arial'
+                run.font.size = Pt(8)
+                run.font.bold = True
+                run.font.underline = True
+                run.font.color.rgb = RGBColor(0, 0, 0)
             analyse_text = "N/A"
             if control_metadata and 'analyse' in control_metadata:
                 analyse_text = control_metadata['analyse']
             p_analyse = document.add_paragraph(analyse_text)
             p_analyse.alignment = WD_ALIGN_PARAGRAPH.LEFT
-            document.add_paragraph()  # Espace
+            for run in p_analyse.runs:
+                run.font.size = Pt(8)
+                run.font.color.rgb = RGBColor(0, 0, 0)
             
             # 3. Résultats
             document.add_heading('Résultats :', level=1)
+            # Appliquer Arial 8pt, gras, souligné, noir
+            heading_para = document.paragraphs[-1]
+            for run in heading_para.runs:
+                run.font.name = 'Arial'
+                run.font.size = Pt(8)
+                run.font.bold = True
+                run.font.underline = True
+                run.font.color.rgb = RGBColor(0, 0, 0)
             
             # --- Corps du rapport (boucle sur les résultats d'analyse) ---
             if not analysis_results:
@@ -919,12 +1064,13 @@ class ReportGenerator:
                 summary_stats = section.get('summary_stats', {})
                 if summary_stats:
                     document.add_heading('Statistiques Cles', level=3)
-                    for key, value in summary_stats.items():
-                        p_stat = document.add_paragraph(style='List Bullet')
-                        p_stat.add_run(f"{key}: ").bold = True
-                        p_stat.add_run(str(value))
-                
-                # Graphiques (si présents)
+                for key, value in summary_stats.items():
+                    p_stat = document.add_paragraph(style='List Bullet')
+                    p_stat.add_run(f"{key}: ").bold = True
+                    p_stat.add_run(str(value))
+                    for run in p_stat.runs:
+                        run.font.size = Pt(8)
+                        run.font.color.rgb = RGBColor(0, 0, 0)                # Graphiques (si présents)
                 chart_configs = section.get('chart_configs', [])
                 if chart_configs and summary_stats:
                     document.add_heading('Graphiques', level=3)
@@ -934,19 +1080,13 @@ class ReportGenerator:
                         if chart_path:
                             temp_chart_files.append(chart_path)
                             try:
-                                # Ajouter le titre du graphique
-                                p_chart_title = document.add_paragraph()
-                                p_chart_title.add_run(chart_config.get('title', 'Graphique')).bold = True
-                                p_chart_title.alignment = WD_ALIGN_PARAGRAPH.CENTER
-                                
                                 # Ajouter l'image
-                                document.add_picture(chart_path, width=Inches(5.5))
+                                document.add_picture(chart_path, width=Inches(2.75))
                                 
                                 # Centrer l'image
                                 last_paragraph = document.paragraphs[-1]
                                 last_paragraph.alignment = WD_ALIGN_PARAGRAPH.CENTER
                                 
-                                document.add_paragraph()  # Espace après le graphique
                             except Exception as e:
                                 print(f"Erreur lors de l'ajout du graphique au document: {e}")
                 
@@ -968,7 +1108,28 @@ class ReportGenerator:
                     
                     table = document.add_table(rows=1, cols=len(headers))
                     table.style = 'Table Grid'
-                    table.autofit = True
+                    table.autofit = False
+                    table.alignment = WD_TABLE_ALIGNMENT.CENTER
+                    
+                    # Configurer largeur fixe comme le footer
+                    tbl = table._element
+                    tblPr = tbl.tblPr
+                    if tblPr is None:
+                        tblPr = OxmlElement('w:tblPr')
+                        tbl.insert(0, tblPr)
+                    
+                    jc = OxmlElement('w:jc')
+                    jc.set(qn('w:val'), 'center')
+                    tblPr.append(jc)
+                    
+                    tblW = OxmlElement('w:tblW')
+                    tblW.set(qn('w:w'), '10340')
+                    tblW.set(qn('w:type'), 'dxa')
+                    tblPr.append(tblW)
+                    
+                    tblLayout = OxmlElement('w:tblLayout')
+                    tblLayout.set(qn('w:type'), 'fixed')
+                    tblPr.append(tblLayout)
 
                     # Remplissage des en-têtes
                     header_cells = table.rows[0].cells
@@ -976,6 +1137,8 @@ class ReportGenerator:
                         cell_paragraph = header_cells[i].paragraphs[0]
                         run = cell_paragraph.add_run(str(header_text))
                         run.bold = True
+                        run.font.name = 'Tahoma'
+                        run.font.size = Pt(6)
                         cell_paragraph.alignment = WD_ALIGN_PARAGRAPH.CENTER
 
                     # Remplissage des données (limiter à 60 lignes pour éviter un rapport trop lourd)
@@ -984,30 +1147,52 @@ class ReportGenerator:
                         row_cells = table.add_row().cells
                         for i, key in enumerate(column_keys):
                             row_cells[i].text = str(item.get(key, ''))
+                            para = row_cells[i].paragraphs[0]
+                            para.alignment = WD_ALIGN_PARAGRAPH.CENTER
+                            for run in para.runs:
+                                run.font.name = 'Tahoma'
+                                run.font.size = Pt(6)
                     
                     if len(items) > max_rows:
                         p_note = document.add_paragraph()
                         p_note.add_run(f"Note : Seules les {max_rows} premieres lignes sont affichees. ").italic = True
                         p_note.add_run(f"Total de {len(items)} lignes dans le fichier Excel complet.").italic = True
+                        for run in p_note.runs:
+                            run.font.size = Pt(8)
+                            run.font.color.rgb = RGBColor(0, 0, 0)
                 
-                document.add_paragraph()  # Ajoute un espace après la section
             
             # 4. Recommandations (vide - à remplir manuellement)
-            document.add_paragraph()  # Espace supplémentaire
             document.add_heading('Recommandations :', level=1)
+            # Appliquer Arial 8pt, gras, souligné, noir
+            heading_para = document.paragraphs[-1]
+            for run in heading_para.runs:
+                run.font.name = 'Arial'
+                run.font.size = Pt(8)
+                run.font.bold = True
+                run.font.underline = True
+                run.font.color.rgb = RGBColor(0, 0, 0)
             document.add_paragraph()  # Espace vide pour remplissage manuel
-            document.add_paragraph()  # Espace vide pour remplissage manuel
-            document.add_paragraph()  # Espace vide pour remplissage manuel
+            p = document.paragraphs[-1]
+            p.style = document.styles['Content8pt']
+
             
             # 5. Évidence de suivi des exceptions (vide - à remplir manuellement)
-            document.add_paragraph()  # Espace supplémentaire
             document.add_heading('Évidence de suivi des exceptions :', level=1)
+            # Appliquer Arial 8pt, gras, souligné, noir
+            heading_para = document.paragraphs[-1]
+            for run in heading_para.runs:
+                run.font.name = 'Arial'
+                run.font.size = Pt(8)
+                run.font.bold = True
+                run.font.underline = True
+                run.font.color.rgb = RGBColor(0, 0, 0)
             document.add_paragraph()  # Espace vide pour remplissage manuel
-            document.add_paragraph()  # Espace vide pour remplissage manuel
-            document.add_paragraph()  # Espace vide pour remplissage manuel
+            p = document.paragraphs[-1]
+            p.style = document.styles['Content8pt']
+
             
             # 6. Tableau de signatures
-            document.add_page_break()  # Nouvelle page pour le tableau de signatures
             self._add_signature_table(document)
 
             # --- Sauvegarde du document final ---

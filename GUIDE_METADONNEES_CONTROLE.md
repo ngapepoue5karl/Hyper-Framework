@@ -12,7 +12,7 @@ Chaque script de contrôle doit définir une variable `__hyper_control_metadata_
 
 ```python
 __hyper_control_metadata__ = {
-    "application": "Nom des applications",       # Applications concernées
+    "application": "Nom des applications",      # Applications concernées
     "layer": "Couche",                          # Couche concernée (Physique, Données, Application, etc.)
     "risk_reference": "R123, R456",             # Références des risques 
     "risk_name": "Nom du risque",               # Nom du risque 

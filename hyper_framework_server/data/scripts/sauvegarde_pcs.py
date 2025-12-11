@@ -10,7 +10,7 @@ __hyper_periodicity__ = 'WEEK'
 
 # Métadonnées du contrôle pour l'en-tête du rapport
 __hyper_control_metadata__ = {
-    "control_code_prefix": "CTL_SSI_02_SAVE",  # La date sera ajoutée automatiquement
+    "control_code_prefix": "CTL_SSI_02_SAVE",  
     "application": "OneDrive",
     "layer": "Données",
     "risk_reference": "R182, R211",
