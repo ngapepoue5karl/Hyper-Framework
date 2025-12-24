@@ -1,0 +1,6 @@
+{"timestamp": "2025-12-19T08:59:28.781960", "username": "superadmin", "user_role": "SUPER_ADMIN", "ip_address": "172.20.20.54", "action": "USER_LOGIN", "status": "SUCCESS", "details": {"message": "Login successful"}}
+{"timestamp": "2025-12-19T08:59:28.889655", "username": "superadmin", "user_role": "SUPER_ADMIN", "ip_address": "172.20.20.54", "action": "VIEW_CONTROLS_LIST", "status": "SUCCESS", "details": {"count": 5}}
+{"timestamp": "2025-12-19T08:59:45.483029", "username": "superadmin", "user_role": "SUPER_ADMIN", "ip_address": "172.20.20.54", "action": "VIEW_CONTROLS_LIST", "status": "SUCCESS", "details": {"count": 5}}
+{"timestamp": "2025-12-19T08:59:47.794352", "username": "superadmin", "user_role": "SUPER_ADMIN", "ip_address": "172.20.20.54", "action": "VIEW_ANALYSIS_RUNS", "status": "SUCCESS", "details": {"count": 1}}
+{"timestamp": "2025-12-19T08:59:49.176542", "username": "superadmin", "user_role": "SUPER_ADMIN", "ip_address": "172.20.20.54", "action": "VIEW_CONTROLS_LIST", "status": "SUCCESS", "details": {"count": 5}}
+{"timestamp": "2025-12-19T08:59:56.626477", "username": "superadmin", "user_role": "SUPER_ADMIN", "ip_address": "172.20.20.54", "action": "VIEW_CONTROL_DETAILS", "status": "SUCCESS", "details": {"control_id": 16, "control_name": "Sauvegarde PCs"}}
